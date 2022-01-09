@@ -24,12 +24,12 @@ symbol = "  "
 style = "bold #e8ec00 inverted"
 format = "on [$symbol$branch ]($style) "
 
-#[time]
-#disabled = false
-#format = '[ 🕙 $time  ]($style) '
-#time_format = "%I:%M:%S %p"
-#utc_time_offset = "+6"
-#style = "bold bg:#8a15e2"
+# [time]
+# disabled = false
+# format = '[ 🕙 $time  ]($style) '
+# time_format = "%I:%M:%S %p"
+# utc_time_offset = "+6"
+# style = "bold bg:#8a15e2"
 
 [git_commit]
 disabled = true
