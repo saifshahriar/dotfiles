@@ -1,3 +1,5 @@
+#Copy this code or this file to C:\Users\Dell\.config\
+
 command_timeout = 500
 format = "[ SAIF😼Dell](bold yellow bg:green)[](green) $directory$git_branch$cmd_duration$all$character"
 
