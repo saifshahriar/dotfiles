@@ -5,7 +5,6 @@ if has ('win32')
 endif
 set nocompatible                    " Disable compatibility with VI which can cause unexpected error
                                     " ! Required [DT] => opp
-
 " }}}
 " Basic Configuration 	---------- ---------- ---------- ---------- ----------  {{{
 
@@ -32,7 +31,7 @@ filetype off                        " Enable type file detection. Vim will be ab
 filetype plugin indent on           " Enable plugins and load plugin for the detected file type.
                                     " Load an indent file for the detecte
                                     " ! Required [DT]
-set clipboard=unnamedplus " Copy/Paste between vim and other programs.
+"set clipboard=unnamedplus " Copy/Paste between vim and other programs.
 set incsearch       " Increamental search. While searching though a file incrementally highlight matching characters as you type.
 set ignorecase      " Ignore capital letters during search.
 set smartcase       " Override the ignorecase option if searching for capital letters.
@@ -64,13 +63,20 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 " }}}
 " Customized keybindings ---------- ---------- ---------- ---------- ---------- {{{
 
-nnoremap <leader>\ `` " Press \\ to jump back to the last cursor position.
-nnoremap ; :        " Press the ';' to go to type command in command mode.
-nnoremap ! :!
-inoremap jj <Esc>   " Remap ESC to jj to go to the command mode.
+" Press \\ to jump back to the last cursor position.
+nnoremap <leader>\ ``
 
+" Press the ';' to go to type command in command mode.
+nnoremap ; :
+nnoremap ! :!
+
+" Remap ESC to jj to go to the command mode.
+inoremap jj <Esc>
+
+" e -> :e .
+nnoremap e :e 
 " }}}
-"STATUS LINE ------------------------------------------------------------ {{{
+" STATUS LINE ------------------------------------------------------------ {{{
 
 let g:lightline= {
            \ 'colorscheme' : 'darcula'
