@@ -1,3 +1,4 @@
 *.vimrc
+.config/
 .config/fish/config.fish
 
