@@ -1,2 +1,3 @@
 *.vimrc
-./.config/
+\.config
+
