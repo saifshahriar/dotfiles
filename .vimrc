@@ -6,8 +6,8 @@ endif
 set nocompatible                    " Disable compatibility with VI which can cause unexpected error
                                     " ! Required [DT] => opp
 " }}}
-" Basic Configuration 	---------- ---------- ---------- ---------- ----------  {{{
 
+" Basic Configuration 	---------- ---------- ---------- ---------- ----------  {{{
 set nu rnu
 set mouse=a
 set mouse=nicr
@@ -24,10 +24,8 @@ augroup filetype_vim
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
-
 filetype off                        " Enable type file detection. Vim will be able to try to detect the type of file in use.
                                     " ! Required [DT] => opp
-
 filetype plugin indent on           " Enable plugins and load plugin for the detected file type.
                                     " Load an indent file for the detecte
                                     " ! Required [DT]
@@ -54,7 +52,6 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
                     " There are certain files that we would never want to edit with Vim.
                     " Wildmenu will ignore files with these extensions.
 " set cursorline    " Highlight cursor line underneath the cursor horizontally.
-
 " set cursorcolumn  " Highlight cursor line underneath the cursor vertically.
 " set shiftwidth=10 " Set shift width to 4 spaces.
 " set tabstop=4     " Set tab width to 4 columns.
@@ -62,7 +59,6 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 " set smarttab      " Be smart using tabs ;)
 " }}}
 " Customized keybindings ---------- ---------- ---------- ---------- ---------- {{{
-
 " Press \\ to jump back to the last cursor position.
 nnoremap <leader>\ ``
 
@@ -77,7 +73,6 @@ inoremap jj <Esc>
 nnoremap e :e 
 " }}}
 " STATUS LINE ------------------------------------------------------------ {{{
-
 let g:lightline= {
            \ 'colorscheme' : 'darcula'
           \ }
@@ -89,7 +84,6 @@ set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%    
 set laststatus=2        " Show the status on the second to last line.
 " }}}
 "PLUGINS 		---------- ---------- ---------- ---------- ---------- {{{
-
 " vim-plug plugin manager is used
 
 call plug#begin()
@@ -148,7 +142,6 @@ call plug#begin()
     " Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NERDTree
