@@ -13,6 +13,7 @@
 # gpg2
 # starship
 # neofetch
+# less
 #
 # ### Arch
 # #	pacman
@@ -84,6 +85,8 @@ set fish_color_error '#ff6c6b'
 	alias nanorc="vim ~/.nanorc"
 	alias neofetchrc="vim ~/.config/neofetch/config.conf"
 #
+# Bat 	alias
+	alias bat='bat --theme="Dracula" --style="numbers,changes" --pager="less -FR" --map-syntax h:cpp'
 # Vim 	alias for Vi
 	alias vi="vim"
 
