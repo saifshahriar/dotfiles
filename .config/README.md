@@ -26,4 +26,3 @@
 
 # Starship prompt library 
 - Check my other <a href="https://github.com/saifshahriar/starship-prompts" target="_blank">repo</a> which contains a whole bunch of Starship shell prompts.
-- [repo](https://github.com/saifshahriar/starship-prompts){target="_blank"}
