@@ -21,7 +21,7 @@
 
 ## Used in the photo:
 - __Terminal__  : Windows Terminal Preview 
-- __Shell__     : [PowerShell]https://github.com/PowerShell/PowerShell
+- __Shell__     : [PowerShell](https://github.com/PowerShell/PowerShell)
 - __Font__      : FiraCode NF
 
 # Starship prompt library 
