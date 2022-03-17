@@ -1,3 +1,6 @@
-# ShellCustomization (Personal Repo)
+# Saif Shahriar's all the `.dotfiles`
 
-**Shell Customization for PowerShell and zsh.**
+**Contains**
+- Fish Config file
+- Starship Prompt file
+- .vimrc file
