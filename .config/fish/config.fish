@@ -5,16 +5,16 @@
 # bat 
 # exa
 # reflector
-# df
-# free
 # lynx
-# ps
-# xrdb
-# gpg2
 # starship
 # neofetch
 # less
 #
+#### 	# df
+	# free
+	# ps
+	# xrdb
+	# gpg2
 # ### Arch
 # #	pacman
 # # yay
