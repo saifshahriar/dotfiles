@@ -1,2 +1,0 @@
-unmount -R /mnt
-reboot
