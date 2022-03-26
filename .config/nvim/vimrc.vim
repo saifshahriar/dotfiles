@@ -1,9 +1,9 @@
 " COMPATIBILITY 	---------- ---------- ---------- ---------- ---------- {{{
 if has ('win32')
-	set shell=pwsh			              " Set pwsh as windows default shell
+	set shell=pwsh		" Set pwsh as windows default shell
 endif
-set nocompatible                    " Disable compatibility with VI which can cause unexpected error
-                                    " ! Required [DT] => opp
+set nocompatible                " Disable compatibility with VI which can cause unexpected error
+				" ! Required [DT] => opp
 " }}}
 " Basic Configuration 	---------- ---------- ---------- ---------- ----------  {{{
 
