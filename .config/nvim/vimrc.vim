@@ -42,7 +42,7 @@ nnoremap e :e
 
 " tabs
 nnoremap <C-t> :tabnew<Enter>
-nnoremap te :tabe
+nnoremap te :tabe 
 nnoremap <Tab> :tabn<Enter>
 nnoremap <S-Tab> :tabp<Enter>
 
