@@ -78,7 +78,7 @@ call plug#begin()
 "{{ Junegunn Choi Plugins }}
     " Plug 'junegunn/goyo.vim'                           " Distraction-free viewing [dt]
     " Plug 'junegunn/limelight.vim'                      " Hyperfocus on a range [dt]
-    Plug 'junegunn/vim-emoji'                          " Vim needs emojis!
+    Plug 'junegunn/vim-emoji'                            " Vim needs emojis!
     " Plug 'junegunn/vim-easy-align'
     " Start interactive EasyAlign in visual mode (e.g. vipga)
     " xmap ga <Plug>(EasyAlign)
