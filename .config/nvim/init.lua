@@ -1,12 +1,8 @@
-local chad_modules = {
-   "options",
-   "mappings",
-}
-
-for i = 1, #chad_modules, 1 do
-   if not pcall(require, chad_modules[i]) then
-      error("Error loading " .. chad_modules[i] .. "\n")
-   end
-end
-
-require("mappings").misc()
+-- Setup NvChad nvim config: https://nvchad.github.io/getting-started/setup
+-- Now add the following line to the init.lua file.
+-- ! Do not overwrite the init.lua file
+local result = vim.api.nvim_exec(
+[[
+source ./.vimrc.vim
+]],
+true)
