@@ -2,13 +2,13 @@
 if has ('win32')
 	set shell=pwsh		" Set pwsh as windows default shell
 endif
-set nocompatible                " Disable compatibility with VI which can cause unexpected error
+set nocompatible		" Disable compatibility with VI which can cause unexpected error
 				" ! Required [DT] => opp
 " }}}
 " Basic Configuration 	---------- ---------- ---------- ---------- ----------  {{{
 
 set nu rnu
-set nobackup        " Do not save backup files.
+set nobackup			" Do not save backup files.
 
 " Folding in VIM ('zm' -> fold | 'zr' -> unfold)
 " This will enable code folding.
@@ -17,6 +17,12 @@ augroup filetype_vim
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
+
+augroup filetype_lua
+    autocmd!
+    autocmd FileType lua setlocal foldmethod=indent
+augroup END
+
 set tabstop=4
 
 " }}}
@@ -51,12 +57,10 @@ call plug#begin()
     Plug 'frazrepo/vim-rainbow'
     let g:rainbow_active = 1
 
-    Plug 'suan/vim-instant-markdown', {'rtp': 'after'} " Markdown Preview [DT]
+    Plug 'suan/vim-instant-markdown', {'rtp': 'after'}	" Markdown Preview [DT]
 
 "{{ File management }}
-    Plug 'scrooloose/nerdtree'                         " Nerdtree
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'     " Highlighting Nerdtree
-    Plug 'ryanoasis/vim-devicons'                      " Icons for Nerdtree
+    Plug 'ryanoasis/vim-devicons'		" Icons for Nerdtree
 
 "{{ Productivity }}
     " Plug 'neoclide/coc-tabnine'
@@ -65,10 +69,10 @@ call plug#begin()
     " let g:user_emmet_leader_key='<C->'
      
 "{{ Tim Pope Plugins }}
-    Plug 'tpope/vim-surround'                          " Change surrounding marks [DT]
+    Plug 'tpope/vim-surround'			" Change surrounding marks [DT]
 
 "{{ Syntax Highlighting and Colors }}
-    Plug 'ap/vim-css-color'                            " Color previews for CSS [DT]
+    Plug 'ap/vim-css-color'			" Color previews for CSS [DT]
     Plug 'dense-analysis/ale'
     Plug 'sheerun/vim-polyglot'
     Plug 'scrooloose/syntastic'
@@ -76,9 +80,9 @@ call plug#begin()
     " Plug 'fatih/vim-go'
     
 "{{ Junegunn Choi Plugins }}
-    " Plug 'junegunn/goyo.vim'                           " Distraction-free viewing [dt]
-    " Plug 'junegunn/limelight.vim'                      " Hyperfocus on a range [dt]
-    Plug 'junegunn/vim-emoji'                            " Vim needs emojis!
+    " Plug 'junegunn/goyo.vim'			" Distraction-free viewing [dt]
+    " Plug 'junegunn/limelight.vim'		" Hyperfocus on a range [dt]
+    Plug 'junegunn/vim-emoji'			" Vim needs emojis!
     " Plug 'junegunn/vim-easy-align'
     " Start interactive EasyAlign in visual mode (e.g. vipga)
     " xmap ga <Plug>(EasyAlign)
@@ -90,20 +94,6 @@ call plug#begin()
 
 call plug#end()
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => NERDTree
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Uncomment to autostart the NERDTree
-" autocmd vimenter * NERDTree
-map <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeDirArrowExpandable = '►'
-let g:NERDTreeDirArrowCollapsible = '▼'
-let NERDTreeShowLineNumbers=1
-let NERDTreeShowHidden=1
-let NERDTreeMinimalUI = 1
-let g:NERDTreeWinSize=38
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VimWiki
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -113,10 +103,10 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-Instant-Markdown
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:instant_markdown_autostart = 0         " Turns off auto preview
-let g:instant_markdown_browser = "surf"      " Uses surf for preview
-map <Leader>md :InstantMarkdownPreview<CR>   " Previews .md file
-map <Leader>ms :InstantMarkdownStop<CR>      " Kills the preview
+let g:instant_markdown_autostart = 0		" Turns off auto preview
+let g:instant_markdown_browser = "surf"		" Uses surf for preview
+map <Leader>md :InstantMarkdownPreview<CR>	" Previews .md file
+map <Leader>ms :InstantMarkdownStop<CR>		" Kills the preview
 
 " Removes pipes | that act as seperators on splits
 set fillchars+=vert:\ 
@@ -137,7 +127,7 @@ set guioptions-=L  "remove left-hand scroll bar
 " Themes 		---------- ---------- ---------- ---------- ---------- {{{
 
 set termguicolors
-let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_style = 'night'		" available: night, storm
 let g:tokyonight_enable_italic = 1
 colorscheme tokyonight
 
@@ -145,47 +135,24 @@ colorscheme tokyonight
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Theming
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-highlight LineNr           ctermfg=8    ctermbg=none    cterm=none
-highlight CursorLineNr     ctermfg=7    ctermbg=8       cterm=none
-highlight VertSplit        ctermfg=0    ctermbg=8       cterm=none
-highlight Statement        ctermfg=2    ctermbg=none    cterm=none
-highlight Directory        ctermfg=4    ctermbg=none    cterm=none
-highlight StatusLine       ctermfg=7    ctermbg=8       cterm=none
-highlight StatusLineNC     ctermfg=7    ctermbg=8       cterm=none
-highlight NERDTreeClosable ctermfg=2
-highlight NERDTreeOpenable ctermfg=8
-highlight Comment          ctermfg=4    ctermbg=none    cterm=italic
-highlight Constant         ctermfg=12   ctermbg=none    cterm=none
-highlight Special          ctermfg=4    ctermbg=none    cterm=none
-highlight Identifier       ctermfg=6    ctermbg=none    cterm=none
-highlight PreProc          ctermfg=5    ctermbg=none    cterm=none
-highlight String           ctermfg=12   ctermbg=none    cterm=none
-highlight Number           ctermfg=1    ctermbg=none    cterm=none
-highlight Function         ctermfg=1    ctermbg=none    cterm=none
-highlight WildMenu         ctermfg=0       ctermbg=80      cterm=none
-highlight Folded           ctermfg=103     ctermbg=234     cterm=none
-highlight FoldColumn       ctermfg=103     ctermbg=234     cterm=none
-" highlight DiffAdd          ctermfg=none    ctermbg=23      cterm=none
-" highlight DiffChange       ctermfg=none    ctermbg=56      cterm=none
-" highlight DiffDelete       ctermfg=168     ctermbg=96      cterm=none
-" highlight DiffText         ctermfg=0       ctermbg=80      cterm=none
-" highlight SignColumn       ctermfg=244     ctermbg=235     cterm=none
-" highlight Conceal          ctermfg=251     ctermbg=none    cterm=none
-" highlight SpellBad         ctermfg=168     ctermbg=none    cterm=underline
-" highlight SpellCap         ctermfg=80      ctermbg=none    cterm=underline
-" highlight SpellRare        ctermfg=121     ctermbg=none    cterm=underline
-" highlight SpellLocal       ctermfg=186     ctermbg=none    cterm=underline
-" highlight Pmenu            ctermfg=251     ctermbg=234     cterm=none
-" highlight PmenuSel         ctermfg=0       ctermbg=111     cterm=none
-" highlight PmenuSbar        ctermfg=206     ctermbg=235     cterm=none
-" highlight PmenuThumb       ctermfg=235     ctermbg=206     cterm=none
-" highlight TabLine          ctermfg=244     ctermbg=234     cterm=none
-" highlight TablineSel       ctermfg=0       ctermbg=247     cterm=none
-" highlight TablineFill      ctermfg=244     ctermbg=234     cterm=none
-" highlight CursorColumn     ctermfg=none    ctermbg=236     cterm=none
-" highlight CursorLine       ctermfg=none    ctermbg=236     cterm=none
-" highlight ColorColumn      ctermfg=none    ctermbg=236     cterm=none
-" highlight Cursor           ctermfg=0       ctermbg=5       cterm=none
-" highlight htmlEndTag       ctermfg=114     ctermbg=none    cterm=none
-" highlight xmlEndTag        ctermfg=114     ctermbg=none    cterm=none
+highlight LineNr		ctermfg=8    	ctermbg=none    cterm=none
+highlight CursorLineNr		ctermfg=7    	ctermbg=8       cterm=none
+highlight VertSplit		ctermfg=0    	ctermbg=8       cterm=none
+highlight Statement        	ctermfg=2    	ctermbg=none    cterm=none
+highlight Directory        	ctermfg=4    	ctermbg=none    cterm=none
+highlight StatusLine       	ctermfg=7    	ctermbg=8       cterm=none
+highlight StatusLineNC     	ctermfg=7    	ctermbg=8       cterm=none
+highlight NERDTreeClosable 	ctermfg=2
+highlight NERDTreeOpenable 	ctermfg=8
+highlight Comment          	ctermfg=4    	ctermbg=none    cterm=italic
+highlight Constant         	ctermfg=12   	ctermbg=none    cterm=none
+highlight Special          	ctermfg=4    	ctermbg=none    cterm=none
+highlight Identifier       	ctermfg=6    	ctermbg=none    cterm=none
+highlight PreProc          	ctermfg=5    	ctermbg=none    cterm=none
+highlight String           	ctermfg=12   	ctermbg=none    cterm=none
+highlight Number           	ctermfg=1    	ctermbg=none    cterm=none
+highlight Function         	ctermfg=1    	ctermbg=none    cterm=none
+highlight WildMenu         	ctermfg=0       ctermbg=80      cterm=none
+highlight Folded           	ctermfg=103     ctermbg=234     cterm=none
+highlight FoldColumn       	ctermfg=103	ctermbg=234     cterm=none
 " }}}
