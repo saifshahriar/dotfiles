@@ -3,6 +3,8 @@ all dotfiles of Saif
 
 # Filetree
 ```
+$ #!/bin/bash
+$ tree dotfiles
 dotfiles
 ├──.config
 │  ├──alacritty
