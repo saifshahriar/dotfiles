@@ -3,6 +3,10 @@
 -- ! Do not overwrite the init.lua file
 local result = vim.api.nvim_exec(
 [[
-source ./.vimrc.vim
+" Uncomment the following line if its an Unix based system
+source ./vimrc.vim
+
+" Uncomment the following line if its a Windows system
+" source .\vimrc.vim
 ]],
 true)
