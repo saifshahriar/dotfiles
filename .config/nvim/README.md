@@ -6,4 +6,4 @@
 
      ⚠ Do not overwrite the `init.lua` file
          
-- Copy `.vimrc.vim` to the `nvim` folder.
+- Copy `vimrc.vim` to the `nvim` folder.
