@@ -5,12 +5,6 @@ all dotfiles of Saif
 ```bash
 dotfiles
 ├──.config
-│  ├──alacritty
-│  │  ├──colorschemes
-│  │  │  └──...
-│  │  ├──alacritty.yml
-│  │  ├──colors.yml
-│  │  └──fonts.yml
 │  ├──fish
 │  │  └──config.fish
 │  ├──neofetch
