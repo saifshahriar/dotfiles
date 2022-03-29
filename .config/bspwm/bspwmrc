@@ -62,7 +62,7 @@ bspc rule -a Xfce4-terminal desktop='^1' follow=on focus=on
 bspc rule -a kitty desktop='^1' follow=on focus=on
 
 # 2 > web
-declare -a web=(firefox chrome chromium Brave-browser Vivaldi-stable)
+declare -a web=(firefox chrome chromium Brave-browser Vivaldi-stable Google-chrome)
 for i in ${web[@]}; do
    bspc rule -a $i desktop='^2' follow=on focus=on; done
 
@@ -138,7 +138,7 @@ xfce4-power-manager &
 xsetroot -cursor_name left_ptr
 
 # Restore wallpaper
-bash $HOME/.fehbg
+#bash $HOME/.fehbg
 
 # Start mpd
 exec mpd &
@@ -149,4 +149,3 @@ bspbar
 bspcomp
 bspdunst
 bspfloat &
-
