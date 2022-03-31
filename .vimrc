@@ -1,7 +1,7 @@
 " COMPATIBILITY 	---------- ---------- ---------- ---------- ---------- {{{
 if has ('win32')
 	set backspace=indent,eol,start 	  " Backspace key not working in windows version of VIM
-	set shell=pwsh			              " Set pwsh as windows default shell
+	set shell=pwsh                    " Set pwsh as windows default shell
 endif
 set nocompatible                    " Disable compatibility with VI which can cause unexpected error
                                     " ! Required [DT] => opp
