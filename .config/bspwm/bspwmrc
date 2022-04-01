@@ -141,7 +141,7 @@ xsetroot -cursor_name left_ptr
 #bash $HOME/.fehbg
 
 # Start mpd
-exec mpd &
+# exec mpd &
 
 # Start bspwm scripts
 bspcolors
