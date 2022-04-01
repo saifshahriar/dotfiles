@@ -55,16 +55,10 @@ dotfiles
 │   ├── LICENSE
 │   ├── README.md
 │   └── update_plugins.py
-├── package-installer
-│   ├── arch-pac-installer.sh
-│   ├── debian-apt-install.sh
-│   ├── fedora-dnf-install.sh
-│   ├── termux-pkg-install.sh
-│   └── ubuntu-apt-installer.sh
 ├── .vimrc
 ├── .vimrc.archcraft.bak
 ├── .zshrc
-├── arch-pac-installer.sh
+├── packages.txt
 └── README.md
 
 34 directories, 69 files
