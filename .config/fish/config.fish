@@ -16,7 +16,7 @@
 	# xrdb
 	# gpg2
 # ### Arch
-# #	pacman
+# # pacman
 # # yay
 # # paru
 # ### Debian
@@ -119,19 +119,17 @@ set fish_color_error '#ff6c6b'
 # ? [distro == Arch] # Uncomment this block if you use Arch based disto
 # ? starts
 # pacman aliases
-	alias update="sudo pacman -Syy"
-	alias upgrade="sudo pacman -Syu"
-	alias sysup="sudo pacman -Syyu"
-	alias install="sudo pacman -Syy"
-	alias remove="sudo pacman -R"
-	alias autoremove="sudo pacman -Rns"
-	alias cleanup="sudo pacman -Rns (pacman -Qtdq)"	 # Removes orphan packages
-	alias unlock='sudo rm /var/lib/pacman/db.lck'    # remove pacman lock
-# more aliases
+	alias install="sudo pacman -S"
+	alias pacsyy="sudo pacman -Syy"
 	alias pacsyu='sudo pacman -Syu'                  # update only standard pkgs
 	alias pacsyyu='sudo pacman -Syyu'                # Refresh pkglist & update standard pkgs
+	alias pacr="sudo pacman -R"
+	alias pacrns="sudo pacman -Rns"
+	alias cleanup="sudo pacman -Rns (pacman -Qtdq)"	 # Removes orphan packages
+	alias pacunlock='sudo rm /var/lib/pacman/db.lck' # remove pacman lock
 # 
 # yay 	aliases
+	alias yays="yay -S" 
 	alias yaysua='yay -Sua --noconfirm'              # update only AUR pkgs (yay)
 	alias yaysyu='yay -Syu --noconfirm'              # update standard pkgs and AUR pkgs (yay)
 # 
@@ -140,7 +138,7 @@ set fish_color_error '#ff6c6b'
 	alias parsyu='paru -Syu --noconfirm'             # update standard pkgs and AUR pkgs (paru)
 # ? ends
 
-# ls 		aliases
+# ls	aliases
 	alias l="exa -al --color=always --icons --group-directories-first" 
 	alias ls="exa -al --color=auto --icons --group-directories-first" 
 	alias la="exa -a --color=auto --group-directories-first" 
@@ -206,9 +204,9 @@ set fish_color_error '#ff6c6b'
 #	alias playmp3='deadbeef *.mp3'
 #
 # Play video files in current dir by type
-#	alias playavi='vlc *.avi'
-#	alias playmov='vlc *.mov'
-#	alias playmp4='vlc *.mp4'
+	alias playavi='vlc *.avi'
+	alias playmov='vlc *.mov'
+	alias playmp4='vlc *.mp4'
 	
 # youtube-dl
 	alias yta-aac="youtube-dl --extract-audio --audio-format aac "
@@ -227,9 +225,9 @@ set fish_color_error '#ff6c6b'
 	alias tofish="sudo chsh $USER -s /bin/fish && echo 'Now log out.'"
 
 # Special aliases for this particular system
-	alias systemWSL="/mnt/d/systemWSL/"
-	alias systemKali="/mnt/d/systemWSL/systemKali"
-	alias systemArch="/mnt/d/systemWSL/systemArch"
+#	alias systemWSL="/mnt/d/systemWSL/"
+#	alias systemKali="/mnt/d/systemWSL/systemKali"
+#	alias systemArch="/mnt/d/systemWSL/systemArch"
 
 ### RANDOM COLOR SCRIPT ###
 # Get this script from my GitLab: gitlab.com/dwt1/shell-color-scripts
@@ -240,7 +238,7 @@ set fish_color_error '#ff6c6b'
 starship init fish | source
 
 ### Run neofetch at shell startup ###
-neofetch
+# neofetch
 	
 ### Windows wslg ###
-set -gx GDK_SCALE 2 #if your linux is running as wsl 
+# set -gx GDK_SCALE 2 #if your linux is running as wsl 
