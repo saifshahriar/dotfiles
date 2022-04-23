@@ -108,7 +108,7 @@ XF86Audio{Next,Prev,Play,Stop}
 ##---------- Bspwm ----------##
 
 # Close App
-super + {_,shift + }c
+super + :{_,shift + }c
 	bspc node -{c,k}
 
 # Reload Keybindings
@@ -130,6 +130,10 @@ super + {h,v,q}
 # Preselect the ratio
 super + ctrl + {1-9}
 	bspc node -o 0.{1-9}
+
+# Make all windows same size (evenly)
+super + ctrl + e
+	bspc node @/ -B
 
 # Fullscreen or Monocle
 super + f
