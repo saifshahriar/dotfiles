@@ -9,18 +9,13 @@
 # starship
 # neofetch
 # less
+# ripgrep
 #
 #### 	# df
 	# free
 	# ps
 	# xrdb
 	# gpg2
-# ### Arch
-# # pacman
-# # yay
-# # paru
-# ### Debian
-# # apt
 
 ### ADDING TO THE PATH
 # First line removes the path; second line sets it.  Without the first line,
@@ -31,8 +26,6 @@ set -U fish_user_paths $HOME/.local/bin $HOME/Applications $fish_user_paths
 ### EXPORT ###
 set fish_greeting                                 # Supresses fish's intro message
 set TERM "xterm-256color"                         # Sets the terminal type
-# ! TODO: set EDITOR "emacsclient -t -a ''"                 # $EDITOR use Emacs in terminal
-# ! TODO: set VISUAL "emacsclient -c -a emacs"              # $VISUAL use Emacs in GUI mode
 
 ### SET MANPAGER ###
 ### Uncomment only one of these!
@@ -92,19 +85,7 @@ set fish_color_error '#ff6c6b'
 
 ### Package aliases
 #
-# ? [distro == Debian]	# Uncomment this block if you use Debian based disto
-# apt 	aliases
-# ? starts
-#	alias update="sudo apt-get update"
-#	alias upgrade="sudo apt-get upgrade"
-#	alias sysup="sudo apt-get update && sudo apt-get upgrade"
-#	alias install="sudo apt-get install"
-#	alias remove="sudo apt-get remove"
-#	alias autoremove="sudo apt-get autoremove"
-#	alias cleanup="sudo apt-get remove && sudo apt-get autoremove"
-# ? ends
-#
-# ? [distro == Ubuntu]	# Uncomment this block if you use Ubuntu based disto
+# ? [distro == Debian || Ubuntu]	# Uncomment this block if you use Debian based disto
 # apt 	aliases
 # ? starts
 #	alias update="sudo apt update"
@@ -158,6 +139,7 @@ set fish_color_error '#ff6c6b'
 	alias grep='grep --color=auto'
 	alias egrep='egrep --color=auto'
 	alias fgrep='fgrep --color=auto'
+	alias rg='rg -p'
 
 # adding flags
 	alias df='df -h'                          # human-readable sizes
@@ -232,13 +214,13 @@ set fish_color_error '#ff6c6b'
 ### RANDOM COLOR SCRIPT ###
 # Get this script from my GitLab: gitlab.com/dwt1/shell-color-scripts
 # Or install it from the Arch User Repository: shell-color-scripts
-# colorscript random
+#colorscript random
 
 ### SETTING THE STARSHIP PROMPT ###
-starship init fish | source
+#starship init fish | source
 
 ### Run neofetch at shell startup ###
-# neofetch
+#neofetch
 	
 ### Windows wslg ###
-# set -gx GDK_SCALE 2 #if your linux is running as wsl 
+#set -gx GDK_SCALE 2 #if your linux is running as wsl 
