@@ -1,6 +1,6 @@
 " COMPATIBILITY ------------------------------------------------------------ {{{
-
 set nocompatible		" You don't need VI compatiblity
+set updatetime=50               " Don't take more than 50 ms time to load
 
 if has ('win32')
 	set backspace=indent,eol,start	
@@ -78,7 +78,7 @@ set colorcolumn=80  		" Set a coloured bar at 80th column.
 " set cursorcolumn  		" Highlight cursor line underneath the cursor 
 				" vertically.
 " set shiftwidth=4 		" Set shift width to 4 spaces.
-" set tabstop=4     		" Set tab width to 4 columns.
+set tabstop=8    		" Set tab width to 4 columns.
 " set expandtab     		" Use spaces instead of tabs.
 " set smarttab      		" Be smart using tabs ;)
 " }}}
@@ -101,6 +101,9 @@ nnoremap <C-t> :tabnew<Enter>
 nnoremap te :tabe 
 nnoremap <Tab> :tabn<Enter>
 nnoremap <S-Tab> :tabp<Enter>
+
+" nohl
+nnoremap <leader>h :nohl<Enter>
 
 " Uncomment this if copying between vim and system keyboard is enabled
 " nnoremap <C-v> <C-S-v> 
@@ -228,6 +231,8 @@ set guioptions-=L  "remove left-hand scroll bar
 " Themes ------------------------------------------------------------------- {{{
 set termguicolors
 set background=dark
+
+" lightline configuration
 let g:lightline = {
 		\ 'colorscheme': 'gruvbox8',
 		\ 'active': {
@@ -243,6 +248,7 @@ let g:lightline.tabline = {
 			\ 'left': [ [ 'tabs' ] ],
 			\ 'right': [ [ 'bufnum' ] ]
 			\ }
+
 "colorscheme gruvbox8
 " List of themes
   " Gruvbox 8 ------------------------------------------------------------------- {{{
