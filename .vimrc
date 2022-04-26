@@ -17,7 +17,8 @@ endif
 
 " Disable that annoying beeping. 	(might or might not work in linux)
 set noerrorbells			
-set vb t_vb=ntax 
+set vb 
+" set t_vb=ntax                 " if not working then may uncomment to try 
 " Mouse suppor for VIM. 		(might or might not work in windows)
 set mouse=a
 set mouse=nicr			
@@ -102,13 +103,10 @@ nnoremap <Tab> :tabn<Enter>
 nnoremap <S-Tab> :tabp<Enter>
 
 " Uncomment this if copying between vim and system keyboard is enabled
-nnoremap <C-v> <C-S-v> 
+" nnoremap <C-v> <C-S-v> 
 
 " }}}
 " STATUS LINE -------------------------------------------------------------- {{{
-let g:lightline= {
-           \ 'colorscheme' : 'darcula'
-          \ }
 set noshowmode      		" Uncomment to prevent non-normal modes showing 
 				" in powerline and below powerline.
 set statusline=         	" Clear status line when vimrc is reloaded.
@@ -119,6 +117,7 @@ set statusline+=%=      	" Use a divider to separate the left side from
 set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
 				" Status line right side.
 set laststatus=2        	" Show the status on the second to last line.
+set showtabline=2		" Show the tab    on the second to last line.	
 " }}}
 "PLUGINS ------------------------------------------------------------------- {{{
 " vim-plug plugin manager is used
@@ -229,7 +228,22 @@ set guioptions-=L  "remove left-hand scroll bar
 " Themes ------------------------------------------------------------------- {{{
 set termguicolors
 set background=dark
-
+let g:lightline = {
+		\ 'colorscheme': 'gruvbox8',
+		\ 'active': {
+		\ 'right': [ [ 'lightlineinfo' ], 
+		\	     [ 'percent' ],
+		\	     [ 'fileformat', 'fileencoding' , 'filetype' ] ],
+		\ 'left': [ [ 'mode', 'paste' ],
+		\	    [ 'readonly', 'filename', 'modified' ] ]
+		\
+		\ },
+		\ }
+let g:lightline.tabline = {
+			\ 'left': [ [ 'tabs' ] ],
+			\ 'right': [ [ 'bufnum' ] ]
+			\ }
+"colorscheme gruvbox8
 " List of themes
   " Gruvbox 8 ------------------------------------------------------------------- {{{
     " Name:         Gruvbox 8
