@@ -1,21 +1,31 @@
 " COMPATIBILITY 	---------- ---------- ---------- ---------- ---------- {{{
+
+set nocompatible			" You don't need VI compatiblity
+
 if has ('win32')
-	set backspace=indent,eol,start 	  " Backspace key not working in windows version of VIM
-	set shell=pwsh                    " Set pwsh as windows default shell
+	set backspace=indent,eol,start	" Backspace key not working in windows version of VIM
+					" Comment out or delete the line for UNIX
+	set shell=pwsh			" Set pwsh(p6/7)as the default shell in windows 
+	" set shell=nu			" Set nu 	as the default shell in windows 
+else
+	" set shell=sh		 	" Set sh	as the default shell in UNIX
+	set shell=bash		 	" Set bash 	as the default shell in UNIX 
+	" set shell=zsh		 	" Set zsh 	as the default shell in UNIX 
+	" set shell=fish	 	" Set fish 	as the default shell in UNIX 
 endif
-set nocompatible                    " Disable compatibility with VI which can cause unexpected error
-                                    " ! Required [DT] => opp
+
+" Disable that annoying beeping. 	(might or might not work in linux)
+set noerrorbells			
+set vb t_vb=ntax 
+" Mouse suppor for VIM. 		(might or might not work in windows)
+set mouse=a
+set mouse=nicr			
+
 " }}}
 " Basic Configuration 	---------- ---------- ---------- ---------- ----------  {{{
 
-set nu rnu
-set mouse=a
-set mouse=nicr
+set nu rnu				
 syntax enable on
-
-" Disable that annoying beeping
-set noerrorbells
-set vb t_vb=ntax 
 
 " Folding in VIM ('zm' -> fold | 'zr' -> unfold)
 " This will enable code folding.
@@ -25,40 +35,50 @@ augroup filetype_vim
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
-filetype off                        " Enable type file detection. Vim will be able to try to detect the type of file in use.
-                                    " ! Required [DT] => opp
+filetype off                    " Enable type file detection. Vim will be 
+				" able to try to detect the type of file in use.
 
-filetype plugin indent on           " Enable plugins and load plugin for the detected file type.
-                                    " Load an indent file for the detecte
-                                    " ! Required [DT]
-set clipboard=unnamedplus           " Copy/Paste between vim and other programs.
-set incsearch       " Increamental search. While searching though a file incrementally highlight matching characters as you type.
-set ignorecase      " Ignore capital letters during search.
-set smartcase       " Override the ignorecase option if searching for capital letters.
-                    " This will allow you to search specifically for capital letters.
-set hlsearch        " Use highlighting when doing a search.
-set history=500     " Set the commands to save in history default number is 20.
-set path+=**
-set nobackup        " Do not save backup files.
-" set noswapfile    " No swap
-" set nowrap        " Do not wrap lines. Allow long lines to extend as far as the line goes.
-set t_Co=256        " Set if term supports 256 bit colours. 
-set scrolloff=21    " Do not let cursor scroll below or above N number of lines when scrolling.
+filetype plugin indent on	" Enable plugins and load plugin for the 
+				" detected file type.
+				" Load an indent file for the detecte
+set clipboard=unnamedplus	" Copy/Paste between vim and other programs.
+set incsearch       		" Increamental search. While searching though a 
+				" file incrementally highlight matching 
+				" characters as you type.
+set ignorecase      		" Ignore capital letters during search.
+set smartcase       		" Smartcase rule while searching.
+set hlsearch        		" Use highlighting when doing a search.
+set history=500     		" Set the commands to save in history default 
+				" number is 20.
+set path+=**			" Useful when using :find command. Searches a 
+				" dir recursively.
+set nobackup        		" No backup.
+" set noswapfile    		" No swap.
+set nowrap        		" No line wrap.
+set t_Co=256        		" Set if term supports 256 bit colours. 
+set scrolloff=21    		" Do not let cursor scroll below or above N 
+				" number of lines when scrolling.
 let g:rehash256 = 1
-set splitright      " Splits files to the right 
-set showcmd         " Show partial command you type in the last line of the screen.
-set showmatch       " Show matching words during a search.
-set wildmenu        " Enable auto completion menu after pressing TAB.
-set wildmode=list:longest   " Make wildmenu behave like similar to Bash completion.
+set splitright      		" Splits files to the right.
+set showcmd         		" Show partial command you type in the last 
+				" line of the screen.
+set showmatch       		" Show matching words during a search.
+set wildmenu        		" Enable autocompletion menu after pressing TAB.
+set wildmode=list:longest	" Make wildmenu behave like similar to Bash 
+				" completion.
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx 
-                    " There are certain files that we would never want to edit with Vim.
-                    " Wildmenu will ignore files with these extensions.
-" set cursorline    " Highlight cursor line underneath the cursor horizontally.
-" set cursorcolumn  " Highlight cursor line underneath the cursor vertically.
-" set shiftwidth=10 " Set shift width to 4 spaces.
-" set tabstop=4     " Set tab width to 4 columns.
-" set expandtab     " Use spaces instead of tabs.
-" set smarttab      " Be smart using tabs ;)
+                    		" There are certain files that we would never 
+				" want to edit with Vim. Wildmenu will ignore 
+				" files with these extensions.
+set colorcolumn=80  		" Set a coloured bar at 80th column.
+" set cursorline    		" Highlight cursor line underneath the cursor 
+				" horizontally.
+" set cursorcolumn  		" Highlight cursor line underneath the cursor 
+				" vertically.
+" set shiftwidth=4 		" Set shift width to 4 spaces.
+" set tabstop=4     		" Set tab width to 4 columns.
+" set expandtab     		" Use spaces instead of tabs.
+" set smarttab      		" Be smart using tabs ;)
 " }}}
 " Customized keybindings ---------- ---------- ---------- ---------- ---------- {{{
 " Press \\ to jump back to the last cursor position.
@@ -88,69 +108,77 @@ nnoremap <C-v> <C-S-v>
 let g:lightline= {
            \ 'colorscheme' : 'darcula'
           \ }
-set noshowmode      " Uncomment to prevent non-normal modes showing in powerline and below powerline.
-set statusline=         " Clear status line when vimrc is reloaded.
-set statusline+=\ %F\ %M\ %Y\ %R " Status line left side.
-set statusline+=%=      " Use a divider to separate the left side from the right side.
-set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%    " Status line right side.
-set laststatus=2        " Show the status on the second to last line.
+set noshowmode      			" Uncomment to prevent non-normal modes 
+					" showing in powerline and below 
+					" powerline.
+set statusline=         		" Clear status line when vimrc is 
+					" reloaded.
+set statusline+=\ %F\ %M\ %Y\ %R	" Status line left side.
+set statusline+=%=      		" Use a divider to separate the left 
+					" side from the right side.
+set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
+					" Status line right side.
+set laststatus=2        		" Show the status on the second to last 
+					" line.
 " }}}
 "PLUGINS 		---------- ---------- ---------- ---------- ---------- {{{
 " vim-plug plugin manager is used
 call plug#begin()
 
 "{{ The Basics }}
-    " Plug 'gmarik/Vundle.vim'                           " Vundle [DT]
-    Plug 'itchyny/lightline.vim'                       " Lightline statusbar [DT]
-    
-    Plug 'frazrepo/vim-rainbow'
-    let g:rainbow_active = 1
-
-    Plug 'suan/vim-instant-markdown', {'rtp': 'after'} " Markdown Preview [DT]
-    Plug 'jiangmiao/auto-pairs'
+	Plug 'itchyny/lightline.vim'	" Lightline statusbar [DT]
+	
+	Plug 'frazrepo/vim-rainbow'
+	let g:rainbow_active = 1
+	
+	Plug 'suan/vim-instant-markdown', {'rtp': 'after'}
+					" Markdown Preview [DT]
+	Plug 'jiangmiao/auto-pairs'
 
 "{{ File management }}
-    " Plug 'vifm/vifm.vim'                               " Vifm [DT]
-    Plug 'scrooloose/nerdtree'                         " Nerdtree
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'     " Highlighting Nerdtree
-    Plug 'ryanoasis/vim-devicons'                      " Icons for Nerdtree
+	" Plug 'vifm/vifm.vim'		" Vifm [DT]
+	Plug 'scrooloose/nerdtree'	" Nerdtree
+	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+					" Highlighting Nerdtree
+	Plug 'ryanoasis/vim-devicons'	" Icons for Nerdtree
 
 "{{ Productivity }}
-    " Plug 'vimwiki/vimwiki'                             " VimWiki [DT] 
-    " Plug 'jreybert/vimagit'                            " Magit-like plugin for vim [DT]
-    " Plug 'neoclide/coc-tabnine'
-    " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    " Plug 'mattn/emmet-vim'
-    " let g:user_emmet_leader_key='<C->'
+	" Plug 'vimwiki/vimwiki'	" VimWiki [DT] 
+	" Plug 'jreybert/vimagit'	" Magit-like plugin for vim [DT]
+	" Plug 'neoclide/coc-tabnine'
+	" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	" Plug 'mattn/emmet-vim'
+	" let g:user_emmet_leader_key='<C->'
      
 "{{ Tim Pope Plugins }}
-    Plug 'tpope/vim-surround'                          " Change surrounding marks [DT]
+	Plug 'tpope/vim-surround'	" Change surrounding marks [DT]
 
 "{{ Syntax Highlighting and Colors }}
-    " Plug 'PotatoesMaster/i3-vim-syntax'                " i3 config highlighting [DT]
-    " Plug 'kovetskiy/sxhkd-vim'                         " sxhkd highlighting [DT]
-    Plug 'vim-python/python-syntax'                    " Python highlighting [DT]
-    Plug 'ap/vim-css-color'                            " Color previews for CSS [DT]
-    Plug 'dense-analysis/ale'
-    Plug 'sheerun/vim-polyglot'
-    Plug 'scrooloose/syntastic'
-    Plug 'jbgutierrez/vim-better-comments'
-    " Plug 'fatih/vim-go'
+	" Plug 'PotatoesMaster/i3-vim-syntax'
+	    				" i3 config highlighting [DT]
+	" Plug 'kovetskiy/sxhkd-vim'	" sxhkd highlighting [DT]
+	Plug 'vim-python/python-syntax'	" Python highlighting [DT]
+	Plug 'ap/vim-css-color'		" Color previews for CSS [DT]
+	Plug 'dense-analysis/ale'
+	Plug 'sheerun/vim-polyglot'
+	Plug 'scrooloose/syntastic'
+	Plug 'jbgutierrez/vim-better-comments'
+	" Plug 'fatih/vim-go'
     
 "{{ Junegunn Choi Plugins }}
-    " Plug 'junegunn/goyo.vim'                           " Distraction-free viewing [dt]
-    " Plug 'junegunn/limelight.vim'                      " Hyperfocus on a range [dt]
-    Plug 'junegunn/vim-emoji'                          " Vim needs emojis!
-    " Plug 'junegunn/vim-easy-align'
-    " Start interactive EasyAlign in visual mode (e.g. vipga)
-    " xmap ga <Plug>(EasyAlign)
-    " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-    " nmap ga <Plug>(EasyAlign)
+	" Plug 'junegunn/goyo.vim'	" Distraction-free viewing [dt]
+	" Plug 'junegunn/limelight.vim'	" Hyperfocus on a range [dt]
+	Plug 'junegunn/vim-emoji'	" Vim needs emojis!
+	" Plug 'junegunn/vim-easy-align'
+	" Start interactive EasyAlign in visual mode (e.g. vipga)
+	" xmap ga <Plug>(EasyAlign)
+	" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+	" nmap ga <Plug>(EasyAlign)
      
 "{{Theme Plugins }}
-    Plug 'ghifarit53/tokyonight-vim'
-    " Plug 'vim-airline/vim-airline'
-    " Plug 'vim-airline/vim-airline-themes'
+	Plug 'ghifarit53/tokyonight-vim'
+	" Plug 'vim-airline/vim-airline'
+	" Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -158,8 +186,7 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Uncomment to autostart the NERDTree
-" autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree	" Uncomment to autostart the NERDTree
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '►'
 let g:NERDTreeDirArrowCollapsible = '▼'
@@ -177,10 +204,12 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-Instant-Markdown
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:instant_markdown_autostart = 0         " Turns off auto preview
-let g:instant_markdown_browser = "surf"      " Uses surf for preview
-map <Leader>md :InstantMarkdownPreview<CR>   " Previews .md file
-map <Leader>ms :InstantMarkdownStop<CR>      " Kills the preview
+let g:instant_markdown_autostart = 0		" Turns off auto preview
+let g:instant_markdown_browser = "firefox"	" Uses surf for preview
+map <Leader>md :InstantMarkdownPreview<CR>   
+						" Previews .md file
+map <Leader>ms :InstantMarkdownStop<CR>      
+						" Kills the preview
 
 " Removes pipes | that act as seperators on splits
 set fillchars+=vert:\ 
@@ -248,7 +277,7 @@ highlight FoldColumn       ctermfg=103     ctermbg=234     cterm=none
 " highlight TablineFill      ctermfg=244     ctermbg=234     cterm=none
 " highlight CursorColumn     ctermfg=none    ctermbg=236     cterm=none
 " highlight CursorLine       ctermfg=none    ctermbg=236     cterm=none
-" highlight ColorColumn      ctermfg=none    ctermbg=236     cterm=none
+highlight ColorColumn      ctermfg=none    ctermbg=236     cterm=none
 " highlight Cursor           ctermfg=0       ctermbg=5       cterm=none
 " highlight htmlEndTag       ctermfg=114     ctermbg=none    cterm=none
 " highlight xmlEndTag        ctermfg=114     ctermbg=none    cterm=none
