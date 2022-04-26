@@ -244,14 +244,17 @@ set background=dark
 
 " lightline configuration
 let g:lightline = {
-		\ 'colorscheme': 'gruvbox8',
+		\ 'colorscheme': 'gruvbox',
 		\ 'active': {
 		\ 'right': [ [ 'lightlineinfo' ], 
 		\	     [ 'percent' ],
-		\	     [ 'fileformat', 'fileencoding' , 'filetype' ] ],
+		\	     [ 'lineinfo', 'fileformat', 'fileencoding' , 'filetype' ] ],
 		\ 'left': [ [ 'mode', 'paste' ],
 		\	    [ 'readonly', 'filename', 'modified' ] ]
 		\
+		\ },
+		\ 'component': {
+		\ 	'lineinfo': '%3l:%-2v%<',
 		\ },
 		\ }
 let g:lightline.tabline = {
