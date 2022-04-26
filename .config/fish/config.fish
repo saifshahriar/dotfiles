@@ -62,7 +62,7 @@ set fish_color_error '#ff6c6b'
 	alias mv="mv -vi"
 	alias cp="cp -vi"
 	alias ln="ln -vi"
-	alias rm="rm -vi"
+	alias rm="rm -v"
 # 
 # cd 	aliases
 	alias ..="cd .."
