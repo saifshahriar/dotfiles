@@ -255,15 +255,14 @@ let g:lightline = {
 		\	    [ 'readonly', 'filename', 'modified' ] ]
 		\
 		\ },
+		\ 'tabline': {
+		\ 	'left': [ [ 'tabs' ] ],
+		\ 	'right': [ [ 'bufnum' ] ]
+		\ },
 		\ 'component': {
 		\ 	'lineinfo': '%3l:%-2v%<',
 		\ },
 		\ }
-let g:lightline.tabline = {
-			\ 'left': [ [ 'tabs' ] ],
-			\ 'right': [ [ 'bufnum' ] ]
-			\ }
-
 "colorscheme gruvbox8
 " List of themes
   " Gruvbox 8 -------------------------------------------------------------- {{{
