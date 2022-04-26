@@ -110,7 +110,8 @@ nnoremap <leader>h :nohl<Enter>
 
 " }}}
 " STATUS LINE -------------------------------------------------------------- {{{
-" set noshowmode                " Uncomment to prevent non-normal modes showing in powerline and below powerline.
+" set noshowmode                " Uncomment to prevent non-normal modes showing
+                                " in powerline and below powerline.
 
 " Status Line {  
 set statusline=  
@@ -124,12 +125,13 @@ set statusline+=%=              " Right align remainder
 set statusline+=\ [rc:\ %l\x\%c\]\ 
 set statusline+=\ [ascii:\ %b]\ 
 set statusline+=\ [hex:\ 0x%B]\ 
-set statusline+=\ [percent:\ %p%%]	
+set statusline+=\ [percent:\ %p%%]
                                 " Status line right side.
 set statusline+=        
-set statusline+=\ -\ buff:\ %-10.3n                     " buffer number  
+set statusline+=\ -\ buff:\ %-10.3n
+                                " Buffer number  
 "}
-set laststatus=2        " Show the status on the second to last line.
+set laststatus=2                " Show the status on the second to last line.
 set showtabline=2
 " }}}
 "PLUGINS ------------------------------------------------------------------- {{{
