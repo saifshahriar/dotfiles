@@ -110,22 +110,22 @@ nnoremap <leader>h :nohl<Enter>
 
 " }}}
 " STATUS LINE -------------------------------------------------------------- {{{
-" set noshowmode      " Uncomment to prevent non-normal modes showing in powerline and below powerline.
+" set noshowmode                " Uncomment to prevent non-normal modes showing in powerline and below powerline.
 
 " Status Line {  
 set statusline=  
 set statusline+=\ %f
-" filename
+                                " Filename
 set statusline+=\ %h%m%r%w
-" status flags  
-set statusline+=\ [%{strlen(&ft)?&ft:'none'}]	
-" file type  
-set statusline+=%=				" right align remainder  
+                                " Status flags  
+set statusline+=\ [%{strlen(&ft)?&ft:'none'}]
+                                " File type  
+set statusline+=%=              " Right align remainder  
 set statusline+=\ [rc:\ %l\x\%c\]\ 
 set statusline+=\ [ascii:\ %b]\ 
 set statusline+=\ [hex:\ 0x%B]\ 
 set statusline+=\ [percent:\ %p%%]	
-" Status line right side.
+                                " Status line right side.
 set statusline+=        
 set statusline+=\ -\ buff:\ %-10.3n                     " buffer number  
 "}
