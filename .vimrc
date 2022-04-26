@@ -37,8 +37,8 @@ augroup filetype_vim
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
-filetype off                    " Enable type file detection. Vim will be 
-				" able to try to detect the type of file in use.
+filetype off                    " Enable type file detection. Vim will be able 
+                                " to try to detect the type of file in use.
 
 filetype plugin indent on	" Enable plugins and load plugin for the 
 				" detected file type.
@@ -251,7 +251,7 @@ let g:lightline.tabline = {
 
 "colorscheme gruvbox8
 " List of themes
-  " Gruvbox 8 ------------------------------------------------------------------- {{{
+  " Gruvbox 8 -------------------------------------------------------------- {{{
     " Name:         Gruvbox 8
     " Description:  Retro groove color scheme originally designed by morhetz
     " Author:       morhetz <morhetz@gmail.com>
