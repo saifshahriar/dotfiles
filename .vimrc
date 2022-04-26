@@ -1,17 +1,18 @@
-" COMPATIBILITY 	---------- ---------- ---------- ---------- ---------- {{{
+" COMPATIBILITY ------------------------------------------------------------ {{{
 
-set nocompatible			" You don't need VI compatiblity
+set nocompatible		" You don't need VI compatiblity
 
 if has ('win32')
-	set backspace=indent,eol,start	" Backspace key not working in windows version of VIM
-					" Comment out or delete the line for UNIX
-	set shell=pwsh			" Set pwsh(p6/7)as the default shell in windows 
-	" set shell=nu			" Set nu 	as the default shell in windows 
+	set backspace=indent,eol,start	
+				" Backspace key not working in windows version 
+				" of VIM. Comment out or del the line for UNIX
+	set shell=pwsh		" Set pwsh(p6/7)as the default shell in windows 
+	" set shell=nu		" Set nu 	as the default shell in windows 
 else
-	" set shell=sh		 	" Set sh	as the default shell in UNIX
-	set shell=bash		 	" Set bash 	as the default shell in UNIX 
-	" set shell=zsh		 	" Set zsh 	as the default shell in UNIX 
-	" set shell=fish	 	" Set fish 	as the default shell in UNIX 
+	" set shell=sh	 	" Set sh	as the default shell in UNIX
+	set shell=bash	 	" Set bash 	as the default shell in UNIX 
+	" set shell=zsh	 	" Set zsh 	as the default shell in UNIX 
+	" set shell=fish 	" Set fish 	as the default shell in UNIX 
 endif
 
 " Disable that annoying beeping. 	(might or might not work in linux)
@@ -22,7 +23,7 @@ set mouse=a
 set mouse=nicr			
 
 " }}}
-" Basic Configuration 	---------- ---------- ---------- ---------- ----------  {{{
+" Basic Configuration ------------------------------------------------------ {{{
 
 set nu rnu				
 syntax enable on
@@ -80,7 +81,7 @@ set colorcolumn=80  		" Set a coloured bar at 80th column.
 " set expandtab     		" Use spaces instead of tabs.
 " set smarttab      		" Be smart using tabs ;)
 " }}}
-" Customized keybindings ---------- ---------- ---------- ---------- ---------- {{{
+" Customized keybindings --------------------------------------------------- {{{
 " Press \\ to jump back to the last cursor position.
 nnoremap <leader>\ ``
 
@@ -104,24 +105,22 @@ nnoremap <S-Tab> :tabp<Enter>
 nnoremap <C-v> <C-S-v> 
 
 " }}}
-" STATUS LINE ------------------------------------------------------------ {{{
+" STATUS LINE -------------------------------------------------------------- {{{
 let g:lightline= {
            \ 'colorscheme' : 'darcula'
           \ }
-set noshowmode      			" Uncomment to prevent non-normal modes 
-					" showing in powerline and below 
-					" powerline.
-set statusline=         		" Clear status line when vimrc is 
-					" reloaded.
-set statusline+=\ %F\ %M\ %Y\ %R	" Status line left side.
-set statusline+=%=      		" Use a divider to separate the left 
-					" side from the right side.
+set noshowmode      		" Uncomment to prevent non-normal modes showing 
+				" in powerline and below powerline.
+set statusline=         	" Clear status line when vimrc is reloaded.
+set statusline+=\ %F\ %M\ %Y\ %R
+				" Status line left side.
+set statusline+=%=      	" Use a divider to separate the left side from 
+				" the right side.
 set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
-					" Status line right side.
-set laststatus=2        		" Show the status on the second to last 
-					" line.
+				" Status line right side.
+set laststatus=2        	" Show the status on the second to last line.
 " }}}
-"PLUGINS 		---------- ---------- ---------- ---------- ---------- {{{
+"PLUGINS ------------------------------------------------------------------- {{{
 " vim-plug plugin manager is used
 call plug#begin()
 
@@ -210,9 +209,9 @@ map <Leader>md :InstantMarkdownPreview<CR>
 						" Previews .md file
 map <Leader>ms :InstantMarkdownStop<CR>      
 						" Kills the preview
-
-" Removes pipes | that act as seperators on splits
-set fillchars+=vert:\ 
+set fillchars+=vert:\				
+						" Removes pipes | that act as 
+						" seperators on splits
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Other Stuff
@@ -227,12 +226,13 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 " }}}
-" Themes 		---------- ---------- ---------- ---------- ---------- {{{
+" Themes ------------------------------------------------------------------- {{{
 
 set termguicolors
-let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_style = 'night'	" available: night, storm
 let g:tokyonight_enable_italic = 1
-colorscheme tokyonight
+" colorscheme tokyonight		" Only set colorscheme if the
+					" colorscheme is installed.
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
