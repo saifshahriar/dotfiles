@@ -44,6 +44,7 @@ filetype plugin indent on	" Enable plugins and load plugin for the
 				" detected file type.
 				" Load an indent file for the detecte
 set clipboard=unnamedplus	" Copy/Paste between vim and other programs.
+set encoding=utf-8              " Unicode character support. Default is 'latin1'
 set incsearch       		" Increamental search. While searching though a 
 				" file incrementally highlight matching 
 				" characters as you type.
