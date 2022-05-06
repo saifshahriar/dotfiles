@@ -2,64 +2,63 @@
 all dotfiles of Saif
 
 # Filetree
-```bash
+```
 dotfiles
 ├── .config
-│   ├── bspwm
-│   │   └── bspwmrc
-│   ├── fish
-│   │   └── config.fish
-│   ├── neofetch
-│   │   ├── config.conf
-│   │   └── config.conf.bak
-│   ├── nvim
-│   │   ├── init.lua
-│   │   ├── README.md
-│   │   └── vimrc.vim
-│   ├── ranger
-│   │   └── plugins
-│   │       └── ranger_devicons
-│   │           ├── __pycache__
-│   │           │   ├── devicons.cpython-39.opt-1.pyc
-│   │           │   └── __init__.cpython-39.opt-1.pyc
-│   │           ├── CONTRIBUTING.MD
-│   │           ├── devicons.py
-│   │           ├── __init__.py
-│   │           ├── LICENSE
-│   │           ├── LICENSE_NERDFONT
-│   │           ├── README.md
-│   │           └── screenshot.png
-│   ├── sxhkd
-│   │   └── sxhkdrc
-│   ├── README.md
-│   └── starship.toml
+│  ├── brave-browser.yml
+│  ├── bspwm
+│  │  └── bspwmrc
+│  ├── fish
+│  │  └── config.fish
+│  ├── neofetch
+│  │  ├── config.conf
+│  │  └── config.conf.bak
+│  ├── nvim
+│  │  ├── init.lua
+│  │  ├── README.md
+│  │  └── vimrc.vim
+│  ├── ranger
+│  │  ├── colorschemes
+│  │  │  ├── __init__.py
+│  │  │  ├── __pycache__
+│  │  │  │  ├── __init__.cpython-310.opt-1.pyc
+│  │  │  │  └── default.cpython-310.opt-1.pyc
+│  │  │  ├── default.py
+│  │  │  └── zenburn.py
+│  │  ├── commands.py
+│  │  ├── plugins
+│  │  │  ├── __init__.py
+│  │  │  ├── __pycache__
+│  │  │  │  └── __init__.cpython-310.opt-1.pyc
+│  │  │  └── ranger_devicons
+│  │  │     ├── __init__.py
+│  │  │     ├── __pycache__
+│  │  │     │  ├── __init__.cpython-310.opt-1.pyc
+│  │  │     │  └── devicons.cpython-310.opt-1.pyc
+│  │  │     └── devicons.py
+│  │  ├── rc.conf
+│  │  ├── rifle.conf
+│  │  └── scope.sh
+│  ├── README.md
+│  ├── starship.toml
+│  └── sxhkd
+│     └── sxhkdrc
 ├── .git
-│   └── ...
+│  └── ...
 ├── .mozilla
-│   └── firefox
-│       └── release-number
-│           └── chrome
-│               ├── README.md
-│               ├── Screenshot_2022-03-24-06-50-55_1366x768.png
-│               ├── screenshot.png
-│               └── userChrome.css
-├── .vim_runtime
-│   ├── vimrcs
-│   │   ├── basic.vim
-│   │   ├── extended.vim
-│   │   ├── filetypes.vim
-│   │   └── plugins_config.vim
-│   ├── install_awesome_parameterized.sh
-│   ├── install_awesome_vimrc.sh
-│   ├── install_basic_vimrc.sh
-│   ├── LICENSE
-│   ├── README.md
-│   └── update_plugins.py
+│  └── firefox
+│     └── release-number
+│        └── chrome
+│           ├── README.md
+│           ├── screenshot.png
+│           ├── Screenshot_2022-03-24-06-50-55_1366x768.png
+│           └── userChrome.css
 ├── .vimrc
-├── .vimrc.archcraft.bak
+├── .vimrc.somerandomchinesedude.bak
 ├── .zshrc
+├── LICENSE
 ├── packages.txt
 └── README.md
 
-34 directories, 69 files
+34 directories, 62 files
 ```
