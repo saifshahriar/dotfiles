@@ -2,7 +2,7 @@
 all dotfiles of Saif
 
 # Filetree
-```
+```bash
 dotfiles
 ├── .config
 │  ├── brave-browser.yml
