@@ -1,3 +1,12 @@
+#  _______      _____ _______
+# /  ____/ /\  /_   _/  ____/ Author:	Saif Shahriar
+# \ (___  /  \   | | | |___   Web:	https://saifshahriar.github.io/
+#  \___ \/ /\ \  | | |  __/   GitHub:	https://github.com/saifshahriar
+#  ____)/ ____ \_| |_| |      GitLab:	https://gitlab.com/saifshahriar
+# \____/_/    \_\____|_|      License:	MIT
+#
+# My fish shell configuration file. Nothing much to see. Pretty basic stuff.
+
 " COMPATIBILITY ------------------------------------------------------------ {{{
 set nocompatible		" You don't need VI compatiblity
 set updatetime=50               " Don't take more than 50ms time to load
@@ -14,6 +23,10 @@ else
 	set shell=bash	 	" Set bash 	as the default shell in UNIX 
 	" set shell=zsh	 	" Set zsh 	as the default shell in UNIX 
 	" set shell=fish 	" Set fish 	as the default shell in UNIX 
+	set clipboard=unnamedplus
+				" Copy/Paste between vim and other programs.
+				" Clipboard doesn't really work in windows
+				" version of vim.
 endif
 
 " Disable that annoying beeping. 	(might or might not work in linux)
@@ -70,8 +83,9 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 "	Format && Visuals	"
 "				"
 """""""""""""""""""""""""""""""""
-set number relativenumber	" Number && relative number.
+set number relativenumber	" Number && relative number. 
 set colorcolumn=80  		" Set a coloured bar at 80th column.
+set textwidth=80		" Breaks line after 80th character.
 " set cursorline    		" Highlight cursor line underneath the cursor 
 				" horizontally.
 " set cursorcolumn  		" Highlight cursor line underneath the cursor 
@@ -145,7 +159,19 @@ inoremap jj <Esc>
 nnoremap e :e 
 
 " Press \h to remove highlighting in search.
-nnoremap <leader>h :nohl<Enter>
+nnoremap <Esc> :nohl<Enter>
+
+" Remove highlightings after a search.
+nnoremap <Esc> <Esc>:nohl<Enter>
+
+"""""""""""""""""""""""""""""""""
+"	Auto Pairs		"
+"""""""""""""""""""""""""""""""""
+inoremap ( ()<LEFT>
+inoremap { {}<LEFT>
+inoremap [ []<LEFT>
+inoremap ' ''<LEFT>
+inoremap " ""<LEFT>
 
 """""""""""""""""""""""""""""""""
 "	Tabs			"
