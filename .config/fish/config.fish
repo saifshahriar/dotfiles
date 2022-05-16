@@ -1,22 +1,14 @@
+#  _______      _____ _______
+# /  ____/ /\  /_   _/  ____/ Author:	Saif Shahriar
+# \ (___  /  \   | | | |___   Web:	https://saifshahriar.github.io/
+#  \___ \/ /\ \  | | |  __/   GitHub:	https://github.com/saifshahriar
+#  ____)/ ____ \_| |_| |      GitLab:	https://gitlab.com/saifshahriar
+# \____/_/    \_\____|_|      License:	MIT
+#
+# My fish shell configuration file. Nothing much to see. Pretty basic stuff.
+
 ### Compilation flags ###
-# export ARCHFLAGS="-arch x86_64"
-#
-### DEPENDENT PROGRAMS ###
-# ani-cli
-# bat 
-# exa
-# reflector
-# lynx
-# starship
-# neofetch
-# less
-# ripgrep
-#
-#### 	# df
-	# free
-	# ps
-	# xrdb
-	# gpg2
+set -gx ARCHFLAGS "-arch x86_64"
 
 ###########################################
 ###	ADDING TO THE PATH		###
@@ -26,15 +18,13 @@
 set -e fish_user_paths
 set -U fish_user_paths $HOME/.local/bin $HOME/Applications $fish_user_paths
 
-### Windows wslg ###
-# set -gx GDK_SCALE 2 			# if running as wsl 
-
 ###########################################
 ### 		EXPORT			###
 ###########################################
 set fish_greeting			# Supresses fish's intromessage.
-set TERM "xterm-256color"		# Sets the terminal type.
-set myEditor vim			# Sets vim as the editor globally.
+set -gx TERM "xterm-256color"		# Sets the terminal type.
+set -gx EDITOR "vim"			# Sets the EDITOR.
+set myEditor "vim"			# Vim as the editor in this config.
 
 ###########################################
 ### 	SET MANPAGER 			###
@@ -82,18 +72,27 @@ set fish_color_error '#ff6c6b'
 	alias dir="exa -al --color=always --group-directories-first"
 	alias del="rm -rfv"
 
-# Always confirm before overwriting something
-	alias mv="mv -vi"
-	alias cp="cp -vi"
-	alias ln="ln -vi"
+# Always confirm before overwriting something && verbose mode.
+	alias mv="mv -v"
+	alias cp="cp -v"
+	alias ln="ln -v"
 	alias rm="rm -v"
 
 ### Config files
-	alias fishrc="$myEditor ~/.config/fish/config.fish" 
+# Shells
+	alias shrc="$myEditor ~/.shrc"
 	alias bashrc="$myEditor ~/.bashrc"
 	alias zshrc="$myEditor ~/.zshrc"
-	alias starshiprc="$myEditor ~/.config/starship.toml"
+	alias fishrc="$myEditor ~/.config/fish/config.fish" 
+# Window manager
+	alias bspwmrc="$myEditor ~/.config/bspwm/bspwmrc"
+	alias sxhkdrc="$myEditor ~/.config/sxhkd/sxhkdrc"
+	alias iwmrc="$myEditor ~/.config/i3/config"
+# Editor
+	alias vimrc="$myEditor ~/.vimrc"
 	alias nanorc="$myEditor ~/.nanorc"
+# Misc
+	alias starshiprc="$myEditor ~/.config/starship.toml"
 	alias neofetchrc="$myEditor ~/.config/neofetch/config.conf"
 
 ### Programs
@@ -125,12 +124,12 @@ set fish_color_error '#ff6c6b'
 	alias ytv-best="youtube-dl -f bestvideo+bestaudio "
 
 # get fastest mirrors
-	alias mirrorbd="sudo reflector -c Bangladesh >> /etc/pacman.d/mirrorlist"
-	alias mirrorin="sudo reflector -c India >> /etc/pacman.d/mirrorlist"
-	alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
-	alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
-	alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
-	alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
+	alias mirrorbd="doas reflector -c Bangladesh >> /etc/pacman.d/mirrorlist"
+	alias mirrorin="doas reflector -c India >> /etc/pacman.d/mirrorlist"
+	alias mirror="doas reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+	alias mirrord="doas reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
+	alias mirrors="doas reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
+	alias mirrora="doas reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
 
 # adding flags
 	alias df='df -h'                          # human-readable sizes
@@ -172,35 +171,35 @@ set fish_color_error '#ff6c6b'
 	alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
 	
 # change login shells
-	alias tobash="sudo chsh $USER -s /bin/bash && echo 'Now log out.'"
-	alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Now log out.'"
-	alias tofish="sudo chsh $USER -s /bin/fish && echo 'Now log out.'"
+	alias tobash="doas chsh $USER -s /bin/bash && echo 'Now log out.'"
+	alias tozsh="doas chsh $USER -s /bin/zsh && echo 'Now log out.'"
+	alias tofish="doas chsh $USER -s /bin/fish && echo 'Now log out.'"
 
 ### Package aliases
 #
 # ? [distro == Debian || Ubuntu]	# Uncomment this block if you use Debian based disto
 # apt 	aliases
 # ? starts
-#	alias update="sudo apt update"
-#	alias upgrade="sudo apt upgrade"
-#	alias sysup="sudo apt update && sudo apt upgrade"
-#	alias install="sudo apt install"
-#	alias remove="sudo apt remove"
-#	alias autoremove="sudo apt autoremove"
-#	alias cleanup="sudo apt remove && sudo apt autoremove"
+#	alias update="doas apt update"
+#	alias upgrade="doas apt upgrade"
+#	alias sysup="doas apt update && doas apt upgrade"
+#	alias install="doas apt install"
+#	alias remove="doas apt remove"
+#	alias autoremove="doas apt autoremove"
+#	alias cleanup="doas apt remove && doas apt autoremove"
 # ? ends
 # 
 # ? [distro == Arch] # Uncomment this block if you use Arch based disto
 # ? starts
 # pacman aliases
-	alias install="sudo pacman -S"
-	alias pacsyy="sudo pacman -Syy"
-	alias pacsyu='sudo pacman -Syu'                  # update only standard pkgs
-	alias pacsyyu='sudo pacman -Syyu'                # Refresh pkglist & update standard pkgs
-	alias pacr="sudo pacman -R"
-	alias pacrns="sudo pacman -Rns"
-	alias cleanup="sudo pacman -Rns (pacman -Qtdq)"	 # Removes orphan packages
-	alias pacunlock='sudo rm /var/lib/pacman/db.lck' # remove pacman lock
+	alias install="doas pacman -S"
+	alias pacsyy="doas pacman -Syy"
+	alias pacsyu='doas pacman -Syu'                  # update only standard pkgs
+	alias pacsyyu='doas pacman -Syyu'                # Refresh pkglist & update standard pkgs
+	alias pacr="doas pacman -R"
+	alias pacrns="doas pacman -Rns"
+	alias cleanup="doas pacman -Rns (pacman -Qtdq)"	 # Removes orphan packages
+	alias pacunlock='doas rm /var/lib/pacman/db.lck' # remove pacman lock
 # 
 # yay 	aliases
 	alias yays="yay -S" 
