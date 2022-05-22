@@ -1,4 +1,4 @@
-set nocompatible		" You don't need VI compatiblity
+set nocompatible		" You don't need VI compatibility
 set updatetime=50               " Don't take more than 50ms time to load
 
 if has ('win32')
@@ -9,7 +9,7 @@ set noerrorbells
 set vb
 " set t_vb=ntax                 " if not working then may uncomment this line
 				" also.
-filetype off                    " Enable type file detection. Vim will be able 
+filetype off                    " Enable type file detection. Vim will be able
                                 " to try to detect the type of file in use.
 filetype plugin indent on	" Enable plugins and load plugin for the 
 				" detected file type. Load an indent file for 
