@@ -6,23 +6,21 @@
 " Abbreviation Mode:
 nnoremap <leader>a :a_
 
+"""""""""""""""""""""""""""""""""
+"	Basics			"
+"""""""""""""""""""""""""""""""""
 " Press \\ to jump back to the last cursor position.
 nnoremap <leader>\ ``
 
-" Press the ';' to go to type command in command mode.
 nnoremap ; :
 nnoremap ! :!
-
-" Remap ESC to jj to go to the command mode from insert mode.
 inoremap jj <Esc>
-
-" Press e to edit a file instead of :e.
 nnoremap e :e 
 
 " Press \h to remove highlighting in search.
 nnoremap <leader>h :nohl<Enter>
 
-" Remove highlightings after a search.
+" Remove highlighting after a search.
 nnoremap <Esc> <Esc>:nohl<Enter>
 
 """""""""""""""""""""""""""""""""
