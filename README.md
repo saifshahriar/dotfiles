@@ -136,6 +136,6 @@ dotfiles
 ╰─λ math (exa --tree -a -I .git | wc -l)-(exa --tree -a -I .git -D | wc -l)-1
 48
 
-21 directories, 48 files
+21 directories, 48 file(s)
 
 ```
