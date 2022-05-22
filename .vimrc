@@ -7,10 +7,11 @@
 "
 " My .vimrc. Not the best one you will find.
 
-source ~/.vim.d/autocmd.vim
-source ~/.vim.d/core.vim
-source ~/.vim.d/keybinds.vim
-source ~/.vim.d/option.vim
-source ~/.vim.d/plugin.vim
-source ~/.vim.d/pluginsopt.vim
-source ~/.vim.d/theme.vim
+source $HOME/.vim.d/autocmd.vim
+source $HOME/.vim.d/core.vim
+source $HOME/.vim.d/keybinds.vim
+source $HOME/.vim.d/option.vim
+source $HOME/.vim.d/plugin.vim
+source $HOME/.vim.d/pluginsopt.vim
+source $HOME/.vim.d/snips.vim
+source $HOME/.vim.d/theme.vim

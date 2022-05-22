@@ -1,4 +1,10 @@
-" leader is set to '\' (backslash) by default.
+" LEADER KEY: '\'
+
+"""""""""""""""""""""""""""""""""
+"	Special Mode		"
+"""""""""""""""""""""""""""""""""
+" Abbreviation Mode:
+nnoremap <leader>a :a_
 
 " Press \\ to jump back to the last cursor position.
 nnoremap <leader>\ ``
