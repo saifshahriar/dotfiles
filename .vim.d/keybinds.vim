@@ -28,7 +28,7 @@ nnoremap <Esc> <Esc>:nohl<Enter>
 """"""""""""""""""""""""""""""""" NOTE: Keep this section commented if
 				" vim-autopairs plugin is enabled.
 " inoremap ( ()<LEFT>
-" inoremap { {}<LEFT><Enter><Bs><Enter><Bs><Up><Tab>
+" inoremap { {}<LEFT><Enter><Esc><Up>A<Enter>
 " inoremap [ []<LEFT>
 " inoremap ' ''<LEFT>
 " inoremap " ""<LEFT>
