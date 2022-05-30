@@ -42,9 +42,9 @@ set clipboard=unnamedplus	" Copy/Paste between vim and other programs.
 				" vertically.
 " ### set t_Co=256        	" Set if term supports 256 bit colours. 
 " ### let g:rehash256 = 1
-set fillchars+=vert:\				
-						" Removes pipes | that act as 
-						" seperators on splits
+set fillchars+=vert:\
+				" Removes pipes | that act as 
+				" seperators on splits
 set guifont=FiraCode\ Nerd\ Font\ Mono:h15
 set list
 set listchars=tab:\ \ ,trail:

@@ -6,7 +6,7 @@
 "	Local Plugins		"
 """""""""""""""""""""""""""""""""
 " Damian Conway's Plugins
-	source $HOME/plugins/dragvisuals.vim
+	source $HOME/.vim.d/plugins/dragvisuals.vim
 
 """""""""""""""""""""""""""""""""
 " 	Vim Plug		"
