@@ -42,14 +42,14 @@ set clipboard=unnamedplus	" Copy/Paste between vim and other programs.
 				" vertically.
 " ### set t_Co=256        	" Set if term supports 256 bit colours. 
 " ### let g:rehash256 = 1
-set fillchars+=vert:\
+set fillchars+=vert:\⎟
 				" Removes pipes | that act as 
 				" seperators on splits
 set guifont=FiraCode\ Nerd\ Font\ Mono:h15
 set list
 set listchars=tab:\ \ ,trail:
 set number relativenumber	" Number && relative number. 
-set signcolumn=yes		" Shows extra column to the left side always.
+set signcolumn=no		" Shows extra column to the left side always.
 set splitright splitbelow	" Splits files to the right and bottom.
 set spell			" Spellcheck support for vim.
 setlocal spell spelllang=en	" en = en_UK
