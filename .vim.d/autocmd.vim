@@ -5,6 +5,13 @@
 """""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""
+"	==> Global <==		"
+"""""""""""""""""""""""""""""""""
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+endif
+
+"""""""""""""""""""""""""""""""""
 "	==> VIM	<==		"
 """""""""""""""""""""""""""""""""
 augroup filetype_vim
@@ -16,3 +23,4 @@ augroup filetype_vim
 				" Use the marker method of folding.
 	autocmd BufNewFile,BufRead,FileType vim set tabstop=8 shiftwidth=8 noexpandtab
 augroup END
+
