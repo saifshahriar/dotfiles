@@ -6,6 +6,3 @@ lynx
 starship
 neofetch
 less
-
-
-ekfn
