@@ -24,7 +24,7 @@ set -U fish_user_paths $HOME/.local/bin $HOME/Applications $fish_user_paths
 set fish_greeting			# Supresses fish's intromessage.
 set -gx TERM "xterm-256color"		# Sets the terminal type.
 set -gx EDITOR "vim"			# Sets the EDITOR.
-set myEditor "vim"			# Vim as the editor in this config.
+set -gx LESSHISTFILE=-
 
 ###########################################
 ### 	SET MANPAGER 			###
@@ -60,11 +60,11 @@ set fish_color_error '#ff6c6b'
 	alias ..="cd .."
 	alias mkdir="mkdir -pv"
 # Use exa instead of ls.
-	alias l="exa -al --color=always --icons --group-directories-first" 
-	alias ls="exa -al --color=auto --icons --group-directories-first" 
-	alias la="exa -a --color=auto --group-directories-first" 
-	alias ll="exa -l --color=auto --group-directories-first" 
-	alias lt="exa -aT --color=always --icons --group-directories-first" 
+	alias l="exa -al --color=always --icons --group-directories-first"
+	alias ls="exa -al --color=auto --icons --group-directories-first"
+	alias la="exa -a --color=auto --group-directories-first"
+	alias ll="exa -l --color=auto --group-directories-first"
+	alias lt="exa -aT --color=always --icons --group-directories-first"
 	alias l.='exa -a | egrep "^\."'
 
 # If you are coming from CMD. I mean no one does that, but I like these commands.
@@ -80,20 +80,20 @@ set fish_color_error '#ff6c6b'
 
 ### Config files
 # Shells
-	alias shrc="$myEditor ~/.shrc"
-	alias bashrc="$myEditor ~/.bashrc"
-	alias zshrc="$myEditor ~/.zshrc"
-	alias fishrc="$myEditor ~/.config/fish/config.fish" 
+	alias shrc="$EDITOR ~/.shrc"
+	alias bashrc="$EDITOR ~/.bashrc"
+	alias zshrc="$EDITOR ~/.zshrc"
+	alias fishrc="$EDITOR ~/.config/fish/config.fish"
 # Window manager
-	alias bspwmrc="$myEditor ~/.config/bspwm/bspwmrc"
-	alias sxhkdrc="$myEditor ~/.config/sxhkd/sxhkdrc"
-	alias iwmrc="$myEditor ~/.config/i3/config"
+	alias bspwmrc="$EDITOR ~/.config/bspwm/bspwmrc"
+	alias sxhkdrc="$EDITOR ~/.config/sxhkd/sxhkdrc"
+	alias iwmrc="$EDITOR ~/.config/i3/config"
 # Editor
-	alias vimrc="$myEditor ~/.vimrc"
-	alias nanorc="$myEditor ~/.nanorc"
+	alias vimrc="$EDITOR ~/.vimrc"
+	alias nanorc="$EDITOR ~/.nanorc"
 # Misc
-	alias starshiprc="$myEditor ~/.config/starship.toml"
-	alias neofetchrc="$myEditor ~/.config/neofetch/config.conf"
+	alias starshiprc="$EDITOR ~/.config/starship.toml"
+	alias neofetchrc="$EDITOR ~/.config/neofetch/config.conf"
 
 ### Programs
 # Bat 	alias
@@ -103,10 +103,11 @@ set fish_color_error '#ff6c6b'
 	alias egrep='egrep --color=auto'
 	alias fgrep='fgrep --color=auto'
 	alias rg='rg -p'
+	alias ip='ip --color=auto'
 # editor
-	alias edit='echo "$myEditor is currently set as your default editor. If you want to change it, then edit the fish config file at $HOME/.config/fish/config.fish"; $myEditor'
+	alias edit='echo "$EDITOR is currently set as your default editor. If you want to change it, then edit the fish config file at $HOME/.config/fish/config.fish"; $EDITOR'
 	alias nv="nvim"
-	alias vi="vim"
+	alias v="vim"
 # media
 	# Watch anime:
 	alias anime='ani-cli'
@@ -188,7 +189,7 @@ set fish_color_error '#ff6c6b'
 #	alias autoremove="doas apt autoremove"
 #	alias cleanup="doas apt remove && doas apt autoremove"
 # ? ends
-# 
+#
 # ? [distro == Arch] # Uncomment this block if you use Arch based disto
 # ? starts
 # pacman aliases
@@ -200,12 +201,12 @@ set fish_color_error '#ff6c6b'
 	alias pacrns="doas pacman -Rns"
 	alias cleanup="doas pacman -Rns (pacman -Qtdq)"	 # Removes orphan packages
 	alias pacunlock='doas rm /var/lib/pacman/db.lck' # remove pacman lock
-# 
+#
 # yay 	aliases
-	alias yays="yay -S" 
+	alias yays="yay -S"
 	alias yaysua='yay -Sua --noconfirm'              # update only AUR pkgs (yay)
 	alias yaysyu='yay -Syu --noconfirm'              # update standard pkgs && AUR pkgs (yay)
-# 
+#
 # paru	aliases	
 	alias parsua='paru -Sua --noconfirm'             # update only AUR pkgs (paru)
 	alias parsyu='paru -Syu --noconfirm'             # update standard pkgs && AUR pkgs (paru)
