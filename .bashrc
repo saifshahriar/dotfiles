@@ -49,20 +49,20 @@ ex ()
 {
 	if [ -f "$1" ] ; then
 		case $1 in
-			*.tar.bz2)	tar xjf $1	;;
-			*.tar.gz)	tar xzf $1	;;
-			*.bz2)		bunzip2 $1	;;
-			*.rar)		unrar x $1	;;
-			*.gz)		gunzip $1	;;
-			*.tar)		tar xf $1	;;
-			*.tbz2)		tar xjf $1	;;
-			*.tgz)		tar xzf $1	;;
-			*.zip)		unzip $1	;;
+			*.tar.bz2)	tar xjf $1		;;
+			*.tar.gz)	tar xzf $1		;;
+			*.bz2)		bunzip2 $1		;;
+			*.rar)		unrar x $1		;;
+			*.gz)		gunzip $1		;;
+			*.tar)		tar xf $1		;;
+			*.tbz2)		tar xjf $1		;;
+			*.tgz)		tar xzf $1		;;
+			*.zip)		unzip $1		;;
 			*.Z)		uncompress $1	;;
-			*.7z)		7z x $1		;;
-			*.deb)		ar x $1		;;
-			*.tar.xz)	tar xf $1	;;
-			*.tar.zst)	unzstd $1	;;
+			*.7z)		7z x $1			;;
+			*.deb)		ar x $1			;;
+			*.tar.xz)	tar xf $1		;;
+			*.tar.zst)	unzstd $1		;;
 			*)		echo "'$1' cannot be extracted via ex()";;
 		esac
 	else
@@ -83,16 +83,16 @@ PS1='\[\e[0;31m\][\[\e[0;33m\]\u\[\e[0;32m\]@\[\e[0;34m\]\h \[\e[0;35m\]\w\[\e[0
 ### Filesystem
 	alias ..="cd .."
 	alias mkdir="mkdir -pv"
-	alias l="ls -al --color=always --group-directories-first"
-	alias ls="ls -al --color=auto --group-directories-first"
 	alias la="ls -a --color=auto --group-directories-first"
-	alias ll="ls -l --color=auto --group-directories-first"
+	alias l="ls -alh --color=always --group-directories-first"
+	# alias ls="ls -alh --color=auto --group-directories-first"
+	alias ll="ls -lh --color=auto --group-directories-first"
 	alias lt="tree"
 	alias l.='ls -a | egrep "^\."'
 
 # If you are coming from CMD. I mean no one does that, but I like these commands.
 	alias cls="clear"
-	alias dir="ls -al --color=always --group-directories-first"
+	alias dir="ls -alh --color=always --group-directories-first"
 	alias del="rm -rfv"
 
 # Always confirm before overwriting something && verbose mode.
