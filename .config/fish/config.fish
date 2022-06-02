@@ -47,11 +47,58 @@ function fish_user_key_bindings
 end
 
 ###########################################
-### AUTOCOMPLETE && HIGHLIGHT COLORS 	###
+###   AUTOCOMPLETE && HIGHLIGHT COLORS  ###
 ###########################################
-set fish_color_autosuggestion '#7d7d7d'
-set fish_color_command green
-set fish_color_error '#ff6c6b'
+# Dracula Color Palette
+set -l foreground f8f8f2
+set -l selection 44475a
+set -l comment 6272a4
+set -l red ff5555
+set -l orange ffb86c
+set -l yellow f1fa8c
+set -l green 50fa7b
+set -l purple bd93f9
+set -l cyan 8be9fd
+set -l pink ff79c6
+
+# Syntax Highlighting Colors
+set -g fish_color_normal $foreground
+set -g fish_color_command $purple
+set -g fish_color_keyword $pink
+set -g fish_color_quote $yellow
+set -g fish_color_redirection $foreground
+set -g fish_color_end $orange
+set -g fish_color_error $red
+set -g fish_color_param $cyan
+set -g fish_color_comment $comment
+set -g fish_color_selection --background=$selection
+set -g fish_color_search_match --background=$selection
+set -g fish_color_operator $green
+set -g fish_color_escape $pink
+set -g fish_color_autosuggestion $comment
+set -g fish_color_cancel $red --reverse
+set -g fish_color_option $orange
+
+# Default Prompt Colors
+set -g fish_color_cwd $green
+set -g fish_color_host $purple
+set -g fish_color_host_remote $purple
+set -g fish_color_user $cyan
+
+# Completion Pager Colors
+set -g fish_pager_color_progress $comment
+set -g fish_pager_color_background
+set -g fish_pager_color_prefix $cyan
+set -g fish_pager_color_completion $foreground
+set -g fish_pager_color_description $comment
+set -g fish_pager_color_selected_background --background=$selection
+set -g fish_pager_color_selected_prefix $cyan
+set -g fish_pager_color_selected_completion $foreground
+set -g fish_pager_color_selected_description $comment
+set -g fish_pager_color_secondary_background
+set -g fish_pager_color_secondary_prefix $cyan
+set -g fish_pager_color_secondary_completion $foreground
+set -g fish_pager_color_secondary_description $comment
 
 ###########################################
 ### 		ALIASES			###
@@ -80,20 +127,22 @@ set fish_color_error '#ff6c6b'
 
 ### Config files
 # Shells
-	alias shrc="$EDITOR ~/.shrc"
-	alias bashrc="$EDITOR ~/.bashrc"
-	alias zshrc="$EDITOR ~/.zshrc"
-	alias fishrc="$EDITOR ~/.config/fish/config.fish"
+	abbr -ag shrc $EDITOR ~/.shrc
+	abbr -ag bashrc $EDITOR ~/.bashrc
+	abbr -ag zshrc $EDITOR ~/.zshrc
+	abbr -ag fishrc $EDITOR ~/.config/fish/config.fish
 # Window manager
-	alias bspwmrc="$EDITOR ~/.config/bspwm/bspwmrc"
-	alias sxhkdrc="$EDITOR ~/.config/sxhkd/sxhkdrc"
-	alias iwmrc="$EDITOR ~/.config/i3/config"
+	abbr -ag bspwmrc $EDITOR ~/.config/bspwm/bspwmrc
+	abbr -ag sxhkdrc $EDITOR ~/.config/sxhkd/sxhkdrc
+	abbr -ag iwmrc $EDITOR ~/.config/i3/config
 # Editor
-	alias vimrc="$EDITOR ~/.vimrc"
-	alias nanorc="$EDITOR ~/.nanorc"
+	abbr -ag vimrc $EDITOR ~/.vimrc
+	abbr -ag nvrc $EDITOR ~/.config/nvim/init.lua
+	abbr -ag nanorc $EDITOR ~/.nanorc
+	
 # Misc
-	alias starshiprc="$EDITOR ~/.config/starship.toml"
-	alias neofetchrc="$EDITOR ~/.config/neofetch/config.conf"
+	abbr -ag starshiprc="$EDITOR ~/.config/starship.toml"
+	abbr -ag neofetchrc="$EDITOR ~/.config/neofetch/config.conf"
 
 ### Programs
 # Bat 	alias
@@ -106,12 +155,12 @@ set fish_color_error '#ff6c6b'
 	alias ip='ip --color=auto'
 # editor
 	alias edit='echo "$EDITOR is currently set as your default editor. If you want to change it, then edit the fish config file at $HOME/.config/fish/config.fish"; $EDITOR'
-	alias nv="nvim"
-	alias v="vim"
+	abbr -ag nv nvim
+	abbr -ag v vim
 # media
 	# Watch anime:
-	alias anime='ani-cli'
-	alias animec='ani-cli -c'	# continue watching anime 
+	abbr -ag ani ani-cli
+	alias anic='ani-cli -c'	# continue watching anime 
 
 	# youtube-dl
 	alias yta-aac="youtube-dl --extract-audio --audio-format aac "
@@ -181,35 +230,38 @@ set fish_color_error '#ff6c6b'
 # ? [distro == Debian || Ubuntu]	# Uncomment this block if you use Debian based disto
 # apt 	aliases
 # ? starts
-#	alias update="doas apt update"
-#	alias upgrade="doas apt upgrade"
-#	alias sysup="doas apt update && doas apt upgrade"
-#	alias install="doas apt install"
-#	alias remove="doas apt remove"
-#	alias autoremove="doas apt autoremove"
-#	alias cleanup="doas apt remove && doas apt autoremove"
+#	abbr -ag update doas apt update
+#	abbr -ag upgrade doas apt upgrade
+#	abbr -ag sysup doas apt update && doas apt upgrade
+#	abbr -ag install doas apt install
+#	abbr -ag remove doas apt remove
+#	abbr -ag autoremove doas apt autoremove
+#	abbr -ag cleanup doas apt remove && doas apt autoremove
 # ? ends
 #
 # ? [distro == Arch] # Uncomment this block if you use Arch based disto
 # ? starts
 # pacman aliases
-	alias install="doas pacman -S"
-	alias pacsyy="doas pacman -Syy"
-	alias pacsyu='doas pacman -Syu'                  # update only standard pkgs
-	alias pacsyyu='doas pacman -Syyu'                # Refresh pkglist & update standard pkgs
-	alias pacr="doas pacman -R"
-	alias pacrns="doas pacman -Rns"
-	alias cleanup="doas pacman -Rns (pacman -Qtdq)"	 # Removes orphan packages
-	alias pacunlock='doas rm /var/lib/pacman/db.lck' # remove pacman lock
+	abbr -ag pac 		pacman
+	abbr -ag pacman 	doas pacman
+	abbr -ag pacs		doas pacman -S
+	abbr -ag install	doas pacman -S
+	abbr -ag pacsyy		doas pacman -Syy
+	abbr -ag pacsyu		doas pacman -Syu			# update only standard pkgs
+	abbr -ag pacsyyu	doas pacman -Syyu			# Refresh pkglist & update standard pkgs
+	abbr -ag pacr 		doas pacman -R
+	abbr -ag pacrns		doas pacman -Rns
+	abbr -ag cleanup	doas pacman -Rns (pacman -Qtdq)	# Removes orphan packages
+	abbr -ag pacunlock	doas rm /var/lib/pacman/db.lck	# remove pacman lock
 #
 # yay 	aliases
-	alias yays="yay -S"
-	alias yaysua='yay -Sua --noconfirm'              # update only AUR pkgs (yay)
-	alias yaysyu='yay -Syu --noconfirm'              # update standard pkgs && AUR pkgs (yay)
+	abbr -ag yays yay -S
+	abbr -ag yaysua yay -Sua --noconfirm			# update only AUR pkgs (yay)
+	abbr -ag yaysyu yay -Syu --noconfirm			# update standard pkgs && AUR pkgs (yay)
 #
 # paru	aliases	
-	alias parsua='paru -Sua --noconfirm'             # update only AUR pkgs (paru)
-	alias parsyu='paru -Syu --noconfirm'             # update standard pkgs && AUR pkgs (paru)
+	abbr -ag parsua	paru -Sua --noconfirm			# update only AUR pkgs (paru)
+	abbr -ag parsyu paru -Syu --noconfirm			# update standard pkgs && AUR pkgs (paru)
 # ? ends
 
 ###########################################
