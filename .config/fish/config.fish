@@ -22,9 +22,23 @@ set -U fish_user_paths $HOME/.local/bin $HOME/Applications $fish_user_paths
 ### 		EXPORT			###
 ###########################################
 set fish_greeting			# Supresses fish's intromessage.
+
+set -gx XDG_DATA_HOME $HOME/.local/share
+set -gx XDG_CONFIG_HOME $HOME/.config
+set -gx XDG_STATE_HOME $HOME/.local/state
+set -gx XDG_CACHE_HOME $HOME/.cache
+set -gx XDG_RUNTIME_DIR /run/user/$UID
+
+set -gx CARGO_HOME "$XDG_DATA_HOME"/cargo
+set -gx GOPATH "$XDG_DATA_HOME"/go
+set -gx GNUPGHOME "$XDG_DATA_HOME"/gnupg
+set -gx LESSHISTFILE "-"
+set -gx PASSWORD_STORE_DIR "$XDG_DATA_HOME"/pass
+
 set -gx TERM "xterm-256color"		# Sets the terminal type.
-set -gx EDITOR "vim"			# Sets the EDITOR.
-set -gx LESSHISTFILE=-
+set -gx EDITOR "vim"			# Sets the terminal type.
+
+set myEditor vim			# Sets vim as the editor globally.
 
 ###########################################
 ### 	SET MANPAGER 			###
@@ -127,22 +141,22 @@ set -g fish_pager_color_secondary_description $comment
 
 ### Config files
 # Shells
-	abbr -ag shrc $EDITOR ~/.shrc
-	abbr -ag bashrc $EDITOR ~/.bashrc
-	abbr -ag zshrc $EDITOR ~/.zshrc
-	abbr -ag fishrc $EDITOR ~/.config/fish/config.fish
+	abbr -ag shrc		$EDITOR ~/.shrc
+	abbr -ag bashrc		$EDITOR ~/.bashrc
+	abbr -ag zshrc		$EDITOR ~/.zshrc
+	abbr -ag fishrc		$EDITOR ~/.config/fish/config.fish
 # Window manager
-	abbr -ag bspwmrc $EDITOR ~/.config/bspwm/bspwmrc
-	abbr -ag sxhkdrc $EDITOR ~/.config/sxhkd/sxhkdrc
-	abbr -ag iwmrc $EDITOR ~/.config/i3/config
+	abbr -ag bspwmrc	$EDITOR ~/.config/bspwm/bspwmrc
+	abbr -ag sxhkdrc	$EDITOR ~/.config/sxhkd/sxhkdrc
+	abbr -ag iwmrc		$EDITOR ~/.config/i3/config
 # Editor
-	abbr -ag vimrc $EDITOR ~/.vimrc
-	abbr -ag nvrc $EDITOR ~/.config/nvim/init.lua
-	abbr -ag nanorc $EDITOR ~/.nanorc
+	abbr -ag vimrc		$EDITOR ~/.vimrc
+	abbr -ag nvrc		$EDITOR ~/.config/nvim/init.lua
+	abbr -ag nanorc		$EDITOR ~/.nanorc
 	
 # Misc
-	abbr -ag starshiprc="$EDITOR ~/.config/starship.toml"
-	abbr -ag neofetchrc="$EDITOR ~/.config/neofetch/config.conf"
+	abbr -ag starshiprc	$EDITOR ~/.config/starship.toml
+	abbr -ag neofetchrc	$EDITOR ~/.config/neofetch/config.conf
 
 ### Programs
 # Bat 	alias
@@ -155,11 +169,11 @@ set -g fish_pager_color_secondary_description $comment
 	alias ip='ip --color=auto'
 # editor
 	alias edit='echo "$EDITOR is currently set as your default editor. If you want to change it, then edit the fish config file at $HOME/.config/fish/config.fish"; $EDITOR'
-	abbr -ag nv nvim
-	abbr -ag v vim
+	abbr -ag nv	nvim
+	abbr -ag v	vim
 # media
 	# Watch anime:
-	abbr -ag ani ani-cli
+	abbr -ag	ani ani-cli
 	alias anic='ani-cli -c'	# continue watching anime 
 
 	# youtube-dl
@@ -199,17 +213,21 @@ set -g fish_pager_color_secondary_description $comment
 	alias merge='xrdb -merge ~/.Xresources'
 
 # git
-	alias addup='git add -u'
-	alias addall='git add .'
-	alias branch='git branch'
-	alias checkout='git checkout'
-	alias clone='git clone'
-	alias commit='git commit -m'
-	alias fetch='git fetch'
-	alias pull='git pull origin'
-	alias push='git push origin'
-	alias tag='git tag'
-	alias newtag='git tag -a'
+	abbr -ag addup		git add -u
+	abbr -ag addall		git add .
+	abbr -ag branch		git branch
+	abbr -ag checkout	git checkout
+	abbr -ag clone		git clone
+	abbr -ag commit		git commit -m \"
+	abbr -ag fetch		git fetch
+	abbr -ag ga		git add
+	abbr -ag gcl		git clone
+	abbr -ag gcm		git commit -m \"
+	abbr -ag gs		git status
+	abbr -ag pull		git pull origin
+	abbr -ag push		git push origin
+	abbr -ag tag		git tag
+	abbr -ag newtag		git tag -a
 
 # get error messages from journalctl
 	alias jctl="journalctl -p 3 -xb"
@@ -230,13 +248,13 @@ set -g fish_pager_color_secondary_description $comment
 # ? [distro == Debian || Ubuntu]	# Uncomment this block if you use Debian based disto
 # apt 	aliases
 # ? starts
-#	abbr -ag update doas apt update
-#	abbr -ag upgrade doas apt upgrade
-#	abbr -ag sysup doas apt update && doas apt upgrade
-#	abbr -ag install doas apt install
-#	abbr -ag remove doas apt remove
-#	abbr -ag autoremove doas apt autoremove
-#	abbr -ag cleanup doas apt remove && doas apt autoremove
+#	abbr -ag update		doas apt update
+#	abbr -ag upgrade	doas apt upgrade
+#	abbr -ag sysup		doas apt update && doas apt upgrade
+#	abbr -ag install	doas apt install
+#	abbr -ag remove		doas apt remove
+#	abbr -ag autoremove	doas apt autoremove
+#	abbr -ag cleanup	doas apt remove && doas apt autoremove
 # ? ends
 #
 # ? [distro == Arch] # Uncomment this block if you use Arch based disto
@@ -255,15 +273,14 @@ set -g fish_pager_color_secondary_description $comment
 	abbr -ag pacunlock	doas rm /var/lib/pacman/db.lck	# remove pacman lock
 #
 # yay 	aliases
-	abbr -ag yays yay -S
-	abbr -ag yaysua yay -Sua --noconfirm			# update only AUR pkgs (yay)
-	abbr -ag yaysyu yay -Syu --noconfirm			# update standard pkgs && AUR pkgs (yay)
+	abbr -ag yays		yay -S
+	abbr -ag yaysua		yay -Sua --noconfirm			# update only AUR pkgs (yay)
+	abbr -ag yaysyu		yay -Syu --noconfirm			# update standard pkgs && AUR pkgs (yay)
 #
 # paru	aliases	
-	abbr -ag parsua	paru -Sua --noconfirm			# update only AUR pkgs (paru)
-	abbr -ag parsyu paru -Syu --noconfirm			# update standard pkgs && AUR pkgs (paru)
+	abbr -ag parsua		paru -Sua --noconfirm			# update only AUR pkgs (paru)
+	abbr -ag parsyu		paru -Syu --noconfirm			# update standard pkgs && AUR pkgs (paru)
 # ? ends
-
 ###########################################
 ###	ADD CUSTOM ALIASES BELOW	###
 ###########################################	
