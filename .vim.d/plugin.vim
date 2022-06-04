@@ -6,12 +6,12 @@
 "	Local Plugins		"
 """""""""""""""""""""""""""""""""
 " Damian Conway's Plugins
-	source $HOME/.vim.d/plugins/dragvisuals.vim
+	source $HOME/.vim.d/plugins/local/dragvisuals.vim
 
 """""""""""""""""""""""""""""""""
 " 	Vim Plug		"
 """""""""""""""""""""""""""""""""
-call plug#begin()
+call plug#begin('~/.vim.d/plugins/vim-plug/plugged')
 
 "{{ The Basics }}
 	Plug 'frazrepo/vim-rainbow'
