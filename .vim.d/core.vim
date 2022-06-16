@@ -26,4 +26,5 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 set encoding=utf-8              " Unicode character support. Default is 'latin1'
 set showcmd         		" Show partial command you type in the last
 				" line of the screen.
+set undofile			" Persistent undo to file.
 syntax enable on                " Syntax enabled && on.
