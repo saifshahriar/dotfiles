@@ -1,0 +1,4 @@
+exa
+fish
+vim
+zoxide

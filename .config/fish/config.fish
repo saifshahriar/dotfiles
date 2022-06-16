@@ -120,6 +120,7 @@ set -g fish_pager_color_secondary_description $comment
 ### Filesystem
 	alias ..="cd .."
 	alias mkdir="mkdir -pv"
+
 # Use exa instead of ls.
 	alias l="exa -al --color=always --icons --group-directories-first"
 	alias ls="exa -al --color=auto --icons --group-directories-first"
@@ -153,7 +154,6 @@ set -g fish_pager_color_secondary_description $comment
 	abbr -ag vimrc		$EDITOR ~/.vimrc
 	abbr -ag nvrc		$EDITOR ~/.config/nvim/init.lua
 	abbr -ag nanorc		$EDITOR ~/.nanorc
-	
 # Misc
 	abbr -ag starshiprc	$EDITOR ~/.config/starship.toml
 	abbr -ag neofetchrc	$EDITOR ~/.config/neofetch/config.conf
@@ -171,10 +171,11 @@ set -g fish_pager_color_secondary_description $comment
 	alias edit='echo "$EDITOR is currently set as your default editor. If you want to change it, then edit the fish config file at $HOME/.config/fish/config.fish"; $EDITOR'
 	abbr -ag nv	nvim
 	abbr -ag v	vim
+	abbr -ag e	emacs
 # media
 	# Watch anime:
 	abbr -ag	ani ani-cli
-	alias anic='ani-cli -c'	# continue watching anime 
+	alias anic='ani-cli -c'			# continue watching anime
 
 	# youtube-dl
 	alias yta-aac="youtube-dl --extract-audio --audio-format aac "
@@ -196,8 +197,8 @@ set -g fish_pager_color_secondary_description $comment
 	alias mirrora="doas reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
 
 # adding flags
-	alias df='df -h'                          # human-readable sizes
-	alias free='free -m'                      # show sizes in MB
+	alias df='df -h'			# human-readable sizes
+	alias free='free -m'			# show sizes in MB
 	alias lynx='lynx -cfg=~/.lynx/lynx.cfg -lss=~/.lynx/lynx.lss -vikeys'
 	alias vifm='./.config/vifm/scripts/vifmrun'
 	alias ncmpcpp='ncmpcpp ncmpcpp_directory=$HOME/.config/ncmpcpp/'
@@ -228,6 +229,10 @@ set -g fish_pager_color_secondary_description $comment
 	abbr -ag push		git push origin
 	abbr -ag tag		git tag
 	abbr -ag newtag		git tag -a
+# zoxide
+	abbr -ag z-		z -
+	abbr -ag zz		z -
+	abbr -ag zl		zi
 
 # get error messages from journalctl
 	alias jctl="journalctl -p 3 -xb"
@@ -269,8 +274,8 @@ set -g fish_pager_color_secondary_description $comment
 	abbr -ag pacsyyu	doas pacman -Syyu			# Refresh pkglist & update standard pkgs
 	abbr -ag pacr 		doas pacman -R
 	abbr -ag pacrns		doas pacman -Rns
-	abbr -ag cleanup	doas pacman -Rns (pacman -Qtdq)	# Removes orphan packages
-	abbr -ag pacunlock	doas rm /var/lib/pacman/db.lck	# remove pacman lock
+	abbr -ag cleanup	doas pacman -Rns (pacman -Qtdq)		# Removes orphan packages
+	abbr -ag pacunlock	doas rm /var/lib/pacman/db.lck		# remove pacman lock
 #
 # yay 	aliases
 	abbr -ag yays		yay -S
@@ -293,9 +298,10 @@ set -g fish_pager_color_secondary_description $comment
 ########################################### Run these programs whenever the 
 ###		STARTUP			### shell starts. NOTE: This may slow
 ########################################### down the shell during startup.
-### SETTING THE STARSHIP PROMPT ###	# NOTE: starship prompt is somewhat slow
-# starship init fish | source		# in the fish shell. Use oh-my-fish or 
-					# fisher plugin manager instead.
+### Run zoxide | The rust replacement for cd ###
+zoxide init fish | source
+### SETTING THE STARSHIP PROMPT ###	# NOTE: This might slow down the prompt.
+# starship init fish | source
 # Run either one of them
 # colorscript random			# Random Color Script
 					# Get this script from my GitLab: gitlab.com/dwt1/shell-color-scripts
