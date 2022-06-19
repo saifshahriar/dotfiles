@@ -46,6 +46,7 @@ set fillchars+=vert:\⎟
 				" Removes pipes | that act as 
 				" seperators on splits
 set guifont=FiraCode\ Nerd\ Font\ Mono:h15
+set hidden
 set list
 set listchars=tab:\ \ ,trail:
 set number relativenumber	" Number && relative number. 
