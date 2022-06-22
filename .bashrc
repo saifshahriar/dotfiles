@@ -10,9 +10,24 @@
 ###########################################
 ### 		EXPORT			###
 ###########################################
+export XDG_DATA_HOME="$HOME"/.local/share
+export XDG_CONFIG_HOME="$HOME"/.config
+export XDG_STATE_HOME="$HOME"/.local/state
+export XDG_CACHE_HOME="$HOME"/.cache
+export XDG_RUNTIME_DIR=/run/user/"$UID"
+
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export CALCHISTFILE="$XDG_CACHE_HOME"/calc_history
+export GOPATH="$XDG_DATA_HOME"/go
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export LESSHISTFILE="-"
+export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
+export SQLITE_HISTORY="$XDG_CACHE_HOME"/sqlite_history
+
 export TERM="xterm-256color"
 export HISTCONTROL=ignoredups:erasedups	# no duplicate entries
-export HISTFILE="$HOME/.cache"
+export HISTFILE="$HOME"/.cache
 export EDITOR="vim"
 export VISUAL="vim"
 export MANPAGER='/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
@@ -193,6 +208,8 @@ PS1='\[\e[0;31m\][\[\e[0;33m\]\u\[\e[0;32m\]@\[\e[0;34m\]\h \[\e[0;35m\]\w\[\e[0
 	alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
 # receive the key of a developer
 	alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
+# wget
+	alias wget=wget --hsts-file="$XDG_DATA_HOME"/wget-hsts
 	
 # change login shells
 	alias tobash="doas chsh $USER -s /bin/bash && echo 'Now log out.'"

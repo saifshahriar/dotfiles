@@ -30,10 +30,13 @@ set -gx XDG_CACHE_HOME $HOME/.cache
 set -gx XDG_RUNTIME_DIR /run/user/$UID
 
 set -gx CARGO_HOME "$XDG_DATA_HOME"/cargo
+set -gx CALCHISTFILE "$XDG_CACHE_HOME"/calc_history
 set -gx GOPATH "$XDG_DATA_HOME"/go
 set -gx GNUPGHOME "$XDG_DATA_HOME"/gnupg
 set -gx LESSHISTFILE "-"
+set -gx NODE_REPL_HISTORY "$XDG_DATA_HOME"/node_repl_history
 set -gx PASSWORD_STORE_DIR "$XDG_DATA_HOME"/pass
+set -gx SQLITE_HISTORY "$XDG_CACHE_HOME"/sqlite_history
 
 set -gx TERM "xterm-256color"		# Sets the terminal type.
 set -gx EDITOR "vim"			# Sets the terminal type.
@@ -242,6 +245,8 @@ set -g fish_pager_color_secondary_description $comment
 	alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
 # receive the key of a developer
 	alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
+# wget
+	alias wget="wget --hsts-file="$XDG_DATA_HOME"/wget-hsts"
 	
 # change login shells
 	alias tobash="doas chsh $USER -s /bin/bash && echo 'Now log out.'"
