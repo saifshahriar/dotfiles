@@ -1,5 +1,5 @@
-# dotfiles
-My very basic dotfiles that I use everyday.
+# <samp><b>dotfiles</b></samp> <img src="https://img.shields.io/badge/Artix_Linux-1793D1?style=for-the-badge&logo=artix-linux&logoColor=white" align="right" />
+
 
 <p align=center>
  <a href="https://github.com/saifshahriar/" alt="Website">
@@ -28,6 +28,12 @@ My very basic dotfiles that I use everyday.
  </a>
 </p>
 
+My very basic dotfiles that I use everyday. Nowadays I use `dwm` in [**Artix Linux**](https://artixlinux.org/), sometimes [**Void**](https://voidlinux.org/). Nonsystemd distros kind of growing on me. Also, my dots are based on `doas` as admin priv method, so don't blindly copy everything.
+
+<br />
+
+
+
 ```
  █████╗ ██████╗  ██████╗██╗  ██╗    ██╗     ██╗███╗   ██╗██╗   ██╗██╗  ██╗                
 ██╔══██╗██╔══██╗██╔════╝██║  ██║    ██║     ██║████╗  ██║██║   ██║╚██╗██╔╝                
@@ -51,7 +57,9 @@ My very basic dotfiles that I use everyday.
 ╚══════╝╚═╝  ╚═╝╚═╝╚═╝         ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═╝  ╚═╝
 ```                                                                                       
 
+
 # Filetree
+_Note: Outdated_
 ```fish
 ╭─[saifshahriar@git]─[dotfiles]─[master]
 ╰─λ exa --tree -a -I .git
