@@ -1,4 +1,4 @@
-# <samp><b>dotfiles</b></samp> <img src="https://img.shields.io/badge/Artix_Linux-1793D1?style=for-the-badge&logo=artix-linux&logoColor=white" align="right" />
+# <samp><b>dotfiles</b></samp> <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/saifshahriar/dotfiles?color=7aa2f7&logo=lua&logoColor=%237aa2f7&style=for-the-badge" align="right"><img src="https://img.shields.io/badge/Artix_Linux-1793D1?style=for-the-badge&color=1a1b26&logo=artix-linux&logoColor=7aa2f7" align="right" />
 
 
 <p align=center>
