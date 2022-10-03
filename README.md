@@ -94,6 +94,9 @@ My very basic dotfiles that I use everyday. Nowadays I use `dwm` in [**Artix Lin
 	<tr>
 		<td> Compositor </td> <td> Picom (Pijulius Fork) </td>
 	</tr>
+	<tr>
+		<td> Colorscheme </td> <td> Tokyonight </td>
+	</tr>
 </table>
 
 
@@ -169,7 +172,6 @@ dotfiles
 │  ├── snips.vim
 │  └── theme.vim
 ├── .vimrc
-├── .vimrc.somerandomchinesedude.bak
 ├── .zshrc
 ├── LICENSE
 ├── packages.txt
