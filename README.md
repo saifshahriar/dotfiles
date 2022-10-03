@@ -28,6 +28,16 @@
  </a>
 </p>
 
+<table align="right">
+	<tr>
+		<td align="center">
+			<samp>
+				No SoystemD! LMAO! 🙂
+			<samp>
+		</td>
+	</tr>
+<table>
+
 My very basic dotfiles that I use everyday. Nowadays I use `dwm` in [**Artix Linux**](https://artixlinux.org/), sometimes [**Void**](https://voidlinux.org/). Nonsystemd distros kind of growing on me. Also, my dots are based on `doas` as admin priv method, so don't blindly copy everything.
 
 <br />
@@ -56,6 +66,35 @@ My very basic dotfiles that I use everyday. Nowadays I use `dwm` in [**Artix Lin
 ███████║██║  ██║██║██║         ███████║██║  ██║██║  ██║██║  ██║██║  ██║██║██║  ██║██║  ██║
 ╚══════╝╚═╝  ╚═╝╚═╝╚═╝         ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═╝  ╚═╝
 ```                                                                                       
+
+
+# I use
+<table>
+	<tr>
+		<td> Distro </td> <td> Artix Linux </td>
+	<tr>
+	<tr>
+		<td rowspan=4> Window Manager </td> <td> dwm </td>
+	</tr>
+	<tr>
+		<td>AwesomeWM</td>
+	</tr>
+	<tr>
+		<td>BSPWM</td>
+	</tr>
+	<tr>
+		<td>Qtile</td>
+	</tr>
+	<tr>
+		<td> Terminal Emmulator </td> <td> Alacritty </td>
+	</tr>
+	<tr>
+		<td> Shell </td> <td> Fish </td>
+	</tr>
+	<tr>
+		<td> Compositor </td> <td> Picom (Pijulius Fork) </td>
+	</tr>
+</table>
 
 
 # Filetree
