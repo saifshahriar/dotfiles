@@ -1,0 +1,95 @@
+#!/bin/sh
+
+interval=0
+
+python3 ~/.config/nimdow/barcolgen.py
+source ~/.config/nimdow/colors.sh
+
+## Separator
+sep() {
+    printf "${nblue}•"
+}
+
+## Cpu Info
+cpu_info() {
+	cpu_load=$(grep -o "^[^ ]*" /proc/loadavg)
+    printf " $cpu_load%%"
+}
+
+## Memory
+  memory() {
+  	printf " $(free -h | awk '/Mem/ { print $3 }' | sed s/i//g)"
+  }
+
+## Wi-fi
+wlan() {
+	case "$(cat /sys/class/net/w*/operstate 2>/dev/null)" in
+        up) printf "${nblue} Connected" ;;
+		down) printf "${nred}睊Disconnected" ;;
+	esac
+}
+
+## Time
+clock() {
+	printf " $(date '+%a, %I:%M %p')"
+}
+#
+#  ## System Update
+#  updates() {
+#  	updates=$(checkupdates | wc -l)
+#
+#  	if [ -z "$updates" ]; then
+#  		printf "  Updated"
+#  	else
+#  		printf "  $updates"" updates"
+#  	fi
+#  }
+#
+#  ## Battery Info
+battery() {
+	BAT=$(cat /sys/class/power_supply/BAT0/capacity)
+	AC=$(cat /sys/class/power_supply/AC/online)
+
+	if [ "$AC" -eq 1 ]; then
+		printf " $BAT%%"
+	elif [ "$AC" -eq 1 ] && [ "$BAT" -eq 100 ]; then
+		printf " Full"
+	else
+		if [ "$BAT" -ge 0 ] && [ "$BAT" -le 20 ]; then
+			printf " $BAT%%"
+		elif [ "$BAT" -ge 20 ] && [ "$BAT" -le 40 ]; then
+			printf " $BAT%%"
+		elif [ "$BAT" -ge 40 ] && [ "$BAT" -le 60 ]; then
+			printf " $BAT%%"
+		elif [ "$BAT" -ge 60 ] && [ "$BAT" -le 80 ]; then
+			printf " $BAT%%"
+		elif [ "$BAT" -ge 80 ] && [ "$BAT" -le 100 ]; then
+			printf " $BAT%%"
+		fi
+	fi
+}
+
+## Brightness
+brightness() {
+	LIGHT=$(printf "%.0f\n" `light -G`)
+
+	if [ "$LIGHT" -ge 0 ] && [ "$LIGHT" -le 25 ]; then
+		printf " $LIGHT%%"
+	elif [ "$LIGHT" -ge 25 ] && [ "$LIGHT" -le 50 ]; then
+		printf " $LIGHT%%"
+	elif [ "$LIGHT" -ge 50 ] && [ "$LIGHT" -le 75 ]; then
+		printf " $LIGHT%%"
+	elif [ "$LIGHT" -ge 75 ] && [ "$LIGHT" -le 100 ]; then
+		printf " $LIGHT%%"
+	fi
+}
+
+## Main
+while true; do
+  # [ "$interval" -eq 0 ] || [ $(("$interval" % 3600)) -eq 0 ] && updates=$(updates)
+  interval=$((interval + 1))
+
+  sleep 1 && \
+      xsetroot -name \
+      "${nred}$(battery) $(sep) ${nblue}$(brightness) $(sep) ${ngreen}$(cpu_info) $(sep) ${nmagenta}$(memory) $(sep) $(wlan) $(sep) ${nyellow}$(clock) "
+done

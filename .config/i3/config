@@ -1,0 +1,422 @@
+# 
+# 
+# 
+# 
+# 
+
+###########################
+###		Variable		###
+###########################
+# Set mod key (Mod1=<Alt>, Mod4=<Super>)
+set $mod Mod4
+set $myTerm xfce4-terminal
+set $res 1360x768
+font pango:Iosevka 11
+
+# Workspace names
+# to display names or symbols instead of plain workspace numbers you can use
+# something like: set $ws1 1:mail
+#                 set $ws2 2:
+# set $ws1 一
+# set $ws2 二
+# set $ws3 三
+# set $ws4 四
+# set $ws5 五
+# set $ws6 六
+# set $ws7 七
+# set $ws8 八
+# set $ws9 九
+# set $ws10 十
+
+set $ws1 一
+set $ws2 二
+set $ws3 三
+set $ws4 四
+set $ws5 五
+set $ws6 六
+set $ws7 七
+set $ws8 八
+set $ws9 九
+set $ws10 十
+
+###########################
+###		Borders			###
+###########################
+# Configure border style <normal|1pixel|pixel xx|none|pixel>
+new_window pixel 1
+new_float normal
+
+# Use Mouse+$mod to drag floating windows
+floating_modifier $mod
+
+###########################
+### 	Keybindings		###
+##########################
+# start a terminal
+bindsym $mod+Return exec $myTerm
+
+# kill focused window
+bindsym $mod+c kill
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the arrow keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the arrow keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split orientation
+bindsym $mod+z split h; exec notify-send 'tile horizontally'
+bindsym $mod+v split v; exec notify-send 'tile vertically'
+bindsym $mod+q split toggle
+
+# toggle fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+#bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# dmenu
+bindsym $mod+d exec dmenu_run -p " ArtixBTW" -fn 'Iosevka:italic:pixelsize=18' -nf '#cac0f5' -nb '#1a1b26' -sf '#c0caf5' -sb '#33467c'
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+
+# Start Applications
+bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+bindsym Print exec --no-startup-id i3-scrot
+bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
+bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
+
+
+# workspace back and forth (with/without active container)
+workspace_auto_back_and_forth yes
+bindsym $mod+b workspace back_and_forth
+bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+#navigate workspaces next / previous
+bindsym $mod+Ctrl+Right workspace next
+bindsym $mod+Ctrl+Left workspace prev
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# Move focused container to workspace
+bindsym $mod+Ctrl+1 move container to workspace $ws1
+bindsym $mod+Ctrl+2 move container to workspace $ws2
+bindsym $mod+Ctrl+3 move container to workspace $ws3
+bindsym $mod+Ctrl+4 move container to workspace $ws4
+bindsym $mod+Ctrl+5 move container to workspace $ws5
+bindsym $mod+Ctrl+6 move container to workspace $ws6
+bindsym $mod+Ctrl+7 move container to workspace $ws7
+bindsym $mod+Ctrl+8 move container to workspace $ws8
+bindsym $mod+Ctrl+9 move container to workspace $ws9
+bindsym $mod+Ctrl+0 move container to workspace $ws10
+
+# Move to workspace with focused container
+bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
+
+# reload the configuration file
+bindsym $mod+Ctrl+r reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# Immediately exit i3
+bindsym $mod+Shift+q exec --no-startup-id killall i3
+
+# Set shut down, restart and locking features
+bindsym $mod+Shift+Escape mode "$mode_system"
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+
+mode "$mode_system" {
+	bindsym l exec --no-startup-id i3exit lock, mode "default"
+	bindsym s exec --no-startup-id i3exit suspend, mode "default"
+	bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+	bindsym e exec --no-startup-id i3exit logout, mode "default"
+	bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+	bindsym r exec --no-startup-id i3exit reboot, mode "default"
+	bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+	# exit system mode: "Enter" or "Escape"
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+# Resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize";exec notify-send 'Resize mode activated'
+mode "resize" {
+		bindsym h resize shrink width 4 px or 4 ppt
+		bindsym j resize grow height 4 px or 4 ppt
+		bindsym k resize shrink height 4 px or 4 ppt
+		bindsym l resize grow width 4 px or 4 ppt
+
+		# same bindings, but for the arrow keys
+		bindsym Left resize shrink width 10 px or 10 ppt
+		bindsym Down resize grow height 10 px or 10 ppt
+		bindsym Up resize shrink height 10 px or 10 ppt
+		bindsym Right resize grow width 10 px or 10 ppt
+
+		# exit resize mode: Enter or Escape
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+}
+
+###########################
+###		Window Rules	###
+###########################
+# Open applications on specific workspaces
+# assign [class="Thunderbird"] $ws1
+assign [class="Brave-browser"] $ws2
+for_window [urgent=latest class="Brave-browser"] focus; workspace 2
+# assign [class="Pcmanfm"] $ws3
+assign [class="(?i)virtualbox"] $ws8
+
+# Open specific applications in floating mode
+for_window [title="alsamixer"] floating enable
+for_window [class="Clipgrab"] floating enable
+for_window [title="File Transfer*"] floating enable
+for_window [class="Galculator"] floating enable
+for_window [class="GParted"] floating enable
+for_window [title="i3_help"] floating enable sticky enable  
+for_window [class="Lightdm-gtk-greeter-settings"] floating enable
+for_window [class="Lxappearance"] floating enable sticky enable  
+for_window [class="Manjaro-hello"] floating enable
+for_window [class="Manjaro Settings Manager"] floating enable  
+for_window [title="MuseScore: Play Panel"] floating enable
+for_window [class="Nitrogen"] floating enable sticky enable
+for_window [class="Oblogout"] fullscreen enable
+for_window [class="octopi"] floating enable
+for_window [class="Pamac-manager"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="qt5ct"] floating enable sticky enable  
+for_window [class="Qtconfig-qt4"] floating enable sticky enable  
+for_window [class="Simple-scan"] floating enable  
+for_window [class="(?i)System-config-printer.py"] floating enable  
+for_window [class="Thus"] floating enable  
+for_window [class="Timeset-gui"] floating enable  
+
+# for_window [class="(?i)virtualbox"] floating enable  
+#for_window [class="(?i)virtualbox"] fullscreen enable 
+for_window [class="Xfburn"] floating enable
+
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
+
+###########################
+###	Theme && Colorscheme###
+###########################
+
+set $bgcol #1a1b26
+set $fgcol #c0caf5
+
+set $sbg #33467C
+set $sfg #c0caf5
+
+# normal
+set $color0 #15161E
+set $color1 #f7768e
+set $color2 #9ece6a
+set $color3 #e0af68
+set $color4 #7aa2f7
+set $color5 #bb9af7
+set $color6 #7dcfff
+set $color7 #a9b1d6
+
+# bright
+set $color8 #414868
+set $color9 #f7768e
+set $color10 #9ece6a
+set $color11 #e0af68
+set $color12 #7aa2f7
+set $color13 #bb9af7
+set $color14 #7dcfff
+set $color15 #c0caf5
+
+# extended colors
+set $color16 #ff9e64
+set $color17 #db4b4b
+
+# The default colors are:
+# class						border	background	text    indicator	child_border			
+# background				n/a	    #ffffff     n/a	    n/a	        n/a
+# focused					#4c7899	#285577	    #ffffff	#2e9ef4		#285577
+# focused_inactive			#333333	#5f676a		#ffffff	#484e50		#5f676a
+# unfocused					#333333	#222222	    #888888	#292d2e		#222222
+# urgent					#2f343a	#900000	    #ffffff	#900000	    #900000
+# placeholder				#000000	#0c0c0c	    #ffffff	#000000		#0c0c0c
+client.focused				#9aa5ce $sbg 	 	$sfg	$color0 	$color15
+client.focused_inactive		#16161d #16161d 	$color8 #16161d		#16161d
+client.unfocused			#16161d #16161d 	$color8 #16161d		#16161d
+
+###############################
+###			THE BAR			###
+###############################
+bar {
+	font pango:Iosevka 11
+	position top
+	#i3bar_command i3bar --transparency
+	status_command i3status -c $HOME/.config/i3/i3status.conf
+	tray_output primary
+	tray_padding 0
+	strip_workspace_numbers yes
+
+	colors {
+		background	$bgcol
+		statusline	$fgcol
+		separator	$bgcol
+		# class						border	background	text    indicator	child_border			
+		focused_workspace          	$sfg	$sbg		$fgcol		#9aa5ce   #9aa5ce
+		inactive_workspace          $bgcol	$bgcol 		$fgcol		#16161d   #16161d
+		#client.unfocused         #16161d #16161d #c0caf5 #16161d   #16161d
+	}
+}
+
+#############################
+### settings for i3-gaps: ###
+#############################
+# Set inner/outer gaps
+gaps inner 5
+gaps outer 0
+
+# Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
+# gaps inner|outer current|all set|plus|minus <px>
+# gaps inner all set 10
+# gaps outer all plus 5
+
+# Smart gaps (gaps used if only more than one container on the workspace)
+smart_gaps on
+
+# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+smart_borders on
+
+# Press $mod+Shift+g to enter the gap mode. 
+# Choose o or i for modifying outer/inner gaps.
+# Press one of + / - (in-/decrement for current workspace) 
+# or 0 (remove gaps for current workspace). If you also press Shift 
+# with these keys, the change will be global for all workspaces.
+set $mode_gaps Gaps: (o)uter, (i)nner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+		bindsym o      mode "$mode_gaps_outer"
+		bindsym i      mode "$mode_gaps_inner"
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+		bindsym plus  gaps inner current plus 5
+		bindsym minus gaps inner current minus 5
+		bindsym 0     gaps inner current set 0
+
+		bindsym Shift+plus  gaps inner all plus 5
+		bindsym Shift+minus gaps inner all minus 5
+		bindsym Shift+0     gaps inner all set 0
+
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_outer" {
+		bindsym plus  gaps outer current plus 5
+		bindsym minus gaps outer current minus 5
+		bindsym 0     gaps outer current set 0
+
+		bindsym Shift+plus  gaps outer all plus 5
+		bindsym Shift+minus gaps outer all minus 5
+		bindsym Shift+0     gaps outer all set 0
+
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+}
+
+
+###########################
+###		Autostart		###
+###########################
+# Before autostarting, kill some programmes
+exec --no-startup-id killall polybar
+
+exec --no-startup-id ~/.config/qtile/scripts/autostart.sh
+#exec_always --no-startup-id $HOME/.config/polybar/launch.sh --cuts
+#exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id nitrogen --restore
+#exec --no-startup-id picom --config ~/.config/picom/picom.conf
+exec --no-startup-id numlockx on
+#exec --no-startup-id nm-applet
+exec --no-startup-id dbus-launch nm-applet
+# exec --no-startup-id xfce4-panel --disable-wm-check
+exec --no-startup-id xfce4-power-manager
+## exec --no-startup-id xautolock -time 10 -locker blurlock
+#exec_always --no-startup-id ff-theme-util
+exec_always --no-startup-id fix_xcursor
+exec --no-startup-id xrandr -s $res
+
+################################################################################################
+## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
+################################################################################################
+#exec --no-startup-id volumeicon
+exec --no-startup-id pulseaudio
+#exec --no-startup-id pa-applet
+################################################################################################
+
