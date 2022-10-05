@@ -39,7 +39,7 @@ set -gx NODE_REPL_HISTORY "$XDG_DATA_HOME"/node_repl_history
 set -gx PASSWORD_STORE_DIR "$XDG_DATA_HOME"/pass
 set -gx SCREENRC "$XDG_CONFIG_HOME"/screen/screenrc
 set -gx SQLITE_HISTORY "$XDG_CACHE_HOME"/sqlite_history
-set -gx XCURSOR_PATH /usr/share/icons:${XDG_DATA_HOME}/icons
+set -gx XCURSOR_PATH /usr/share/icons:$XDG_DATA_HOME/icons
 
 set -gx TERM "xterm-256color"			# Sets the terminal type.
 set -gx EDITOR "vim"					# Sets the terminal type.
