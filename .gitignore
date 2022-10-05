@@ -1,2 +1,25 @@
+# Editors Config file
 *.exrc
 /.vscode
+
+# C
+# Prerequisites
+*.d
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Python
+# Byte-compiled / optimized / DLL files
+__pycache__/
