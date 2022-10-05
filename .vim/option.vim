@@ -113,5 +113,5 @@ set autoindent smartindent	" Auto indents files && smart indentation.
                                 " in powerline and below powerline.
 				" TODO: Only uncomment if vim-airline plugin is 
 				" installed and enabled.
-source $HOME/.vim/plugins/local/statusline.vim
+source $HOME/.vim/plugins/statusline.vim
 """""""""""""""""""""""""""""""""
