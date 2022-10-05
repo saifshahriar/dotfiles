@@ -106,59 +106,143 @@ _Note: Outdated_
 ╭─[saifshahriar@git]─[dotfiles]─[master]
 ╰─λ exa --tree -a -I .git
 
-dotfiles 
+.
+├── .bashrc
 ├── .config
-│  ├── brave-browser.yml
+│  ├── alacritty
+│  │  ├── alacritty.yml
+│  │  ├── colors.yml
+│  │  └── fonts.yml
+│  ├── awesome
+│  │  ├── icons
+│  │  │  └── ...
+│  │  ├── rc.lua
+│  │  └── scripts
+│  │     └── ...
 │  ├── bspwm
-│  │  └── bspwmrc
+│  │  ├── bin
+│  │  │  └── ...
+│  │  ├── bspwmrc
+│  │  ├── dunstrc
+│  │  ├── picom.conf
+│  │  ├── polybar
+│  │  │  └── ...
+│  │  ├── rofi
+│  │  │  ├── bin
+│  │  │  │  └── ...
+│  │  │  └── themes
+│  │  │     └── ...
+│  │  └── themes
+│  │     └── ...
+│  ├── dwm
+│  │  ├── autostart.sh
+│  │  └── dwmbar.sh
 │  ├── fish
 │  │  └── config.fish
+│  ├── i3
+│  │  ├── config
+│  │  ├── i3status.conf
+│  │  └── picom.conf
+│  ├── kitty
+│  │  ├── current-theme.conf
+│  │  └── kitty.conf
+│  ├── leftwm
+│  │  ├── config.ron
+│  │  ├── themes
+│  │  │  ├── Ascent
+│  │  │  │  └── ...
+│  │  │  ├── Blue-Coffee
+│  │  │  │  └── ...
+│  │  │  └── current -> Blue-Coffee
+│  │  └── themes.toml
+│  ├── lf
+│  │  ├── icons
+│  │  └── lfrc
+│  ├── mpv
+│  │  ├── mpv.conf
+│  │  ├── script-opts
+│  │  │  └── mpv_thumbnail_script.conf
+│  │  └── scripts
+│  │     └── ...
 │  ├── neofetch
-│  │  ├── config.conf
-│  │  └── config.conf.bak
-│  ├── nvim
-│  │  ├── init.lua
-│  │  ├── README.md
-│  │  └── vimrc.vim
+│  │  └── ...
+│  ├── networkmanager-dmenu
+│  │  └── config.ini
+│  ├── nimdow
+│  │  ├── barcolgen.py
+│  │  ├── colors.sh
+│  │  ├── config.toml
+│  │  └── nimbar
+│  ├── nitrogen
+│  │  ├── bg-saved.cfg
+│  │  └── nitrogen.cfg
+│  ├── oni2
+│  │  └── configuration.json
+│  ├── picom
+│  │  └── picom.conf
+│  ├── qtile
+│  │  ├── config.py
+│  │  ├── dunstrc
+│  │  ├── icons
+│  │  │  └── ...
+│  │  ├── picom.conf
+│  │  ├── scripts
+│  │  │  └── ...
+│  │  └── sxhkdrc
 │  ├── ranger
-│  │  ├── colorschemes
-│  │  │  ├── __init__.py
-│  │  │  ├── __pycache__
-│  │  │  │  ├── __init__.cpython-310.opt-1.pyc
-│  │  │  │  └── default.cpython-310.opt-1.pyc
-│  │  │  ├── default.py
-│  │  │  └── zenburn.py
 │  │  ├── commands.py
 │  │  ├── plugins
-│  │  │  ├── __init__.py
-│  │  │  ├── __pycache__
-│  │  │  │  └── __init__.cpython-310.opt-1.pyc
-│  │  │  └── ranger_devicons
-│  │  │     ├── __init__.py
-│  │  │     ├── __pycache__
-│  │  │     │  ├── __init__.cpython-310.opt-1.pyc
-│  │  │     │  └── devicons.cpython-310.opt-1.pyc
-│  │  │     └── devicons.py
+│  │  │  └── ...
 │  │  ├── rc.conf
 │  │  ├── rifle.conf
 │  │  └── scope.sh
-│  ├── README.md
+│  ├── rofi
+│  │  ├── config.rasi
+│  │  └── styles
+│  │     ├── askpass.rasi
+│  │     ├── asroot.rasi
+│  │     ├── colors.rasi
+│  │     ├── confirm.rasi
+│  │     ├── font.rasi
+│  │     ├── launcher.rasi
+│  │     ├── networkmenu.rasi
+│  │     ├── powermenu.rasi
+│  │     └── window.rasi
 │  ├── starship.toml
-│  └── sxhkd
-│     └── sxhkdrc
+│  ├── sxhkd
+│  │  └── sxhkdrc
+│  ├── tmux
+│  │  └── tmux.conf
+│  ├── wallpaper
+│  │  └── kochou_shinobu_holding_butterfly_purple_wallpaper.jpg
+│  ├── wezterm
+│  │  └── wezterm.lua
+│  └── X11
+│     └── xresources
+├── .gitignore
+├── .local
+│  ├── bin
+│  │  ├── rofi_asroot
+│  │  ├── rofi_launcher
+│  │  ├── rofi_powermenu
+│  │  └── rofi_windows
+│  └── share
+│     └── icons
+│        └── yoru-cursor
+│           ├── cursor.theme
+│           ├── cursors
+│           │  └── zoom-out
+│           └── index.theme
 ├── .mozilla
 │  └── firefox
 │     └── release-number
 │        └── chrome
-│           ├── README.md
-│           ├── screenshot.png
-│           ├── Screenshot_2022-03-24-06-50-55_1366x768.png
+│           ├── ...
 │           └── userChrome.css
-├── .repo
-│  ├── dotfiles.png
-│  └── dotfiles.psd
-├── .vim.d
+├── .vim
 │  ├── autocmd.vim
+│  ├── autoload
+│  │  └── plug.vim
 │  ├── core.vim
 │  ├── keybinds.vim
 │  ├── option.vim
@@ -170,21 +254,19 @@ dotfiles
 │  ├── snippets
 │  │  └── abbreviations.vim
 │  ├── snips.vim
-│  └── theme.vim
-├── .vimrc
-├── .zshrc
+│  ├── theme.vim
+│  └── vimrc
 ├── LICENSE
-├── packages.txt
 └── README.md
 
 ╭─[saifshahriar@git]─[dotfiles]─[master]
 ╰─λ math (exa --tree -a -I .git -D | wc -l)-1
-21
+58
 
 ╭─[saifshahriar@git]─[dotfiles]─[master]
 ╰─λ math (exa --tree -a -I .git | wc -l)-(exa --tree -a -I .git -D | wc -l)-1
-48
+306
 
-21 directories, 48 files
+58 directories, 306 files
 
 ```
