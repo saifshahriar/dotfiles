@@ -33,6 +33,8 @@
 		<td align="center">
 			<samp>
 				No SoystemD! LMAO! 🙂
+				<br/>
+				But I use Arch BTW!
 			<samp>
 		</td>
 	</tr>
@@ -101,7 +103,7 @@ My very basic dotfiles that I use everyday. Nowadays, I use `dwm` in [**Artix Li
 
 
 # Filetree
-_Note: Outdated_
+_Note: Might be Outdated_
 ```fish
 ╭─[saifshahriar@git]─[dotfiles]─[master]
 ╰─λ exa --tree -a --group-directories-first -I .git
