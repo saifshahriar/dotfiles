@@ -28,7 +28,7 @@ endif
 set nobackup        		" No backup.
 set noswapfile    		" No swap.
 set nowrap        		" No line wrap.
-set undodir=/tmp/vim/undo
+set undodir=/tmp/vim/undo | call mkdir(&undodir,   'p')
 set undofile
 """""""""""""""""""""""""""""""""
 "				"
