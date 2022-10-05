@@ -42,10 +42,9 @@ set -gx SQLITE_HISTORY "$XDG_CACHE_HOME"/sqlite_history
 set -gx XCURSOR_PATH /usr/share/icons:$XDG_DATA_HOME/icons
 
 set -gx TERM "xterm-256color"			# Sets the terminal type.
-set -gx EDITOR "vim"					# Sets the terminal type.
+set -gx BROWSER "firefox"
+set -gx EDITOR "vim"
 set -gx FILEMANAGER "pcmanfm"
-	
-set myEditor vim						# Sets vim as the editor globally.
 
 ###########################################
 ### 		SET MANPAGER 				###
