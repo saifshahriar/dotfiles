@@ -28,6 +28,8 @@ endif
 set nobackup        		" No backup.
 set noswapfile    		" No swap.
 set nowrap        		" No line wrap.
+set undodir=/tmp
+set undofile
 """""""""""""""""""""""""""""""""
 "				"
 "	Look && Feel		"

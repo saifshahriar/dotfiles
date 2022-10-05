@@ -23,7 +23,7 @@ nnoremap e :e
 nnoremap <leader>h :nohl<Enter>
 
 " Remove highlighting after a search.
-nnoremap <Esc> <Esc>:nohl<Enter>
+" nnoremap <Esc> <Esc>:nohl<Enter>
 
 """""""""""""""""""""""""""""""""
 "	Auto Pairs		"

@@ -7,8 +7,6 @@
 """""""""""""""""""""""""""""""""
 " Damian Conway's Plugins
 source $HOME/.vim/plugins/dragvisuals.vim
-" Ron language support
-source $HOME/.vim/plugins/ron.vim
 
 """""""""""""""""""""""""""""""""
 " 	Vim Plug		"
