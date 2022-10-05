@@ -38,7 +38,7 @@
 	</tr>
 <table>
 
-My very basic dotfiles that I use everyday. Nowadays I use `dwm` in [**Artix Linux**](https://artixlinux.org/), sometimes [**Void**](https://voidlinux.org/). Nonsystemd distros kind of growing on me. Also, my dots are based on `doas` as admin priv method, so don't blindly copy everything.
+My very basic dotfiles that I use everyday. Nowadays, I use `dwm` in [**Artix Linux**](https://artixlinux.org/), sometimes [**Void**](https://voidlinux.org/). Nonsystemd distros are kind of growing on me. Also, my dots are based on `doas` as admin priv method, so don't copy everything blindly.
 
 <br />
 

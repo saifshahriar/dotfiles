@@ -60,8 +60,8 @@ URxvt.keysym.M-v: perl:clipboard:paste
 URxvt*depth: 32
 
 ! COLORS FOR SXIV
-Sxiv.foreground:   #1a1b26
-Sxiv.background:   #c0caf5
+Sxiv.foreground:   #c0caf5
+Sxiv.background:   #1a1b26
 Sxiv.font: JetBrainsMono Nerd Font:style=bold:size=11
 
 ! TokyoNight colors for Xresources
