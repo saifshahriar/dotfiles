@@ -104,10 +104,9 @@ My very basic dotfiles that I use everyday. Nowadays, I use `dwm` in [**Artix Li
 _Note: Outdated_
 ```fish
 ╭─[saifshahriar@git]─[dotfiles]─[master]
-╰─λ exa --tree -a -I .git
+╰─λ exa --tree -a --group-directories-first -I .git
 
-.
-├── .bashrc
+dotfiles
 ├── .config
 │  ├── alacritty
 │  │  ├── alacritty.yml
@@ -256,6 +255,7 @@ _Note: Outdated_
 │  ├── snips.vim
 │  ├── theme.vim
 │  └── vimrc
+├── .bashrc
 ├── LICENSE
 └── README.md
 
