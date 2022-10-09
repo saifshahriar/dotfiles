@@ -44,7 +44,7 @@ set -gx FILEMANAGER "pcmanfm"
 # First line removes the path; second line sets it.  Without the first line,
 # your path gets massive && fish becomes very slow.
 set -e fish_user_paths
-set -U fish_user_paths $HOME/.local/bin $XDG_DATA_HOME/cargo $HOME/Applications $fish_user_paths
+set -U fish_user_paths $HOME/.local/bin $XDG_DATA_HOME/cargo/bin $HOME/Applications $fish_user_paths
 
 ###########################################
 ### 		SET MANPAGER 				###
