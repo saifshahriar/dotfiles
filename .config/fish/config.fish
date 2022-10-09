@@ -11,14 +11,6 @@
 set -gx ARCHFLAGS "-arch x86_64"
 
 ###########################################
-###			ADDING TO THE PATH			###
-###########################################
-# First line removes the path; second line sets it.  Without the first line,
-# your path gets massive && fish becomes very slow.
-set -e fish_user_paths
-set -U fish_user_paths $HOME/.local/bin $HOME/Applications $fish_user_paths
-
-###########################################
 ###		 		EXPORT					###
 ###########################################
 set fish_greeting						# Supresses fish's intromessage.
@@ -45,6 +37,14 @@ set -gx TERM "xterm-256color"			# Sets the terminal type.
 set -gx BROWSER "firefox"
 set -gx EDITOR "vim"
 set -gx FILEMANAGER "pcmanfm"
+
+###########################################
+###			ADDING TO THE PATH			###
+###########################################
+# First line removes the path; second line sets it.  Without the first line,
+# your path gets massive && fish becomes very slow.
+set -e fish_user_paths
+set -U fish_user_paths $HOME/.local/bin $XDG_DATA_HOME/cargo $HOME/Applications $fish_user_paths
 
 ###########################################
 ### 		SET MANPAGER 				###
