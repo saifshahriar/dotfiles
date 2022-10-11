@@ -9,6 +9,8 @@ posy=$(((768-384)/2))
 alafloat="alacritty --class alacritty-float,alacritty-float -t scratchpad -o window.dimensions.columns=$col -o window.dimensions.lines=$row -o window.position.x=$posx -o window.position.y=$posy"
 
 tmux set-option -g status off
+tmux set-window-option mode-keys vi
+tmux set-option -g mouse on
 
 [ "$(tmux ls | grep -o scpad)" = "scpad" ] && eval "$alafloat -e tmux a -t scpad" || eval "$alafloat -e tmux new -s scpad"
 
