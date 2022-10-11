@@ -1,0 +1,6 @@
+autoloop
+
+auto-save-state
+autosave
+
+crop

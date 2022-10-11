@@ -15,9 +15,9 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ]]--
 --[[
-    mpv_thumbnail_script.lua 0.4.2 - commit a2de250 (branch master)
+    mpv_thumbnail_script.lua 0.4.8 - commit e732ffb (branch master)
     https://github.com/TheAMM/mpv_thumbnail_script
-    Built on 2018-02-07 20:36:54
+    Built on 2022-07-06 01:25:22
 ]]--
 local assdraw = require 'mp.assdraw'
 local msg = require 'mp.msg'
@@ -375,6 +375,8 @@ local thumbnailer_options = {
     -- Add a "--profile=<mpv_profile>" to the mpv sub-call arguments
     -- Use "" to disable
     mpv_profile = "",
+    -- Hardware decoding
+    mpv_hwdec = "no",
     -- Output debug logs to <thumbnail_path>.log, ala <cache_directory>/<video_filename>/000000.bgra.log
     -- The logs are removed after successful encodes, unless you set mpv_keep_logs below
     mpv_logs = true,
@@ -501,8 +503,8 @@ function create_thumbnail_mpv(file_path, timestamp, size, output_path, options)
         -- Pass User-Agent and Referer - should do no harm even with ytdl active
         "--user-agent=" .. mp.get_property_native("user-agent"),
         "--referrer=" .. mp.get_property_native("referrer"),
-        -- Disable hardware decoding
-        "--hwdec=no",
+        -- User set hardware decoding
+        "--hwdec=" .. thumbnailer_options.mpv_hwdec,
 
         -- Insert --no-config, --profile=... and --log-file if enabled
         (thumbnailer_options.mpv_no_config and "--no-config" or nil),
@@ -522,7 +524,7 @@ function create_thumbnail_mpv(file_path, timestamp, size, output_path, options)
         "--vf-add=format=bgra",
         "--of=rawvideo",
         "--ovc=rawvideo",
-        "--o=", output_path
+        ("--o=%s"):format(output_path)
     })
     return utils.subprocess({args=mpv_command})
 end
