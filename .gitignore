@@ -1,7 +1,7 @@
 # Editors Config file
 *.exrc
 /.vscode
-/.config/mpv/watch_later
+.config/mpv/watch_later
 
 # C
 # Prerequisites
