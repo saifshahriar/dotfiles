@@ -34,9 +34,15 @@ set -gx SQLITE_HISTORY "$XDG_CACHE_HOME"/sqlite_history
 set -gx XCURSOR_PATH /usr/share/icons:$XDG_DATA_HOME/icons
 
 set -gx TERM "xterm-256color"			# Sets the terminal type.
-set -gx BROWSER "firefox"
-set -gx EDITOR "vim"
-set -gx FILEMANAGER "pcmanfm"
+
+if type -q brave
+	set -gx BROWSER "brave"
+else if type -q firefox
+	set -gx BROWSER "firefox"
+end
+
+type -q nvim && set -gx EDITOR "nvim" || set -gx EDITOR "vim"
+type -q pcmanfm && set -gx FILEMANAGER "pcmanfm"
 
 ###########################################
 ###			ADDING TO THE PATH			###
@@ -164,37 +170,44 @@ end
 function ex
 	switch $argv
 		case *.tar.bz2
-			tar xjf $argv		&& set_color green && echo "Extracted Successfully!";;
+			tar xjf $argv		;;
 		case *.tar.gz
-			tar xzf $argv 		&& set_color green && echo "Extracted Successfully!";;
+			tar xzf $argv 		;;
 		case *.bz2
-			bunzip2 $argv		&& set_color green && echo "Extracted Successfully!";;
+			bunzip2 $argv		;;
 		case *.rar
-			unrar x $argv		&& set_color green && echo "Extracted Successfully!";;
+			unrar x $argv		;;
 		case *.gz
-			gunzip $argv		&& set_color green && echo "Extracted Successfully!";;
+			gunzip $argv		;;
 		case *.tar
-			tar xf $argv		&& set_color green && echo "Extracted Successfully!";;
+			tar xf $argv		;;
 		case *.tbz2
-			tar xjf $argv		&& set_color green && echo "Extracted Successfully!";;
+			tar xjf $argv		;;
 		case *.tgz
-			tar xzf $argv		&& set_color green && echo "Extracted Successfully!";;
+			tar xzf $argv		;;
 		case *.zip
-			unzip $argv			&& set_color green && echo "Extracted Successfully!";;
+			unzip $argv			;;
 		case *.Z
-			uncompress $argv	&& set_color green && echo "Extracted Successfully!";;
+			uncompress $argv	;;
 		case *.7z
-			7z x $argv			&& set_color green && echo "Extracted Successfully!";;
+			7z x $argv			;;
 		case *.deb
-			ar x $argv			&& set_color green && echo "Extracted Successfully!";;
+			ar x $argv			;;
 		case *.tar.xz
-			tar xf $argv		&& set_color green && echo "Extracted Successfully!";;
+			tar xf $argv		;;
 		case *.tar.zst
-			unzstd $argv		&& set_color green && echo "Extracted Successfully!";;
+			unzstd $argv		;;
 		case *
 			echo "'$argv' cannot be extracted via ex" ;;
 	end
 	set_color normal
+end
+
+# Function for bat as helper
+if type -q bat
+	function help
+	    "$argv" --help 2>&1 | bathelp
+	end
 end
 
 ###########################################
@@ -247,9 +260,10 @@ end
 
 ### Programs
 # Bat 	alias
-	alias bat='bat --theme="gruvbox-dark" --pager="less -FR --RAW-CONTROL-CHARS --quit-if-one-screen --mouse" --map-syntax "*.ino:C++"  --map-syntax h:cpp'
+	alias bat='bat --theme="Dracula" --pager="less -FR --RAW-CONTROL-CHARS --quit-if-one-screen --mouse" --map-syntax "*.ino:C++"  --map-syntax h:cpp'
 	abbr -ag bman 'batman'
 	alias bgrep='batgrep -S'
+	alias bathelp='bat --plain --language=help'
 
 # grep	alias. Colorize grep output (good for log files)
 	alias grep='grep --color=auto'
