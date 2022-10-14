@@ -247,7 +247,9 @@ end
 
 ### Programs
 # Bat 	alias
-	alias bat='bat -f --italic-text=always --theme="gruvbox-dark" --pager="less -FR --RAW-CONTROL-CHARS --quit-if-one-screen --mouse" --map-syntax "*.ino:C++"  --map-syntax h:cpp'
+	alias bat='bat --theme="gruvbox-dark" --pager="less -FR --RAW-CONTROL-CHARS --quit-if-one-screen --mouse" --map-syntax "*.ino:C++"  --map-syntax h:cpp'
+	abbr -ag bman 'batman'
+	alias bgrep='batgrep -S'
 
 # grep	alias. Colorize grep output (good for log files)
 	alias grep='grep --color=auto'
@@ -387,9 +389,9 @@ end
 ###				STARTUP					### shell starts. NOTE: This may slow
 ########################################### down the shell during startup.
 ### Run zoxide | The rust replacement for cd ###
-zoxide init fish | source
+type -q zoxide && zoxide init fish | source
 ### SETTING THE STARSHIP PROMPT ###		# NOTE: This might slow down the prompt.
-# starship init fish | source
+# type -q starship && starship init fish | source
 # Run either one of them
 # colorscript random					# Random Color Script
 										# Get this script from my GitLab: gitlab.com/dwt1/shell-color-scripts
