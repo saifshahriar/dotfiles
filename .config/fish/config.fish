@@ -261,7 +261,7 @@ end
 ### Programs
 # Bat 	alias
 	alias bat='bat --theme="Dracula" --pager="less -FR --RAW-CONTROL-CHARS --quit-if-one-screen --mouse" --map-syntax "*.ino:C++"  --map-syntax h:cpp'
-	abbr -ag bman 'batman'
+	abbr -ag bman batman
 	alias bgrep='batgrep -S'
 	alias bathelp='bat --plain --language=help'
 
@@ -279,7 +279,7 @@ end
 	abbr -ag e	emacs
 
 # file manager
-	abbr -ag f $FILEMANAGER
+	type -q $FILEMANAGER &&	abbr -ag f $FILEMANAGER
 
 # media
 	# Watch anime:
