@@ -64,44 +64,34 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
+-- Func def
+local bf 				= beautiful
+local f = string.format
+
 gaps			= 3
 smartgaps		= true
 rounded_border	= true
-barh			= 30
+border_radius	= 10
+barheight		= 30
 font			= "JetBrainsMono Nerd Font"
 fontsize		= "10"
 
+-- Define Keys
 mod 			= "Mod4"
 shift			= "Shift"
 ctrl			= "Control"
 meta			= "Mod1"
 
+-- Define Programmes
 terminal		= "kitty"
 browser			= "firefox"
 editor			= os.getenv("EDITOR") or "vim"
 editor_cmd		= terminal .. " -e "..editor
-launcher		= string.format("dmenu_run -p 'Run: ' -fn '%s:pixelsize=12' -h %d", font, barh)
+launcher		= string.format("dmenu_run -p 'Run: ' -fn '%s:pixelsize=12' -h %d", font, barheight)
 file_manager	= "thunar"
 gui_editor		= "lapce"
 
 awesomedir 		= os.getenv("HOME").."/.config/awesome/"
-
--- WM Config
-local bf 				= beautiful
-border_radius			= 10
-bf.border_width			= 3
-bf.border_single_client	= false
-bf.wibar_height			= barh
-bf.wibar_opacity		= 0.75
-bf.font					= font .. " " .. fontsize
-bf.menu_height			= 25
-bf.menu_width			= 185
-bf.menu_border_width	= 0
-beautiful.menu_submenu_icon = " "
-bf.hotkeys_shape		= function(cr, w, h) gears.shape.rounded_rect(cr, w, h, border_radius) end
-bf.hotkeys_font 		= bf.font
-bf.hotkeys_description_font = bf.font
-bf.hotkeys_group_margin	= 5
 
 -- Colors
 color = {
@@ -112,34 +102,59 @@ color = {
 	red		= "#f7768e"
 }
 
-bf.border_focus 		= color.blue
-bf.border_normal		= color.bg
-bf.wibar_bg 			= color.bg
-bf.wibar_fg 			= color.fg
-bf.taglist_fg_focus 	= color.blue
-bf.taglist_bg_focus 	= color.bg
-bf.taglist_fg_occupied	= color.green
-bf.taglist_fg_urgent	= color.fg
-bf.taglist_bg_urgent	= color.red
-bf.menu_fg_normal 		= color.fg
-bf.menu_bg_normal 		= color.bg
-bf.menu_fg_focus		= bf.wibar_bg
-bf.menu_bg_focus 		= bf.border_focus
-bf.hotkeys_bg 			= bf.wibar_bg
-bf.hotkeys_fg 			= bf.wibar_fg
-bf.hotkeys_border_color = bf.border_focus
-bf.hotkeys_modifiers_fg = bf.border_focus
-bf.prompt_fg 			= color.fg
-bf.prompt_bg 			= color.bg
+-- WM Config
+local options = {
+	border_width		= 3,
+	border_single_client= false,
+	wibar_opacity		= 0.75,
+	menu_height			= 25,
+	menu_width			= 185,
+	menu_border_width	= 0,
+	menu_submenu_icon	= " ",
+	hotkeys_group_margin= 5,
+
+	-- Theming
+	border_focus 		= color.blue,
+	border_normal		= color.bg,
+	wibar_bg 			= color.bg,
+	wibar_fg 			= color.fg,
+	taglist_fg_focus 	= color.blue,
+	taglist_bg_focus 	= color.bg,
+	taglist_fg_occupied	= color.green,
+	taglist_fg_urgent	= color.fg,
+	taglist_bg_urgent	= color.red,
+	menu_fg_normal 		= color.fg,
+	menu_bg_normal 		= color.bg,
+	menu_fg_focus		= color.bg,
+	menu_bg_focus 		= color.blue,
+	hotkeys_bg 			= color.bg,
+	hotkeys_fg 			= color.green,
+	hotkeys_border_color= color.blue,
+	hotkeys_modifiers_fg= color.blue,
+	prompt_fg 			= color.fg,
+	prompt_bg 			= color.bg,
+	hotkeys_shape		= function(cr, w, h) gears.shape.rounded_rect(cr, w, h, border_radius) end,
+
+	-- Custom icons for layout
+	layout_fairv		= awesomedir .. "icons/" .. "fairv.png",
+	layout_tile			= awesomedir .. "icons/" .. "tile.png",
+
+	-- Defined above 
+	useless_gap			= gaps,
+	wibar_height		= barheight,
+	font				= font .. " " .. fontsize,
+	hotkeys_font 		= font,
+	hotkeys_description_font = font,
+}
+
+for k, v in pairs(options) do
+	beautiful[k] = v
+end
 
 -- Remove small squares that indicates occupied tags
-bf.taglist_squares_sel	= gears.filesystem.get_configuration_dir().."images/bar.png"
-bf.taglist_squares_unsel= gears.filesystem.get_configuration_dir().."images/bar2_.png"
+bf.taglist_squares_sel	= nil
+bf.taglist_squares_unsel= nil
 
--- Custom icons for layout
-local layout_path = awesomedir.."icons/"
-bf.layout_fairv	  = layout_path .. "fairv.png"
-bf.layout_tile	  = layout_path.."tile.png"
 -- }}}
 
 -- {{{ User defined function for extension
@@ -168,9 +183,8 @@ bf.layout_tile	  = layout_path.."tile.png"
 -- end
 
 -- No border when there smartgaps is on
-bf.useless_gap = gaps
 if smartgaps then
-	bf.gap_single_client = false
+	beautiful.gap_single_client = false
 end
 screen.connect_signal("arrange", function(s)
 	local only_one = #s.tiled_clients == 1
@@ -270,14 +284,14 @@ mywallpapers = {
 
 mymainmenu = awful.menu({ 
 	items = { 
-		{ "  Awesome        ",myawesomemenu}, -- beautiful.awesome_icon },
-		{ "  Applications   ", myapps, " ",},
-		{ "  Browser",		browser},
-		{ "  File Manager", 	file_manager },
-		{ "  Launcher",		launcher },
-		{ "  Terminal", 		terminal },
-		{ "  Text Editor",	gui_editor },
-		{ "  Wallpapers     ",mywallpapers}
+		{ "  Awesome        ",	myawesomemenu}, -- beautiful.awesome_icon },
+		{ "  Applications   ", 	myapps, " ",},
+		{ "  Browser",				browser},
+		{ "  File Manager", 		file_manager },
+		{ "  Launcher",			launcher },
+		{ "  Terminal", 			terminal },
+		{ "  Text Editor",			gui_editor },
+		{ "  Wallpapers     ",	mywallpapers}
 	}
 })
 
@@ -421,66 +435,120 @@ root.buttons(gears.table.join(
 -- }}}
 
 -- {{{ Key bindings
+local key = {
+	move = function(k, dir)
+		return(awful.key(
+				{mod}, k, 
+				function() awful.client.focus.bydirection(dir)
+					if client.focus then
+						client.focus:raise()
+					end
+				end, 
+				{ 
+					description = f("Move focus to the %s", dir),
+					group = "client" 
+				}
+		))
+	end,
+
+	swap = function(k, dir)
+		return(awful.key(
+				{mod, shift}, k,
+				function() awful.client.swap.bydirection(dir)
+					if client.focus then client.focus:raise() end
+				end, 
+				{
+					description = f("Move focused window to the %s", dir),
+					group = "client"
+				}
+		))
+	end,
+
+	resize = function(k, dir)
+		return(awful.key(
+				{mod, ctrl}, k,
+				function(c) resize_client(client.focus, dir) end,
+				{
+					description = f("Resize window to the %s", dir),
+					group = "client"
+				}
+		))
+	end,
+
+	cmd = function(m, k, cmd, desc, g)
+		return(awful.key(m, k, cmd, { description = desc, group = g }))
+	end,
+
+	spawn = function(k, p, desc)
+		return(awful.key(
+				{mod}, k, 
+				function() awful.spawn(p) end,
+				{ description = desc, group = "launcher" }
+		))
+	end
+}
+
+
 globalkeys = gears.table.join(
 	-- Switch between clients
-	awful.key({mod}, "h", function() awful.client.focus.bydirection("left")  if client.focus then client.focus:raise() end end, {description = "Move focus to the left",	group = "client"}),
-	awful.key({mod}, "j", function() awful.client.focus.bydirection("down")  if client.focus then client.focus:raise() end end, {description = "Move focus to the down",	group = "client"}),
-	awful.key({mod}, "k", function() awful.client.focus.bydirection("up")    if client.focus then client.focus:raise() end end, {description = "Move focus to the up",		group = "client"}),
-	awful.key({mod}, "l", function() awful.client.focus.bydirection("right") if client.focus then client.focus:raise() end end, {description = "Move focus to the right",	group = "client"}),
+	key.move("h",		"left"),
+	key.move("l", 		"right"),
+	key.move("k", 		"up"),
+	key.move("j", 		"down"),
 	-- Same thing using arrow keys
-	awful.key({mod}, "Left",  function() awful.client.focus.bydirection("left")  if client.focus then client.focus:raise() end end, {description = "Move focus to the left", group = "client"}),
-	awful.key({mod}, "Down",  function() awful.client.focus.bydirection("down")  if client.focus then client.focus:raise() end end, {description = "Move focus to the down", group = "client"}),
-	awful.key({mod}, "Up",    function() awful.client.focus.bydirection("up")    if client.focus then client.focus:raise() end end, {description = "Move focus to the up",	 group = "client"}),
-	awful.key({mod}, "Right", function() awful.client.focus.bydirection("right") if client.focus then client.focus:raise() end end, {description = "Move focus to the right",group = "client"}),
+	key.move("Left",	"left"),
+	key.move("Right",	"right"),
+	key.move("Up",		"up"),
+	key.move("Down",	"down"),
 
 	-- Swap clients
-	awful.key({mod, shift}, "h", function() awful.client.swap.bydirection("left")  if client.focus then client.focus:raise() end end, {description = "Move focused window to the left",	group = "client"}),
-	awful.key({mod, shift}, "j", function() awful.client.swap.bydirection("down")  if client.focus then client.focus:raise() end end, {description = "Move focused window to the down",	group = "client"}),
-	awful.key({mod, shift}, "k", function() awful.client.swap.bydirection("up")    if client.focus then client.focus:raise() end end, {description = "Move focused window to the up",	group = "client"}),
-	awful.key({mod, shift}, "l", function() awful.client.swap.bydirection("right") if client.focus then client.focus:raise() end end, {description = "Move focused window to the right",group = "client"}),
+	key.swap("h",		"left"),
+	key.swap("l", 		"right"),
+	key.swap("k", 		"up"),
+	key.swap("j", 		"down"),
 	-- Same thing using arrow keys
-	awful.key({mod, shift}, "Left",  function() awful.client.swap.bydirection("left")  if client.focus then client.focus:raise() end end, {description = "Move focused window to the left",	group = "client"}),
-	awful.key({mod, shift}, "Down",  function() awful.client.swap.bydirection("down")  if client.focus then client.focus:raise() end end, {description = "Move focused window to the down", group = "client"}),
-	awful.key({mod, shift}, "Up",    function() awful.client.swap.bydirection("up")    if client.focus then client.focus:raise() end end, {description = "Move focused window to the up",	group = "client"}),
-	awful.key({mod, shift}, "Right", function() awful.client.swap.bydirection("right") if client.focus then client.focus:raise() end end, {description = "Move focused window to the right",group = "client"}),
+	key.swap("Left",	"left"),
+	key.swap("Right",	"right"),
+	key.swap("Up",		"up"),
+	key.swap("Down",	"down"),
 
 	-- Control window size
-	awful.key({mod, ctrl}, "h", function(c) resize_client(client.focus, "left") end, {description = "Resize window to the left", group = "client"}),
-	awful.key({mod, ctrl}, "j", function(c) resize_client(client.focus, "down") end, {description = "Resize window to the down", group = "client"}),
-	awful.key({mod, ctrl}, "k", function(c) resize_client(client.focus, "up") 	end, {description = "Resize window to the up", 	 group = "client"}),
-	awful.key({mod, ctrl}, "l", function(c) resize_client(client.focus, "right")end, {description = "Resize window to the right",group = "client"}),
+	key.resize("h",		"left"),
+	key.resize("l", 	"right"),
+	key.resize("k", 	"up"),
+	key.resize("j", 	"down"),
 	-- Same thing using arrow keys
-	awful.key({mod, ctrl}, "Left", 	function(c) resize_client(client.focus, "left") end, {description = "Resize window to the left", group = "client"}),
-	awful.key({mod, ctrl}, "Down", 	function(c) resize_client(client.focus, "down") end, {description = "Resize window to the down", group = "client"}),
-	awful.key({mod, ctrl}, "Up", 	function(c) resize_client(client.focus, "up")	end, {description = "Resize window to the up", 	 group = "client"}),
-	awful.key({mod, ctrl}, "Right", function(c) resize_client(client.focus, "right")end, {description = "Resize window to the right",group = "client"}),
+	key.resize("Left",	"left"),
+	key.resize("Right",	"right"),
+	key.resize("Up",	"up"),
+	key.resize("Down",	"down"),
 
 	-- Move between tags
-	awful.key({mod, meta}, "h",		awful.tag.viewprev,					{description = "Goto next tag", 			group = "tag"}),
-    awful.key({mod, meta}, "l",		awful.tag.viewnext,					{description = "Goto prev tag",				group = "tag"}),
-	awful.key({mod, meta}, "Left",	awful.tag.viewprev,					{description = "Goto next tag", 			group = "tag"}),
-    awful.key({mod, meta}, "Right",	awful.tag.viewnext,					{description = "Goto prev tag",				group = "tag"}),
-	awful.key({mod}, "Escape", 		awful.tag.history.restore,			{description = "Toggle next/prev tag",		group = "tag"}),
+	key.cmd({mod, meta}, "h",	 awful.tag.viewprev, "Goto next tag", "tag"),
+    key.cmd({mod, meta}, "l",	 awful.tag.viewnext, "Goto prev tag", "tag"),
+	key.cmd({mod, meta}, "Left", awful.tag.viewprev, "Goto next tag", "tag"),
+    key.cmd({mod, meta}, "Right",awful.tag.viewnext, "Goto prev tag", "tag"),
+	key.cmd({mod}, "Escape",	 awful.tag.history.restore,	"Toggle next/prev tag",	"tag"),
 	
-	awful.key({mod}, "u",	  		awful.client.urgent.jumpto,			{description = "Jump to urgent client",		group = "client"}),
-	awful.key({mod}, "Tab",			function() awful.layout.inc( 1) end,{description = "Switch to next layout",		group = "layout"}),
-	awful.key({mod, shift}, "Tab", 	function() awful.layout.inc(-1) end,{description = "Switch to previous layout",	group = "layout"}),
+	key.cmd({mod}, "u",	  		awful.client.urgent.jumpto,			 "Jump to urgent client",	  "client"),
+	key.cmd({mod}, "Tab",		function() awful.layout.inc( 1) end, "Switch to next layout",	  "layout"),
+	key.cmd({mod, shift}, "Tab",function() awful.layout.inc(-1) end, "Switch to previous layout", "layout"),
 
 	-- Standard program
-	awful.key({mod}, "Return", function() awful.spawn(terminal) end,{description = "Spawn a terminal (Alacritty)",	group = "launcher"}),
-	awful.key({mod}, "d",	   function() awful.spawn(launcher) end,{description = "Dmenu_run",						group = "launcher"}),
-	awful.key({mod, shift}, "r", awesome.restart,					{description = "reload awesome",				group = "awesome"}),
-	awful.key({mod, shift}, "q", awesome.quit,						{description = "quit awesome",					group = "awesome"})
+	key.spawn("Return", terminal, f("Spawn a terminal (%s)", terminal)),
+	key.spawn("d",		launcher, "Launch Dmenu"), 
+
+	-- Awesome
+	key.cmd({mod, shift}, "r", awesome.restart, "reload awesome", "awesome"),
+	key.cmd({mod, shift}, "q", awesome.quit,   	"quit awesome",	  "awesome")
 )
 
 clientkeys = gears.table.join(
-	awful.key({mod}, "space", awful.client.floating.toggle,							{description = "Toggle floating", 	group = "layout"}),
-	awful.key({mod}, "f", function(c) c.fullscreen = not c.fullscreen c:raise() end,{description = "Toggle fullscreen", group = "layout"}),
-	awful.key({mod, shift}, "space", 	 function(c) c.maximized = not c.maximized c:raise() end,
-																					{description = "Toggle maximize",	group = "layout"}),
-	awful.key({mod}, "c", function(c) c:kill() end,									{description = "Close", 			group = "client"}),
-	awful.key({mod, ctrl}, "Return", function(c) c:swap(awful.client.getmaster()) end,
-																					{description = "Move to master",	group = "client"})
+	key.cmd({mod}, "space", 	   awful.client.floating.toggle, 								"Toggle floating",	"layout"),
+	key.cmd({mod}, "f",			   function(c) c.fullscreen = not c.fullscreen c:raise() end,	"Toggle fullscreen","layout"),
+	key.cmd({mod, shift}, "space", function(c) c.maximized = not c.maximized c:raise() end,		"Toggle maximize",	"layout"),
+	key.cmd({mod}, "c", 		   function(c) c:kill() end,									"Close",			"client"),
+	key.cmd({mod, ctrl}, "Return", function(c) c:swap(awful.client.getmaster()) end,			"Move to master",	"client")
 )
 
 -- Bind all key numbers to tags.
@@ -494,14 +562,24 @@ for i = 1, 9 do
 				local screen = awful.screen.focused()
 				local tag = screen.tags[i]
 				if tag then tag:view_only() end
-			end,												{description = "Goto tag #"..i, group = "tag"}),
+			end,
+			{
+				description = "Goto tag #"..i,
+				group = "tag"
+			}
+		),
 		-- Toggle tag display.
 		awful.key({mod, ctrl }, "#" .. i + 9,
 			function()
 				local screen = awful.screen.focused()
 				local tag = screen.tags[i]
 				if tag then awful.tag.viewtoggle(tag) end
-			end, 												{description = "Toggle tag #" .. i, group = "tag"}),
+			end,
+			{
+				description = "Toggle tag #" .. i,
+				group = "tag"
+			}
+		),
 		-- Move client to tag.
 		awful.key({mod, shift }, "#" .. i + 9,
 			function()
@@ -509,7 +587,12 @@ for i = 1, 9 do
 			  	  local tag = client.focus.screen.tags[i]
 			  	  if tag then client.focus:move_to_tag(tag) end
 			   end
-			end,												{description = "Move focused client to tag #"..i, group = "tag"}),
+			end,
+			{
+				description = "Move focused client to tag #"..i,
+				group = "tag"
+			}
+		),
 		-- Toggle tag on focused client.
 		awful.key({mod, ctrl, shift }, "#" .. i + 9,
 			function()
@@ -517,13 +600,18 @@ for i = 1, 9 do
 			  	  local tag = client.focus.screen.tags[i]
 			  	  if tag then client.focus:toggle_tag(tag) end
 			    end
-			end,												{description = "Toggle focused client on tag #" .. i, group = "tag"})
+			end,
+			{
+				description = "Toggle focused client on tag #" .. i,
+				group = "tag"
+			}
+		)
 
 	)
 end
 
 clientbuttons = gears.table.join(
-	awful.button({ }, 1,	function(c) c:emit_signal("request::activate", "mouse_click", {raise = true}) end),
+	awful.button({ },	1,	function(c) c:emit_signal("request::activate", "mouse_click", {raise = true}) end),
 	awful.button({mod}, 1,	function(c) c:emit_signal("request::activate", "mouse_click", {raise = true}) awful.mouse.client.move(c) end),
 	awful.button({mod}, 3,	function(c) c:emit_signal("request::activate", "mouse_click", {raise = true}) awful.mouse.client.resize(c) end)
 )
