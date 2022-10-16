@@ -218,16 +218,21 @@ end
 	alias mkdir="mkdir -pv"
 
 # Use exa instead of ls.
+if type -q exa
 	alias l="exa -al --color=always --icons --group-directories-first"
 	alias ls="exa -al --color=auto --icons --group-directories-first"
 	alias la="exa -a --color=auto --group-directories-first"
 	alias ll="exa -l --color=auto --group-directories-first"
 	alias lt="exa -aT --color=always --icons --group-directories-first"
 	alias l.='exa -a | egrep "^\."'
+	alias dir="exa -al --color=always --group-directories-first"
+else
+	alias l="ls -Alh --color=auto --group-directories-first"
+	alias ls="ls -Alh --color=auto --group-directories-first"
+end
 
 # If you are coming from CMD. I mean no one does that, but I like these commands.
 	alias cls="clear"
-	alias dir="exa -al --color=always --group-directories-first"
 	alias del="rm -rfv"
 
 # Always confirm before overwriting something && verbose mode.
@@ -236,34 +241,16 @@ end
 	alias ln="ln -v"
 	alias rm="rm -v"
 
-### Config files
-# Shells
-	abbr -ag shrc		$EDITOR ~/.shrc
-	abbr -ag bashrc		$EDITOR ~/.bashrc
-	abbr -ag zshrc		$EDITOR ~/.zshrc
-	abbr -ag fishrc		$EDITOR ~/.config/fish/config.fish
-
-# Window manager
-	abbr -ag awrc		$EDITOR ~/.config/awesome/rc.lua
-	abbr -ag bspwmrc	$EDITOR ~/.config/bspwm/bspwmrc
-	abbr -ag sxhkdrc	$EDITOR ~/.config/sxhkd/sxhkdrc
-	abbr -ag iwmrc		$EDITOR ~/.config/i3/config
-
-# Editor
-	abbr -ag vimrc		$EDITOR ~/.vimrc
-	abbr -ag nvrc		$EDITOR ~/.config/nvim/init.lua
-	abbr -ag nanorc		$EDITOR ~/.nanorc
-
-# Misc
-	abbr -ag starshiprc	$EDITOR ~/.config/starship.toml
-	abbr -ag neofetchrc	$EDITOR ~/.config/neofetch/config.conf
-
 ### Programs
 # Bat 	alias
+if type -q bat
 	alias bat='bat --theme="Dracula" --pager="less -FR --RAW-CONTROL-CHARS --quit-if-one-screen --mouse" --map-syntax "*.ino:C++"  --map-syntax h:cpp'
 	abbr -ag bman batman
 	alias bgrep='batgrep -S'
 	alias bathelp='bat --plain --language=help'
+else
+	set_color && echo "\`bat\` doesn't exist. Download 'bat' and 'bat-extras'."
+end
 
 # grep	alias. Colorize grep output (good for log files)
 	alias grep='grep --color=auto'
@@ -276,7 +263,6 @@ end
 	alias edit='echo "$EDITOR is currently set as your default editor. If you want to change it, then edit the fish config file at $HOME/.config/fish/config.fish"; $EDITOR'
 	abbr -ag nv	nvim
 	abbr -ag v	vim
-	abbr -ag e	emacs
 
 # file manager
 	type -q $FILEMANAGER &&	abbr -ag f $FILEMANAGER
@@ -319,10 +305,8 @@ end
 
 # git
 	abbr -ag addup		git add -u
-	abbr -ag addall		git add .
 	abbr -ag branch		git branch
 	abbr -ag checkout	git checkout
-	abbr -ag clone		git clone
 	abbr -ag commit		git commit -m \"
 	abbr -ag fetch		git fetch
 	abbr -ag ga			git add .
@@ -372,7 +356,6 @@ end
 # ? starts
 # pacman aliases
 	abbr -ag pac 		doas pacman
-	abbr -ag pacman 	doas pacman
 	abbr -ag pacs		doas pacman -S
 	abbr -ag install	doas pacman -S
 	abbr -ag pacsyy		doas pacman -Syy
