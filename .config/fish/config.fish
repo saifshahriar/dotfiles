@@ -43,6 +43,7 @@ end
 
 type -q nvim && set -gx EDITOR "nvim" || set -gx EDITOR "vim"
 type -q pcmanfm && set -gx FILEMANAGER "pcmanfm"
+type -q doas && set adminsv doas || set adminsv sudo
 
 ###########################################
 ###			ADDING TO THE PATH			###
@@ -259,6 +260,15 @@ end
 	alias rg='rg -p'
 	alias ip='ip --color=auto'
 
+# Devour (https://github.com/salman-abedin/devour)
+if type -q devour
+	alias pcmanfm="devour pcmanfm"
+	alias thunar="devour thunar"
+	alias firefox="devour firefox"
+	alias brave="devour brave"
+	alias sxiv="devour sxiv"
+end
+
 # editor
 	alias edit='echo "$EDITOR is currently set as your default editor. If you want to change it, then edit the fish config file at $HOME/.config/fish/config.fish"; $EDITOR'
 	abbr -ag nv	nvim
@@ -283,12 +293,12 @@ end
 	alias ytv-best="youtube-dl -f bestvideo+bestaudio "
 
 # get fastest mirrors
-	alias mirrorbd="doas reflector -c Bangladesh >> /etc/pacman.d/mirrorlist"
-	alias mirrorin="doas reflector -c India >> /etc/pacman.d/mirrorlist"
-	alias mirror="doas reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
-	alias mirrord="doas reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
-	alias mirrors="doas reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
-	alias mirrora="doas reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
+	alias mirrorbd="$adminsv reflector -c Bangladesh >> /etc/pacman.d/mirrorlist"
+	alias mirrorin="$adminsv reflector -c India >> /etc/pacman.d/mirrorlist"
+	alias mirror="$adminsv reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+	alias mirrord="$adminsv reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
+	alias mirrors="$adminsv reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
+	alias mirrora="$adminsv reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
 
 # adding flags
 	alias df='df -h'				# human-readable sizes
@@ -334,47 +344,43 @@ end
 	alias wget="wget --hsts-file="$XDG_DATA_HOME"/wget-hsts"
 	
 # change login shells
-	alias tobash="doas chsh $USER -s /bin/bash 	&& echo 'Now log out.'"
-	alias tozsh="doas chsh $USER -s /bin/zsh 	&& echo 'Now log out.'"
-	alias tofish="doas chsh $USER -s /bin/fish 	&& echo 'Now log out.'"
+	alias tobash="$adminsv chsh $USER -s /bin/bash 	&& echo 'Now log out.'"
+	alias tozsh="$adminsv chsh $USER -s /bin/zsh 	&& echo 'Now log out.'"
+	alias tofish="$adminsv chsh $USER -s /bin/fish 	&& echo 'Now log out.'"
 
 ### Package aliases
-#
-# ? [distro == Debian || Ubuntu]	# Uncomment this block if you use Debian based disto
-# apt 	aliases
-# ? starts
-#	abbr -ag update		doas apt update
-#	abbr -ag upgrade	doas apt upgrade
-#	abbr -ag sysup		doas apt update && doas apt upgrade
-#	abbr -ag install	doas apt install
-#	abbr -ag remove		doas apt remove
-#	abbr -ag autoremove	doas apt autoremove
-#	abbr -ag cleanup	doas apt remove && doas apt autoremove
-# ? ends
-#
-# ? [distro == Arch] # Uncomment this block if you use Arch based disto
-# ? starts
-# pacman aliases
-	abbr -ag pac 		doas pacman
-	abbr -ag pacs		doas pacman -S
-	abbr -ag install	doas pacman -S
-	abbr -ag pacsyy		doas pacman -Syy
-	abbr -ag pacsyu		doas pacman -Syu			# update only standard pkgs
-	abbr -ag pacsyyu	doas pacman -Syyu			# Refresh pkglist & update standard pkgs
-	abbr -ag pacr 		doas pacman -R
-	abbr -ag pacrns		doas pacman -Rns
-	abbr -ag cleanup	doas pacman -Rns (pacman -Qtdq)		# Removes orphan packages
-	abbr -ag pacunlock	doas rm /var/lib/pacman/db.lck		# remove pacman lock
-#
-# yay 	aliases
-	abbr -ag yays		yay -S
-	abbr -ag yaysua		yay -Sua --noconfirm			# update only AUR pkgs (yay)
-	abbr -ag yaysyu		yay -Syu --noconfirm			# update standard pkgs && AUR pkgs (yay)
-#
-# paru	aliases	
-	abbr -ag parsua		paru -Sua --noconfirm			# update only AUR pkgs (paru)
-	abbr -ag parsyu		paru -Syu --noconfirm			# update standard pkgs && AUR pkgs (paru)
-# ? ends
+if type -q apt
+	# abbr -ag update		$adminsv apt update
+	# abbr -ag upgrade	$adminsv apt upgrade
+	# abbr -ag sysup		$adminsv apt update && $adminsv apt upgrade
+	# abbr -ag install	$adminsv apt install
+	# abbr -ag remove		$adminsv apt remove
+	# abbr -ag autoremove	$adminsv apt autoremove
+	# abbr -ag cleanup	$adminsv apt remove && $adminsv apt autoremove
+else if type -q xbps
+	abbr -ag xbi		$adminsv xbps-install
+	abbr -ag xbr		$adminsv xbps-remove
+	abbr -ag xbq		$adminsv xbps-query
+else if type -q pacman
+	abbr -ag pac 		$adminsv pacman
+	abbr -ag pacs		$adminsv pacman -S
+	abbr -ag install	$adminsv pacman -S
+	abbr -ag pacsyy		$adminsv pacman -Syy
+	abbr -ag pacsyu		$adminsv pacman -Syu			# update only standard pkgs
+	abbr -ag pacsyyu	$adminsv pacman -Syyu			# Refresh pkglist & update standard pkgs
+	abbr -ag pacr 		$adminsv pacman -R
+	abbr -ag pacrns		$adminsv pacman -Rns
+	abbr -ag cleanup	$adminsv pacman -Rns (pacman -Qtdq)		# Removes orphan packages
+	abbr -ag pacunlock	$adminsv rm /var/lib/pacman/db.lck		# remove pacman lock
+	if type -q yay
+		abbr -ag yays		yay -S
+		abbr -ag yaysua		yay -Sua --noconfirm			# update only AUR pkgs (yay)
+		abbr -ag yaysyu		yay -Syu --noconfirm			# update standard pkgs && AUR pkgs (yay)
+	else if type -q paru
+		abbr -ag parsua		paru -Sua --noconfirm			# update only AUR pkgs (paru)
+		abbr -ag parsyu		paru -Syu --noconfirm			# update standard pkgs && AUR pkgs (paru)
+	end
+end
 
 ###########################################
 ###		ADD CUSTOM ALIASES BELOW		###
