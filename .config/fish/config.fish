@@ -340,14 +340,12 @@ end
 	alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
 # receive the key of a developer
 	alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
+
+# tokei
+	type -q tokei && abbr -ag tk "tokei --hidden ."
 # wget
 	alias wget="wget --hsts-file="$XDG_DATA_HOME"/wget-hsts"
 	
-# change login shells
-	alias tobash="$adminsv chsh $USER -s /bin/bash 	&& echo 'Now log out.'"
-	alias tozsh="$adminsv chsh $USER -s /bin/zsh 	&& echo 'Now log out.'"
-	alias tofish="$adminsv chsh $USER -s /bin/fish 	&& echo 'Now log out.'"
-
 ### Package aliases
 if type -q apt
 	# abbr -ag update		$adminsv apt update
