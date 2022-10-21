@@ -133,6 +133,8 @@ local options = {
 	hotkeys_modifiers_fg= color.blue,
 	prompt_fg 			= color.fg,
 	prompt_bg 			= color.bg,
+	bg_systray			= color.bg,
+	systray_icon_spacing= 3,
 	hotkeys_shape		= function(cr, w, h) gears.shape.rounded_rect(cr, w, h, border_radius) end,
 
 	-- Custom icons for layout
@@ -306,7 +308,11 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+-- See: https://elv13.github.io/widgets/wibox.widget.textclock.html
+mytextclock = wibox.widget.textclock("%a %b %e, %I:%M %p")
+
+-- Systray
+mysystray = wibox.layout.margin(wibox.widget.systray(), 5, 5, 5, 5)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -414,8 +420,8 @@ awful.screen.connect_for_each_screen(function(s)
 		s.mytasklist, -- Middle widget
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
-			wibox.widget.systray(),
 			mytextclock,
+			mysystray,
 			s.mylayoutbox,
 		},
 	}
