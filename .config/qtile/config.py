@@ -19,6 +19,7 @@ from libqtile import bar, layout, widget, hook
 from libqtile.widget import base
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
+#NOTE: `psutil` module must be installed for some of the widgets.  #Fix: Import error
 
 # ~~ Variables ~~ #
 mod = "mod4"
