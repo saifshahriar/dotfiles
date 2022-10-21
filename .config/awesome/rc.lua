@@ -83,7 +83,7 @@ ctrl			= "Control"
 meta			= "Mod1"
 
 -- Define Programmes
-terminal		= "kitty"
+terminal		= "alacritty"
 browser			= "firefox"
 editor			= os.getenv("EDITOR") or "vim"
 editor_cmd		= terminal .. " -e "..editor
@@ -304,9 +304,6 @@ mylauncher = awful.widget.launcher({
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
--- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
-
 -- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
@@ -417,7 +414,6 @@ awful.screen.connect_for_each_screen(function(s)
 		s.mytasklist, -- Middle widget
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
-			mykeyboardlayout,
 			wibox.widget.systray(),
 			mytextclock,
 			s.mylayoutbox,
@@ -697,4 +693,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Autostart
 -- os.execute(awesomedir.."scripts/autostart.sh")
+os.execute("ibus-daemon &")
 -- }}}
