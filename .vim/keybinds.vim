@@ -11,13 +11,11 @@ nnoremap <leader>a :a_
 """""""""""""""""""""""""""""""""
 "	Basics			"
 """""""""""""""""""""""""""""""""
-" Press \\ to jump back to the last cursor position.
-nnoremap <leader>\ ``
-
 nnoremap ; :
 nnoremap ! :!
 inoremap jj <Esc>
-nnoremap e :e 
+nnoremap <C-s> :w<Enter>
+nnoremap <C-q> :q<Enter>
 
 " Press \h to remove highlighting in search.
 nnoremap <leader>h :nohl<Enter>
