@@ -2,14 +2,14 @@ set termguicolors
 set background=dark
 
 " Vim colorscheme
-colorscheme gruvbox
+colorscheme tokyonight
 
 " Airline theme
-let g:airline_theme="gruvbox"
+let g:airline_theme="tokyonight"
 
 " lightline configuration
 let g:lightline = {
-		\ 'colorscheme': 'gruvbox',
+		\ 'colorscheme': 'tokyonight',
 		\ 'active': {
 		\ 'right': [ [ 'lightlineinfo' ], 
 		\	     [ 'percent' ],

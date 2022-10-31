@@ -30,6 +30,9 @@ set noswapfile    		" No swap.
 set nowrap        		" No line wrap.
 set undodir=/tmp/vim/undo | call mkdir(&undodir,   'p')
 set undofile
+set viminfofile=/tmp/vim/viminfo
+let g:netrw_home = $XDG_DATA_HOME."/vim"
+call mkdir($XDG_DATA_HOME."/vim/spell", 'p')
 """""""""""""""""""""""""""""""""
 "				"
 "	Look && Feel		"
