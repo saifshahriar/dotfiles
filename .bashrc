@@ -27,7 +27,7 @@ export SQLITE_HISTORY="$XDG_CACHE_HOME"/sqlite_history
 
 export TERM="xterm-256color"
 export HISTCONTROL=ignoredups:erasedups	# no duplicate entries
-export HISTFILE="$HOME"/.cache
+export HISTFILE="$HOME"/.cache/bash_history
 export EDITOR="vim"
 export VISUAL="vim"
 export MANPAGER='/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
@@ -262,3 +262,4 @@ PS1='\[\e[0;31m\][\[\e[0;33m\]\u\[\e[0;32m\]@\[\e[0;34m\]\h \[\e[0;35m\]\w\[\e[0
 #	alias win="cd /mnt/c/Users/Saif"
 
 #exec fish
+[ $(command -v zoxide) ] && eval "$(zoxide init bash)"
