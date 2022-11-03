@@ -27,6 +27,7 @@ set -gx GNUPGHOME "$XDG_DATA_HOME"/gnupg
 set -gx GOPATH "$XDG_DATA_HOME"/go
 set -gx GTK2_RC_FILES "$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 set -gx LESSHISTFILE "$XDG_STATE_HOME"/less/history
+set -gx NIMBLE_DIR "$XDG_DATA_HOME"/nimble
 set -gx NODE_REPL_HISTORY "$XDG_DATA_HOME"/node_repl_history
 set -gx PASSWORD_STORE_DIR "$XDG_DATA_HOME"/pass
 set -gx SCREENRC "$XDG_CONFIG_HOME"/screen/screenrc
