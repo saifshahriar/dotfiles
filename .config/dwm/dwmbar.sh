@@ -25,19 +25,19 @@ wlan() {
 clock() {
 	printf "^c#e0af68^[ $(date '+%a, %I:%M %p')]"
 }
-#
-#  ## System Update
-#  updates() {
-#  	updates=$(checkupdates | wc -l)
-#
-#  	if [ -z "$updates" ]; then
-#  		printf "^c#98C379^  Updated"
-#  	else
-#  		printf "^c#98C379^  $updates"" updates"
-#  	fi
-#  }
-#
-#  ## Battery Info
+
+## System Update
+  updates() {
+  	updates=$(checkupdates | wc -l)
+
+  	if [ -z "$updates" ]; then
+  		printf "^c#98C379^  Updated"
+  	else
+  		printf "^c#98C379^  $updates"" updates"
+  	fi
+  }
+
+## Battery Info
 battery() {
 	BAT=$(cat /sys/class/power_supply/BAT0/capacity)
 	AC=$(cat /sys/class/power_supply/AC/online)
@@ -48,15 +48,15 @@ battery() {
 		printf "^c#E06C75^[ Full"
 	else
 		if [ "$BAT" -ge 0 ] && [ "$BAT" -le 20 ]; then
-			printf "^c#E98CA4^[ $BAT%%"
+			printf "^c#E98CA4^[ $BAT%%]"
 		elif [ "$BAT" -ge 20 ] && [ "$BAT" -le 40 ]; then
-			printf "^c#E98CA4^[ $BAT%%"
+			printf "^c#E98CA4^[ $BAT%%]"
 		elif [ "$BAT" -ge 40 ] && [ "$BAT" -le 60 ]; then
-			printf "^c#E98CA4^[ $BAT%%"
+			printf "^c#E98CA4^[ $BAT%%]"
 		elif [ "$BAT" -ge 60 ] && [ "$BAT" -le 80 ]; then
-			printf "^c#E98CA4^[ $BAT%%"
+			printf "^c#E98CA4^[ $BAT%%]"
 		elif [ "$BAT" -ge 80 ] && [ "$BAT" -le 100 ]; then
-			printf "^c#E98CA4^[ $BAT%%"
+			printf "^c#E98CA4^[ $BAT%%]"
 		fi
 	fi
 }
@@ -66,13 +66,13 @@ brightness() {
 	LIGHT=$(printf "%.0f\n" `light -G`)
 
 	if [ "$LIGHT" -ge 0 ] && [ "$LIGHT" -le 25 ]; then
-		printf "^c#56B6C2^[ $LIGHT%%"
+		printf "^c#56B6C2^[ $LIGHT%%]"
 	elif [ "$LIGHT" -ge 25 ] && [ "$LIGHT" -le 50 ]; then
-		printf "^c#56B6C2^[ $LIGHT%%"
+		printf "^c#56B6C2^[ $LIGHT%%]"
 	elif [ "$LIGHT" -ge 50 ] && [ "$LIGHT" -le 75 ]; then
-		printf "^c#56B6C2^[ $LIGHT%%"
+		printf "^c#56B6C2^[ $LIGHT%%]"
 	elif [ "$LIGHT" -ge 75 ] && [ "$LIGHT" -le 100 ]; then
-		printf "^c#56B6C2^[ $LIGHT%%"
+		printf "^c#56B6C2^[ $LIGHT%%]"
 	fi
 }
 
@@ -81,5 +81,5 @@ while true; do
   # [ "$interval" -eq 0 ] || [ $(("$interval" % 3600)) -eq 0 ] && updates=$(updates)
   interval=$((interval + 1))
 
-  sleep 1 && xsetroot -name "$(battery)] $(brightness)] $(cpu_info) $(memory) $(wlan) $(clock) "
+  sleep 1 && xsetroot -name "$(battery) $(brightness) $(cpu_info) $(memory) $(wlan) $(clock) "
 done
