@@ -28,7 +28,7 @@
 dotdir=$(pwd)
 
 bashrc() {
-	cp "$dotdir"/.bashrc "$HOME"
+	cp -v "$dotdir"/.bashrc "$HOME"
 }
 
 fish_config() {
@@ -45,12 +45,12 @@ neovim() {
 	# Get the astronvim submodules
 	cd "$dotdir"/.config/nvim && git submodule update --init --depth=1
 	# Create a backup of the old configs and move the configs to the local setup
-	mv "$dotnvim" "$dotnvim".bak.saif && cd "$dotdir"
-	cp -r "$dotdir"/.config/nvim "$HOME"/.config/
+	mv -v "$dotnvim" "$dotnvim".bak.saif && cd "$dotdir" || exit
+	cp -vr "$dotdir"/.config/nvim "$HOME"/.config/
 	# Now copy the user config file
-	mv "$dotnvim"/lua/user_example/ "$dotnvim"/lua/user/
-	rm "$dotdir"/.config/nvim/lua/user/*
-	cp -r "$dotdir"/.config/nvim.user.d "$HOME"/.config/
+	mv -v "$dotnvim"/lua/user_example/ "$dotnvim"/lua/user/
+	rm -v "$dotnvim"/lua/user/*
+	cp -vr "$dotdir"/.config/nvim.user.d "$HOME"/.config/
 	ln -s "$dotdir"/.config/nvim.user.d/init.lua "$dotnvim"/lua/user/init.vim
 }
 
