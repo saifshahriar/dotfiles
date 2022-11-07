@@ -26,7 +26,6 @@ let g:lightline = {
 		\ 	'lineinfo': '%3l:%-2v%<',
 		\ },
 		\ }
-hi SignColumn guibg=#282828 guifg=#282828
 hi LineNrAbove guifg=#928374
 hi LineNr guifg=#fabd2f
 hi LineNrBelow guifg=#928374
