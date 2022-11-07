@@ -1,6 +1,9 @@
 set termguicolors
 set background=dark
 
+let g:tokyonight_transparent_background = 1
+let g:tokyonight_enable_italic = 1
+
 " Vim colorscheme
 colorscheme tokyonight
 
@@ -11,7 +14,7 @@ let g:airline_theme="tokyonight"
 let g:lightline = {
 		\ 'colorscheme': 'tokyonight',
 		\ 'active': {
-		\ 'right': [ [ 'lightlineinfo' ], 
+		\ 'right': [ [ 'lightlineinfo' ],
 		\	     [ 'percent' ],
 		\	     [ 'lineinfo', 'fileformat', 'fileencoding' , 'filetype' ] ],
 		\ 'left': [ [ 'mode', 'paste' ],
