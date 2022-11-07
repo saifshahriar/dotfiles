@@ -83,7 +83,7 @@ ctrl			= "Control"
 meta			= "Mod1"
 
 -- Define Programmes
-terminal		= "alacritty"
+terminal		= "st"
 browser			= "firefox"
 editor			= os.getenv("EDITOR") or "vim"
 editor_cmd		= terminal .. " -e "..editor

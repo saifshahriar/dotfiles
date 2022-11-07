@@ -61,7 +61,7 @@ keys = [ "d" ]
 modifiers = [ "super" ]
 
 [[startProcess]]
-command = "alacritty"
+command = "st"
 keys = [ "Return" ]
 modifiers = [ "super" ]
 
