@@ -50,8 +50,8 @@ neovim() {
 	# Now copy the user config file
 	mv -v "$dotnvim"/lua/user_example/ "$dotnvim"/lua/user/
 	rm -v "$dotnvim"/lua/user/*
-	cp -vr "$dotdir"/.config/nvim.user.d "$HOME"/.config/
-	ln -s "$dotdir"/.config/nvim.user.d/init.lua "$dotnvim"/lua/user/init.vim
+	cp -v "$dotdir"/.config/nvim.user.d/init.lua "$dotnvim"/lua/user/init.lua
+	ln -s "$dotnvim"/lua/user/init.lua "$dotnvim"/user.lua
 }
 
 case "$1" in
