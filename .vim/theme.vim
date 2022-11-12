@@ -32,6 +32,6 @@ let g:lightline = {
 hi LineNrAbove     guifg=#928374
 hi LineNr          guifg=#fabd2f
 hi LineNrBelow     guifg=#928374
-hi GitGutterAdd    guifg=#9ece6e ctermfg=Green
-hi GitGutterChange guifg=#e0af68 ctermfg=Yellow
-hi GitGutterDelete guifg=#f7768e ctermfg=Red
+hi GitGutterAdd    guifg=#009900 ctermfg=Green
+hi GitGutterChange guifg=#fadb2f ctermfg=Yellow
+hi GitGutterDelete guifg=#ff2222 ctermfg=Red
