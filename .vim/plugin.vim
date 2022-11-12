@@ -48,7 +48,6 @@ call plug#begin('~/.vim/plugins/vim-plug/plugged')
 	Plug 'ap/vim-css-color'		" Color previews for CSS.
 	" Plug 'dense-analysis/ale'
 	" Plug 'sheerun/vim-polyglot'
-	" Plug 'scrooloose/syntastic'
 	Plug 'jbgutierrez/vim-better-comments'
                                         " Better comments for vim.
 	" Plug 'fatih/vim-go'             " Golang syntax highlighting.

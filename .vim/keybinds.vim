@@ -32,6 +32,10 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
+nnoremap <c-Left> <c-w>h
+nnoremap <c-Down> <c-w>j
+nnoremap <c-Up> <c-w>k
+nnoremap <c-Right> <c-w>l
 
 " Indentation without breaking
 nnoremap > >>
