@@ -51,6 +51,7 @@ neovim() {
 	mv -v "$dotnvim"/lua/user_example/ "$dotnvim"/lua/user/
 	rm -v "$dotnvim"/lua/user/*
 	cp -v "$dotdir"/.config/nvim.user.d/init.lua "$dotnvim"/lua/user/init.lua
+	cp -v "$dotdir"/.config/nvim.user.d/alpha.lua "$dotnvim"/lua/configs/alpha.lua
 	ln -s "$dotnvim"/lua/user/init.lua "$dotnvim"/user.lua
 }
 
