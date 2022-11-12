@@ -60,13 +60,22 @@ URxvt.keysym.M-v: perl:clipboard:paste
 URxvt*depth: 32
 
 ! COLORS FOR SXIV
-Sxiv.foreground:   #c0caf5
-Sxiv.background:   #1a1b26
+Sxiv.foreground: #c0caf5
+Sxiv.background: #1a1b26
 Sxiv.font: JetBrainsMono Nerd Font:style=bold:size=11
 
-! TokyoNight colors for Xresources
+! st
+*font: JetBrainsMono Nerd Font:size=11
+*cursorColor: #c0caf5
+*termname: st-256color
+*shell: bash
+
+! TokyoNight colors for Xresources (Used in DWM and ST)
 *background: #1a1b26
 *foreground: #c0caf5
+*selforeground: #7aa2f7
+*selbackground: #1a1b26
+*border: #7aa2f7
 
 *color0: #15161e
 *color1: #f7768e
@@ -85,3 +94,10 @@ Sxiv.font: JetBrainsMono Nerd Font:style=bold:size=11
 *color13: #bb9af7
 *color14: #7dcfff
 *color15: #c0caf5
+
+! Xmenu specific
+xmenu.font: JetBrainsMono Nerd Font:size=9, NotoColorEmoji:size=11
+xmenu.separator: #c0caf5
+xmenu.borderWidth: 2
+xmenu.selbackground: #7aa2f7
+xmenu.selforeground: #1a1b26

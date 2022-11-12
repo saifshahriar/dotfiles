@@ -37,7 +37,7 @@ call plug#begin('~/.vim/plugins/vim-plug/plugged')
 	" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	" Plug 'mattn/emmet-vim'        " Emmet snippets.
 	" let g:user_emmet_leader_key='<C->'
-     
+
 "{{ Tim Pope Plugins }}
 
 "{{ Syntax Highlighting and Colors }}
@@ -53,7 +53,7 @@ call plug#begin('~/.vim/plugins/vim-plug/plugged')
 	Plug 'jbgutierrez/vim-better-comments'
                                         " Better comments for vim.
 	Plug 'fatih/vim-go'             " Golang syntax highlighting.
-    
+
 "{{ Junegunn Choi Plugins }}
 	" Plug 'junegunn/goyo.vim'	" Distraction-free viewing.
 	" Plug 'junegunn/limelight.vim'	" Hyperfocus on a range.
@@ -63,11 +63,11 @@ call plug#begin('~/.vim/plugins/vim-plug/plugged')
 	" xmap ga <Plug>(EasyAlign)
 	" Start interactive EasyAlign for a motion/text object (e.g. gaip)
 	" nmap ga <Plug>(EasyAlign)
-     
+
 "{{Theme Plugins }}
-	Plug 'itchyny/lightline.vim'	" Lightline     statusbar. # Keep only 
+	Plug 'itchyny/lightline.vim'	" Lightline     statusbar. # Keep only
 	Plug 'vim-airline/vim-airline'  " Airline       statusbar. # one of them
-	Plug 'vim-airline/vim-airline-themes' 
-	" Plug 'ghifarit53/tokyonight-vim'
-	Plug 'gruvbox-community/gruvbox'	
+	Plug 'vim-airline/vim-airline-themes'
+	Plug 'ghifarit53/tokyonight-vim'
+	" Plug 'gruvbox-community/gruvbox'
 call plug#end()
