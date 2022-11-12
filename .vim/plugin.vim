@@ -7,6 +7,8 @@
 """""""""""""""""""""""""""""""""
 " Damian Conway's Plugins
 source $HOME/.vim/plugins/dragvisuals.vim
+source $HOME/.vim/plugins/commentary.vim
+
 
 """""""""""""""""""""""""""""""""
 " 	Vim Plug		"

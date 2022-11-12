@@ -15,6 +15,10 @@ nnoremap ; :
 nnoremap ! :!
 inoremap jj <Esc>
 
+" Ez-comment
+nnoremap <leader>/ :Commentary<Enter>gv
+vnoremap <leader>/ :Commentary<Enter>gv
+
 " Save && quit
 nnoremap <C-s> :w<Enter>
 nnoremap <C-q> :q<Enter>

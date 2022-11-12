@@ -119,4 +119,6 @@ set autoindent smartindent	" Auto indents files && smart indentation.
 				" TODO: Only uncomment if vim-airline plugin is 
 				" installed and enabled.
 source $HOME/.vim/plugins/statusline.vim
+set laststatus=2        	" Show the status on the second to last line.
+set showtabline=2		" Show the tab    on the second to last line.	
 """""""""""""""""""""""""""""""""
