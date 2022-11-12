@@ -14,14 +14,30 @@ nnoremap <leader>a :a_
 nnoremap ; :
 nnoremap ! :!
 inoremap jj <Esc>
+
+" Save && quit
 nnoremap <C-s> :w<Enter>
 nnoremap <C-q> :q<Enter>
 
-" Press \h to remove highlighting in search.
+" Press remove highlighting after search.
 nnoremap <leader>h :nohl<Enter>
 
-" Remove highlighting after a search.
-" nnoremap <Esc> <Esc>:nohl<Enter>
+" creating pane
+nnoremap <leader>v :vs<Enter>
+nnoremap <leader>z :sp<Enter>
+nnoremap <leader>q :q<Enter>
+
+" Switching panes
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+
+" Indentation without breaking
+nnoremap > >>
+nnoremap < <<
+vmap < <gv
+vmap > >gv
 
 """""""""""""""""""""""""""""""""
 "	Auto Pairs		"
@@ -39,13 +55,6 @@ nnoremap <leader>h :nohl<Enter>
 vnoremap y "+y
 nnoremap y "+y
 
-"""""""""""""""""""""""""""""""""
-"	Tabs			"
-"""""""""""""""""""""""""""""""""
-nnoremap <C-t> :tabnew<Enter>
-nnoremap te :tabe 
-nnoremap <Tab> :tabn<Enter>
-nnoremap <S-Tab> :tabp<Enter>
 
 """""""""""""""""""""""""""""""""
 "	Plugin Keybindings	"
@@ -73,18 +82,18 @@ map <Leader>ms :InstantMarkdownStop<CR>
 "##     vmap  <expr>  <RIGHT>  DVB_Drag('right')
 "##     vmap  <expr>  <DOWN>   DVB_Drag('down')
 "##     vmap  <expr>  <UP>     DVB_Drag('up')
-vmap  <expr>  D        DVB_Duplicate()
+" vmap  <expr>  D        DVB_Duplicate()
 "##
 "##     " Remove any introduced trailing whitespace after moving...
-let g:DVB_TrimWS = 1
+" let g:DVB_TrimWS = 1
 "##
 "##  Or, if you use the arrow keys for normal motions, choose
 "##  four other keys for block dragging. For example:
 "##
-vmap  <expr>  h        DVB_Drag('left')
-vmap  <expr>  l        DVB_Drag('right')
-vmap  <expr>  j        DVB_Drag('down')
-vmap  <expr>  k        DVB_Drag('up')
+" vmap  <expr>  h        DVB_Drag('left')
+" vmap  <expr>  l        DVB_Drag('right')
+" vmap  <expr>  j        DVB_Drag('down')
+" vmap  <expr>  k        DVB_Drag('up')
 "##
 "##  Or:
 "##

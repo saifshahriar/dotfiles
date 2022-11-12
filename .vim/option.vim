@@ -96,7 +96,7 @@ set history=500     		" Set the commands to save in history default
 """""""""""""""""""""""""""""""""
 set mouse=a			" Mouse support for VIM. 
 				" (might or might not work in windows)
-set scrolloff=21    		" Do not let cursor scroll below or above N 
+set scrolloff=16    		" Do not let cursor scroll below or above N 
 				" number of lines when scrolling.
 set sidescroll=8		" Same for side scrolling.
 """""""""""""""""""""""""""""""""
