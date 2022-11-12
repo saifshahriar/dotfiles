@@ -1,5 +1,5 @@
 set nocompatible		" You don't need VI compatibility
-set updatetime=50               " Don't take more than 50ms time to load
+set updatetime=1               " Don't take more than 50ms time to load
 
 if has ('win32')
 	set backspace=indent,eol,start

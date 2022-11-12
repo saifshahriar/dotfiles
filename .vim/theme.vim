@@ -29,6 +29,9 @@ let g:lightline = {
 		\ 	'lineinfo': '%3l:%-2v%<',
 		\ },
 		\ }
-hi LineNrAbove guifg=#928374
-hi LineNr guifg=#fabd2f
-hi LineNrBelow guifg=#928374
+hi LineNrAbove     guifg=#928374
+hi LineNr          guifg=#fabd2f
+hi LineNrBelow     guifg=#928374
+hi GitGutterAdd    guifg=#9ece6e ctermfg=Green
+hi GitGutterChange guifg=#e0af68 ctermfg=Yellow
+hi GitGutterDelete guifg=#f7768e ctermfg=Red

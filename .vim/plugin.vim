@@ -16,7 +16,7 @@ call plug#begin('~/.vim/plugins/vim-plug/plugged')
 "{{ The Basics }}
 	Plug 'frazrepo/vim-rainbow'
 	let g:rainbow_active = 1
-	Plug 'suan/vim-instant-markdown', {'rtp': 'after'}
+	" Plug 'suan/vim-instant-markdown', {'rtp': 'after'}
 					" Markdown Preview
 	Plug 'jiangmiao/auto-pairs'     " Brackates and quote autopairs.
 	Plug 'tpope/vim-surround'	" Changes surrounding characters.
@@ -25,10 +25,10 @@ call plug#begin('~/.vim/plugins/vim-plug/plugged')
 	Plug 'saifshahriar/vim-startify'
                                         " Startpage for vim.
 	" Plug 'vifm/vifm.vim'		" Vifm
-	Plug 'scrooloose/nerdtree'	" Nerdtree
-	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+	" Plug 'scrooloose/nerdtree'	" Nerdtree
+	" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 					" Highlighting Nerdtree
-	Plug 'ryanoasis/vim-devicons'	" Icons for Nerdtree
+	" Plug 'ryanoasis/vim-devicons'	" Icons for Nerdtree
 
 "{{ Productivity }}
 	" Plug 'vimwiki/vimwiki'	" VimWiki
@@ -37,8 +37,7 @@ call plug#begin('~/.vim/plugins/vim-plug/plugged')
 	" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	" Plug 'mattn/emmet-vim'        " Emmet snippets.
 	" let g:user_emmet_leader_key='<C->'
-
-"{{ Tim Pope Plugins }}
+	Plug 'airblade/vim-gitgutter'
 
 "{{ Syntax Highlighting and Colors }}
 	Plug 'PotatoesMaster/i3-vim-syntax'
@@ -47,12 +46,12 @@ call plug#begin('~/.vim/plugins/vim-plug/plugged')
 "{{ Language Support }}
 	Plug 'vim-python/python-syntax'	" Python highlighting.
 	Plug 'ap/vim-css-color'		" Color previews for CSS.
-	Plug 'dense-analysis/ale'
-	Plug 'sheerun/vim-polyglot'
-	Plug 'scrooloose/syntastic'
+	" Plug 'dense-analysis/ale'
+	" Plug 'sheerun/vim-polyglot'
+	" Plug 'scrooloose/syntastic'
 	Plug 'jbgutierrez/vim-better-comments'
                                         " Better comments for vim.
-	Plug 'fatih/vim-go'             " Golang syntax highlighting.
+	" Plug 'fatih/vim-go'             " Golang syntax highlighting.
 
 "{{ Junegunn Choi Plugins }}
 	" Plug 'junegunn/goyo.vim'	" Distraction-free viewing.
@@ -65,7 +64,7 @@ call plug#begin('~/.vim/plugins/vim-plug/plugged')
 	" nmap ga <Plug>(EasyAlign)
 
 "{{Theme Plugins }}
-	Plug 'itchyny/lightline.vim'	" Lightline     statusbar. # Keep only
+	" Plug 'itchyny/lightline.vim'	" Lightline     statusbar. # Keep only
 	Plug 'vim-airline/vim-airline'  " Airline       statusbar. # one of them
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'ghifarit53/tokyonight-vim'

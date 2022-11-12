@@ -70,7 +70,7 @@ set hidden
 set list
 set listchars=tab:\ \ ,trail:
 set number relativenumber	" Number && relative number. 
-set signcolumn=no		" Shows extra column to the left side always.
+set signcolumn=auto		" Shows extra column to the left side always.
 set splitright splitbelow	" Splits files to the right and bottom.
 set spell			" Spellcheck support for vim.
 setlocal spell spelllang=en	" en = en_UK
