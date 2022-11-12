@@ -24,3 +24,5 @@ augroup filetype_vim
 	autocmd FileType vim set tabstop=8 shiftwidth=8 noexpandtab
 augroup END
 
+""" HTML """
+autocmd Filetype html setlocal ts=2 sw=2 expandtab
