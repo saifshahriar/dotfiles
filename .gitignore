@@ -3,10 +3,6 @@
 /.vscode
 .config/mpv/watch_later
 
-# C
-# Prerequisites
-*.d
-
 # Object files
 *.o
 *.ko
