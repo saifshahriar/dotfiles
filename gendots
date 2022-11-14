@@ -45,6 +45,7 @@ neovim() {
 	# Get the astronvim submodules
 	cd "$dotdir"/.config/nvim && git submodule update --init --depth=1
 	# Create a backup of the old configs and move the configs to the local setup
+	mkdir -p "$dotnvim"
 	mv -v "$dotnvim" "$dotnvim".bak.saif && cd "$dotdir" || exit
 	cp -vr "$dotdir"/.config/nvim "$HOME"/.config/
 	# Now copy the user config file
