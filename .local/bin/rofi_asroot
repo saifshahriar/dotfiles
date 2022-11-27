@@ -1,0 +1,38 @@
+#!/bin/sh
+
+DIR="$HOME/.config"
+rofi_cmd="rofi -theme $DIR/rofi/styles/asroot.rasi"
+
+su_protocol="doas"
+
+# Apps
+terminal=" Alacritty"
+files=" Thunar"
+editor=" Lapce"
+clifm=" Lf"
+vim=" Vim"
+
+# Variable passed to rofi
+options="$terminal\n$files\n$editor\n$clifm\n$vim"
+term="\"$su_protocol\" alacritty --class alacritty-float,alacritty-float --config-file \"$HOME\"/.config/alacritty/alacritty.yml"
+
+# Functions
+
+chosen="$(echo "$options" | $rofi_cmd -p "Run apps as root" -dmenu -selected-row 0)"
+case $chosen in
+    $terminal)
+        "$term" -e "\"$su_protocol\" su"
+        ;;
+    $files)
+    	"$su_protocol" thunar
+        ;;
+    $editor)
+        "$term" -e geany
+        ;;
+    $clifm)
+        "$term" -e lf
+        ;;
+    $vim)
+        "$term" -e neovim
+        ;;
+esac

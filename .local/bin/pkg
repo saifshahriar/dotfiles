@@ -1,0 +1,16 @@
+#!/bin/sh
+
+case "$1" in
+	-S)		# "Installs packages."
+		git clone https://github.com/LukeSmithxyz/"$2".git --depth=1 /tmp/"$2"
+		cd /tmp/"$2"
+		makepkg -si
+		rm -rf /tmp/"$2"
+		;;
+	-R) 		# "Removes Packages."
+		doas pacman -Rns "$2"
+		;;
+	-h) printf "\t-S : Install a package\t pkg -S <package-name>\n"
+		printf "\t-R : Install a package\t pkg -R <package-name>"
+		;;
+esac

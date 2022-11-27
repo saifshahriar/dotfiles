@@ -1,0 +1,18 @@
+#!/bin/sh
+
+case "$1" in
+	-g)
+		;;
+	-f)
+		;;
+	-s)
+			;;
+	*)
+		choice=$(xrandr | grep "^\s\+[0-9]" | sed "s/^\s\+//g" | dmenu -p drandr -l 10)
+		xrandr $(echo "$choice" | cut -d ' ' -f1)
+
+		;;
+esac
+
+
+

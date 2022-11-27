@@ -1,0 +1,57 @@
+#!/bin/sh
+
+sub() {
+	inf="$HOME/.cache/wal/colors.sh"
+	ouf="$HOME/.cache/wal/colors.Xresources"
+	grep "^cursor" "$inf" | sed "s/cursor=/\*border: /g" | sed "s/'//g" >> "$ouf"
+	grep "^cursor" "$inf" | sed "s/cursor=/\*accent: /g" | sed "s/'//g" >> "$ouf"
+	grep "^foreground" "$inf" | sed "s/foreground=/\*selbackground: /g" | sed "s/'//g" >> "$ouf"
+	grep "^background" "$inf" | sed "s/background=/\*selforeground: /g" | sed "s/'//g" >> "$ouf"
+}
+
+xrdbl() {
+	xrdb -load ~/.Xresources
+	xrdb -merge ~/.cache/wal/colors.Xresources
+	xdotool key super+F5
+}
+
+case "$1" in
+	#-
+	-R)
+		wal -R && sub && xrdbl
+		;;
+	-f)
+		fetchdir="/tmp/"$2"_"$(date +"%Y-%m-%d_%H:%M")""
+		mkdir -p "$fetchdir" && \
+			cd "$fetchdir" && \
+			for i in `seq 1 7`; do
+					curl -s "https://wallhaven.cc/api/v1/search?q=$2&page=$i" \
+						| jq '.data[].path' | xargs -I{}  wget {}
+					notify-send "Page $i of $2 done."
+			done
+		doas mv "$fetchdir" /usr/share/backgrounds
+		notify-send "$2 wallpapers moved from /tmp to /usr/shre/backgrounds"
+		;;
+	-s)
+			wal -i "$2" && \
+			notify-send "Wallpaper changed through pywal"
+			sub && xrdbl && notify-send "Colors updated"
+			;;
+	*)
+		if [ -z "$1" ]; then
+			path="/usr/share/backgrounds"
+			choice=$(ls /usr/share/backgrounds | dmenu -p 'Select a directory' -l 10 -c -bw 1)
+			path="$path/$choice"
+		else
+			path="$1"
+		fi
+		[ -z "$choice" ] && exit
+		walpic=$(sxiv -o -t -r "$path") && \
+			wal -i "$walpic" && \
+			notify-send "Wallpaper changed through pywal"
+			sub && xrdbl && notify-send "Colors updated"
+		;;
+esac
+
+
+

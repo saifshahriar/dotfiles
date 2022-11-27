@@ -1,0 +1,219 @@
+########################
+### General Settings ###
+########################
+[settings]
+  # Window settings
+  borderWidth = 1
+  borderColorUnfocused = "#1a1b26"
+  borderColorFocused = "#7aa2f7"
+  borderColorUrgent = "#f7768e"
+  # Bar settings
+  barHeight = 20
+  windowTitlePosition = "left"
+  barBackgroundColor = "#1a1b26"
+  barForegroundColor = "#c0caf5"
+  barSelectionColor = "#7aa2f7"
+  barUrgentColor = "#ff5555"
+  barFonts = [
+    "JetBrainsMono Nerd Font:size=9:antialias=true",
+    "NotoColorEmoji:size=9:antialias=true"
+  ]
+  # Layout settings
+  gapSize = 5
+  outerGap = 0
+  resizeStep = 50
+  # Scratchpad settings
+  scratchpadWidth = 500
+  scratchpadHeight = 300
+  # General settings
+  loggingEnabled = false
+  reverseTagScrolling = false
+
+[monitors]
+ [monitors.default.tags]
+  1.displayString = "dev"
+  2.displayString = "www"
+  3.displayString = "sys"
+  4.displayString = "doc"
+  5.displayString = "vbox"
+  6.displayString = "chat"
+  7.displayString = "mus"
+  8.displayString = "vid"
+  9.displayString = "gfx"
+
+###################
+### Keybindings ###
+###################
+# Start external programs
+[[startProcess]]
+command = "pkill nimdow"
+keys = [ "q" ]
+modifiers = ["super", "shift"]
+
+[[startProcess]]
+command = "$BROWSER"
+keys = [ "i" ]
+modifiers = [ "super" ]
+
+[[startProcess]]
+command = "dmenu_run -fn \'JetBrainsMono Nerd Font:size=9\' -sb \'#282a36\' -nb \'#282a36\' -sf \'#50fa7b\' -p \'Run:\'"
+keys = [ "d" ]
+modifiers = [ "super" ]
+
+[[startProcess]]
+command = "st"
+keys = [ "Return" ]
+modifiers = [ "super" ]
+
+# Example: Start process when region is clicked, see github wiki for what constitutes a region
+# [[startProcess]]
+# command = "notify-send \"Id: %1, rx: %2, cx: %4, w: %6\""
+# clickRegion = 0
+
+# Window manager controls
+[controls]
+  [controls.reloadConfig]
+  keys = [ "r" ]
+  modifiers = [ "super", "shift" ]
+
+  [controls.focusPrevious]
+  keys = [ "k" ]
+  modifiers = [ "super" ]
+
+  [controls.focusNext]
+  keys = [ "j" ]
+  modifiers = [ "super" ]
+
+  [controls.moveWindowPrevious]
+  keys = [ "k" ]
+  modifiers = [ "super", "shift" ]
+
+  [controls.moveWindowNext]
+  keys = [ "j" ]
+  modifiers = [ "super", "shift" ]
+
+  [controls.toggleFullscreen]
+  keys = [ "f" ]
+  modifiers = [ "super" ]
+
+  [controls.destroySelectedWindow]
+  keys = [ "c" ]
+  modifiers = [ "super" ]
+
+  [controls.goToPreviousTag]
+  keys = [ "w" ]
+  modifiers = [ "alt" ]
+
+  [controls.moveWindowToPreviousTag]
+  keys = [ "w" ]
+  modifiers = [ "super", "shift" ]
+
+  [controls.focusPreviousMonitor]
+  keys = [ "comma" ]
+  modifiers = [ "super" ]
+
+  [controls.focusNextMonitor]
+  keys = [ "period" ]
+  modifiers = [ "super" ]
+
+  [controls.moveWindowToPreviousMonitor]
+  keys = [ "comma" ]
+  modifiers = [ "super", "shift" ]
+
+  [controls.moveWindowToNextMonitor]
+  keys = [ "period" ]
+  modifiers = [ "super", "shift" ]
+
+  [controls.increaseMasterCount]
+  keys = [ "z" ]
+  modifiers = [ "super" ]
+
+  [controls.decreaseMasterCount]
+  keys = [ "x" ]
+  modifiers = [ "super" ]
+
+  [controls.toggleFloating]
+  keys = [ "space" ]
+  modifiers = [ "super" ]
+
+  [controls.jumpToUrgentWindow]
+  keys = [ "u" ]
+  modifiers = [ "super" ]
+
+  [controls.goToTag]
+  keys = [ "1", "2", "3", "4", "5", "6", "7", "8", "9" ]
+  modifiers = [ "super" ]
+
+  [controls.goToLeftTag]
+  keys = [ "Left" ]
+  modifiers = [ "super" ]
+
+  [controls.goToRightTag]
+  keys = [ "Right" ]
+  modifiers = [ "super" ]
+
+  [controls.moveWindowToTag]
+  keys = [ "1", "2", "3", "4", "5", "6", "7", "8", "9" ]
+  modifiers = [ "super", "shift" ]
+
+  [controls.moveWindowToLeftTag]
+  keys = [ "Left" ]
+  modifiers = [ "super", "shift" ]
+
+  [controls.moveWindowToRightTag]
+  keys = [ "Right" ]
+  modifiers = [ "super", "shift" ]
+
+  [controls.toggleTagView]
+  keys = [ "1", "2", "3", "4", "5", "6", "7", "8", "9" ]
+  modifiers = [ "super", "control" ]
+
+  [controls.toggleWindowTag]
+  keys = [ "1", "2", "3", "4", "5", "6", "7", "8", "9" ]
+  modifiers = [ "super", "shift", "control" ]
+
+	[controls.increaseMasterWidth]
+	keys = [ "l" ]
+	modifiers = [ "super" ]
+
+	[controls.decreaseMasterWidth]
+	keys = [ "h" ]
+	modifiers = [ "super" ]
+
+  [controls.moveWindowToScratchpad]
+  keys = [ "s" ]
+  modifiers = [ "super", "shift" ]
+
+  [controls.popScratchpad]
+  keys = [ "s" ]
+  modifiers = [ "super" ]
+
+  [controls.rotateClients]
+  keys = [ "r" ]
+  modifiers = [ "super" ]
+
+  [controls.toggleStatusBar]
+  keys = [ "b" ]
+  modifiers = [ "super" ]
+
+####################
+### Startup Hook ###
+####################
+[autostart]
+exec = [
+  "xsetroot -cursor_name left_ptr",
+  "nitrogen --restore"
+  "picom &",
+  "~/.config/nimdow/nimbar"
+]
+
+####################
+### Window Rules ###
+####################
+[[appRule]]
+class = "Lxappearance"
+state = "floating"
+
+[[appRule]]
+class = "Nitrogen"
+state = "floating"
