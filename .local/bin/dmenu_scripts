@@ -1,0 +1,5 @@
+#!/bin/sh
+
+choice=$(ls ~/.local/bin | dmenu -p Scripts -l 10 -c -bw 1)
+sh -c "$choice"
+

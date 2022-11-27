@@ -1,0 +1,80 @@
+#!/bin/sh
+
+#                    dddddddd
+#                    d::::::d                          tttt              ffffffffffffffff    iiii  lllllll
+#                    d::::::d                       ttt:::t             f::::::::::::::::f  i::::i l:::::l
+#                    d::::::d                       t:::::t            f::::::::::::::::::f  iiii  l:::::l
+#                    d:::::d                        t:::::t            f::::::fffffff:::::f        l:::::l
+#            ddddddddd:::::d    ooooooooooo   ttttttt:::::ttttttt      f:::::f       ffffffiiiiiii  l::::l     eeeeeeeeeeee        ssssssssss
+#          dd::::::::::::::d  oo:::::::::::oo t:::::::::::::::::t      f:::::f             i:::::i  l::::l   ee::::::::::::ee    ss::::::::::s
+#         d::::::::::::::::d o:::::::::::::::ot:::::::::::::::::t     f:::::::ffffff        i::::i  l::::l  e::::::eeeee:::::eess:::::::::::::s
+#        d:::::::ddddd:::::d o:::::ooooo:::::otttttt:::::::tttttt     f::::::::::::f        i::::i  l::::l e::::::e     e:::::es::::::ssss:::::s
+#        d::::::d    d:::::d o::::o     o::::o      t:::::t           f::::::::::::f        i::::i  l::::l e:::::::eeeee::::::e s:::::s  ssssss
+#        d:::::d     d:::::d o::::o     o::::o      t:::::t           f:::::::ffffff        i::::i  l::::l e:::::::::::::::::e    s::::::s
+#        d:::::d     d:::::d o::::o     o::::o      t:::::t            f:::::f              i::::i  l::::l e::::::eeeeeeeeeee        s::::::s
+#        d:::::d     d:::::d o::::o     o::::o      t:::::t    tttttt  f:::::f              i::::i  l::::l e:::::::e           ssssss   s:::::s
+#        d::::::ddddd::::::ddo:::::ooooo:::::o      t::::::tttt:::::t f:::::::f            i::::::il::::::le::::::::e          s:::::ssss::::::s
+# ......  d:::::::::::::::::do:::::::::::::::o      tt::::::::::::::t f:::::::f            i::::::il::::::l e::::::::eeeeeeee  s::::::::::::::s
+# .::::.   d:::::::::ddd::::d oo:::::::::::oo         tt:::::::::::tt f:::::::f            i::::::il::::::l  ee:::::::::::::e   s:::::::::::ss
+# ......    ddddddddd   ddddd   ooooooooooo             ttttttttttt   fffffffff            iiiiiiiillllllll    eeeeeeeeeeeeee    sssssssssss
+
+#-----------------------------------------
+# Author:  Saif Shahriar
+# Web:     https;//saifshahriar.github.io/
+# GitHub:  https://github.com/saifshahriar
+# Licence: MIT
+#-----------------------------------------
+
+dotdir=$(pwd)
+
+bashrc() {
+	cp -v "$dotdir"/.bashrc "$HOME"
+}
+
+fish_config() {
+	mkdir -p .config/fish/
+	touch .config/fish/config.fish
+	touch .config/fish/local.fish
+	echo "source ~/Git/dotfiles/.config/fish/config.fish " >> "$HOME"/.config/fish/config.fish
+	echo "source ~/.config/fish/local.fish " >> "$HOME"/.config/fish/config.fish
+}
+
+neovim() {
+	dotnvim="$HOME"/.config/nvim
+
+	# Get the astronvim submodules
+	cd "$dotdir"/.config/nvim && git submodule update --init --depth=1
+	# Create a backup of the old configs and move the configs to the local setup
+	mkdir -p "$dotnvim"
+	mv -v "$dotnvim" "$dotnvim".bak.saif && cd "$dotdir" || exit
+	cp -vr "$dotdir"/.config/nvim "$HOME"/.config/
+	# Now copy the user config file
+	mv -v "$dotnvim"/lua/user_example/ "$dotnvim"/lua/user/
+	rm -v "$dotnvim"/lua/user/*
+	cp -v "$dotdir"/.config/nvim.user.d/init.lua "$dotnvim"/lua/user/init.lua
+	cp -v "$dotdir"/.config/nvim.user.d/alpha.lua "$dotnvim"/lua/configs/alpha.lua
+	ln -s "$dotnvim"/lua/user/init.lua "$dotnvim"/user.lua
+}
+
+misc() {
+	dotconf="$dotdir"/.config
+	cp -r "$dotconf"/X11 "$HOME"/.config
+	cp -r "$dotconf"/alacritty "$HOME"/.config
+	cp -r "$dotconf"/kitty "$HOME"/.config
+	cp -r "$dotconf"/lf "$HOME"/.config
+	cp -r "$dotconf"/networkmanager-dmenu "$HOME"/.config
+	cp -r "$dotconf"/oni2 "$HOME"/.config
+	cp -r "$dotconf"/pacseek "$HOME"/.config
+	cp -r "$dotconf"/paru "$HOME"/.config
+}
+
+case "$1" in
+	-bash) bashrc;;
+	-fish) fish_config;;
+	-nvim) neovim;;
+	-misc) misc;;
+esac
+
+
+
+# vim:nowrap

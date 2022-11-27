@@ -1,0 +1,17 @@
+"  _______      _____ _______
+" /  ____/ /\  /_   _/  ____/ Author:	Saif Shahriar
+" \ (___  /  \   | | | |___   Web:	https://saifshahriar.github.io/
+"  \___ \/ /\ \  | | |  __/   GitHub:	https://github.com/saifshahriar
+"  ____)/ ____ \_| |_| |      GitLab:	https://gitlab.com/saifshahriar
+" \____/_/    \_\____|_|      License:	MIT
+"
+" My .vimrc. Not the best one you will find.
+
+source $HOME/.vim/autocmd.vim
+source $HOME/.vim/core.vim
+source $HOME/.vim/keybinds.vim
+source $HOME/.vim/option.vim
+source $HOME/.vim/plugin.vim
+source $HOME/.vim/pluginsopt.vim
+source $HOME/.vim/snips.vim
+source $HOME/.vim/theme.vim

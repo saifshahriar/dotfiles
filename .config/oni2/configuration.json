@@ -1,0 +1,54 @@
+{
+	"workbench.colorTheme": "LaserWave Italic",
+	"editor.detectIndentation": true,
+	"editor.fontFamily": "JetBrainsMono Nerd Font",
+	"editor.fontSize": 14,
+	"editor.largeFileOptimizations": true,
+	"editor.highlightActiveIndentGuide": true,
+	"editor.lineNumbers": "on",
+	"editor.matchBrackets": true,
+	"editor.minimap.enabled": false,
+	"editor.minimap.maxColumn": 50,
+	"editor.minimap.showSlider": true,
+	"editor.renderIndentGuides": true,
+	"editor.renderWhitespace": "none",
+	"editor.rulers": [
+		80,
+		120
+	],
+	"editor.tabSize": 4,
+	"editor.zenMode.hideTabs": true,
+	"editor.zenMode.singleFile": true,
+	"files.exclude": [
+		"_esy",
+		"node_modules",
+		".git"
+	],
+	"files.autoSave": "afterDelay",
+	"files.autoSaveDelay": 1,
+	"oni.inactiveWindowOpacity": 0.75,
+	"workbench.activityBar.visible": false,
+	"workbench.editor.showTabs": true,
+	"workbench.editor.enablePreview": true,
+	"workbench.iconTheme": "vs-seti",
+	"workbench.sideBar.location": "left",
+	"workbench.sideBar.visible": false,
+	"workbench.statusBar.visible": true,
+	"workbench.tree.indent": 2,
+	"vim.useSystemClipboard": [
+		"yank"
+	],
+	"experimental.editor.cursorSmoothCaretAnimation": true,
+	"experimental.viml": [
+		"set rnu",
+		"set signcolumn=yes",
+		"nnoremap ; :",
+		"set noet sw=4 ts=4",
+		"set autoindent smartindent"
+	],
+	"[json]": {
+		"experimental.viml": [
+			"set sw=2 ts=2"
+		]
+	}
+}
