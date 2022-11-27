@@ -40,7 +40,7 @@ case "$1" in
 	*)
 		if [ -z "$1" ]; then
 			path="/usr/share/backgrounds"
-			choice=$(ls /usr/share/backgrounds | dmenu -p 'Select a directory' -l 10 -c)
+			choice=$(ls /usr/share/backgrounds | dmenu -p 'Select a directory' -l 10 -c -bw 1)
 			path="$path/$choice"
 		else
 			path="$1"
