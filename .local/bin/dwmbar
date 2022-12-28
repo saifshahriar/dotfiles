@@ -43,7 +43,7 @@ battery() {
 	AC=$(cat /sys/class/power_supply/AC/online)
 
 	if [ "$AC" -eq 1 ]; then
-		printf "^c#E49263^[ $BAT]%%"
+		printf "^c#E49263^[ $BAT%%]"
 	elif [ "$AC" -eq 1 ] && [ "$BAT" -eq 100 ]; then
 		printf "^c#E06C75^[ Full"
 	else
