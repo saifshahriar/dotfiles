@@ -7,12 +7,15 @@ sub() {
 	grep "^cursor" "$inf" | sed "s/cursor=/\*accent: /g" | sed "s/'//g" >> "$ouf"
 	grep "^foreground" "$inf" | sed "s/foreground=/\*selbackground: /g" | sed "s/'//g" >> "$ouf"
 	grep "^background" "$inf" | sed "s/background=/\*selforeground: /g" | sed "s/'//g" >> "$ouf"
+	grep "^foreground" "$inf" | sed "s/foreground=/\xmenu.separator: /g" | sed "s/'//g" >> "$ouf"
+	grep "^foreground" "$inf" | sed "s/foreground=/\xmenu.selbackground: /g" | sed "s/'//g" >> "$ouf"
+	grep "^background" "$inf" | sed "s/background=/\xmenu.selforeground: /g" | sed "s/'//g" >> "$ouf"
 }
 
 xrdbl() {
 	xrdb -load ~/.Xresources
 	xrdb -merge ~/.cache/wal/colors.Xresources
-	xdotool key super+F5
+	xdotool key super+shift+r
 }
 
 case "$1" in
@@ -25,7 +28,7 @@ case "$1" in
 		mkdir -p "$fetchdir" && \
 			cd "$fetchdir" && \
 			for i in `seq 1 7`; do
-					curl -s "https://wallhaven.cc/api/v1/search?q=$2&page=$i" \
+					curl -s "https://wallhaven.cc/api/v1/search?q=$2&page=$i&sorting=views" \
 						| jq '.data[].path' | xargs -I{}  wget {}
 					notify-send "Page $i of $2 done."
 			done
