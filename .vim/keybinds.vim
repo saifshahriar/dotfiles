@@ -14,6 +14,7 @@ nnoremap <leader>a :a_
 nnoremap ; :
 nnoremap ! :!
 inoremap jj <Esc>
+noremap <TAB> %
 
 " Ez-comment
 nnoremap <leader>/ :Commentary<Enter>gv
