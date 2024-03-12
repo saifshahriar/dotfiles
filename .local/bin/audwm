@@ -1,0 +1,13 @@
+#!/bin/sh
+
+killall -9 ibus-daemon dunst xfce4-power-manager dwmbar sxhkd
+
+setbg -R
+xfce4-power-manager &
+dwmbar &
+dunst -conf ~/.config/dunstrc &
+sxhkd &
+ibus-daemon -drx &
+dwmcomp &
+
+dwm
