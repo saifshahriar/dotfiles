@@ -1,3 +1,4 @@
+
 " LEADER KEY: SPACE
 let mapleader=" "
 let maplocalleader=" "
@@ -63,6 +64,16 @@ vmap > >gv
 """"""""""""""""""""""""""""""""" NOTE: gVim is needed.
 vnoremap y "+y
 nnoremap y "+y
+
+"""""""""""""""""""""""""""""""""
+"	For CP			"
+"""""""""""""""""""""""""""""""""
+autocmd FileType cpp noremap <F9> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o %< % && ./%< <CR>
+autocmd FileType cpp inoremap <F9> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o %< % && ./%< <CR>
+autocmd FileType cpp noremap <F10> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o %< % && ./%< < inp<CR>
+autocmd FileType cpp inoremap <F10> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o "%<" "%" && "./%<" < inp<CR>
+autocmd FileType cpp nested autocmd BufEnter *cp/* nested silent! execute 'noremap <F8> :read ~/.vim/snippets/cp/cpp_template.cpp<CR>'
+autocmd FileType cpp nested autocmd BufEnter *cp/* nested silent! execute 'inoremap <F8> :read ~/.vim/snippets/cp/cpp_template.cpp<CR>'
 
 
 """""""""""""""""""""""""""""""""
