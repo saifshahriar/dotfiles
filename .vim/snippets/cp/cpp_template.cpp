@@ -3,7 +3,7 @@
  */
 
 #ifdef ONPC
-    #define _GLIBCXX_DEBUG
+	#define _GLIBCXX_DEBUG
 #endif
 #include <bits/stdc++.h>
 #define sz(a) ((int)((a).size()))
@@ -23,13 +23,13 @@ int32_t main() {
 	int testCases = 1e9;
 	cin >> testCases;
 	for (int i = 1; i <= testCases; i++) {
-	    #ifdef ONPC
+		#ifdef ONPC
 			cout << "L" << i << ": ";
-	    #endif
-	    if (sol()) break;
-	    #ifdef ONPC
+		#endif
+		if (sol()) break;
+		#ifdef ONPC
 			cout << "__________________________" << endl;
-	    #endif
+		#endif
 	}
 	#ifdef ONPC
 		cerr << endl << "finished in " << clock() * 1.0 / CLOCKS_PER_SEC << " sec" << endl;
