@@ -254,6 +254,9 @@ else
 	set_color && echo "\`bat\` doesn't exist. Download 'bat' and 'bat-extras'."
 end
 
+# cal command wont highlight current date
+test -t 1; and alias cal="ncal -b"; or alias cal="/usr/bin/cal"
+
 # grep	alias. Colorize grep output (good for log files)
 	alias grep='grep --color=auto'
 	alias egrep='egrep --color=auto'
