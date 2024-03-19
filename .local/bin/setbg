@@ -1,5 +1,30 @@
 #!/bin/sh
 
+# Define color codes
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+blue=$(tput setaf 4)
+white=$(tput setaf 7)
+reset=$(tput sgr0)
+
+help() {
+    echo "Usage: setbg [OPTION]"
+    echo "OPTIONS:"
+    echo "  -h        Display this help message"
+    echo "  -R        Reload wallpaper and update colors using pywal"
+    echo "  -f <tag>  Fetch wallpapers with the specified tag from Wallhaven.cc"
+    echo "  -s <file> Set wallpaper and update colors using the specified image file"
+    echo "  <dir>     Set wallpaper from the specified directory interactively"
+    echo "																	"
+    echo "${red}Example:"${reset}
+    echo "  ${green}setbg${reset} ${blue}-f${reset} demon+slayer"
+	echo "               ${green}^^^"${reset}
+	echo "     ${green}use '+' instead of spaces"${reset}
+    echo "																	"
+    echo "																	"
+
+}
+
 sub() {
 	inf="$HOME/.cache/wal/colors.sh"
 	ouf="$HOME/.cache/wal/colors.Xresources"
@@ -20,6 +45,9 @@ xrdbl() {
 
 case "$1" in
 	#-
+	-h)
+        help
+        ;;
 	-R)
 		wal -R && sub && xrdbl
 		;;
@@ -55,6 +83,3 @@ case "$1" in
 			sub && xrdbl && notify-send "Colors updated"
 		;;
 esac
-
-
-
