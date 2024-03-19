@@ -22,9 +22,9 @@ int32_t main() {
 	cin.tie(0);
 	int testCases = 1e9;
 	cin >> testCases;
-	for (int i = 1; i <= testCases; i++) {
+	for (int i = 1; i <= testCases; ++i) {
 		#ifdef ONPC
-			cout << "L" << i << ": ";
+			cout << "O" << i << ": ";
 		#endif
 		if (sol()) break;
 		#ifdef ONPC
