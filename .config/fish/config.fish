@@ -212,6 +212,24 @@ if type -q bat
 	end
 end
 
+function rmbin
+    if test (basename "$PWD") = "cp"
+        find . -type f -executable -delete
+        echo "Binaries deleted in the 'cp' directory."
+    else
+        echo "Do you want to delete all the binaries from the current directory? [y/n]"
+        read -n 1 response
+        echo
+
+        if test "$response" = "y" -o "$response" = "Y"
+            find . -type f -executable -delete
+            echo "Binaries deleted."
+        else
+            echo "Operation canceled."
+        end
+    end
+end
+
 ###########################################
 ###		 		ALIASES					###
 ###########################################
