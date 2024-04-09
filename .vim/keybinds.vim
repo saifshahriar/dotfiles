@@ -18,8 +18,8 @@ inoremap jj <Esc>
 noremap <TAB> %
 
 " Ez-comment
-nnoremap <leader>/ :Commentary<Enter>gv
-vnoremap <leader>/ :Commentary<Enter>gv
+nnoremap <leader>/ :Commentary<CR>gcc
+vnoremap <leader>/ :Commentary<CR>gv
 
 " Save && quit
 nnoremap <C-s> :w<Enter>
