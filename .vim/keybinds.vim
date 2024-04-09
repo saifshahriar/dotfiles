@@ -72,9 +72,8 @@ autocmd FileType cpp noremap <F9> <ESC> :w <CR> :!g++ -fsanitize=address -std=c+
 autocmd FileType cpp inoremap <F9> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o %< % && ./%< <CR>
 autocmd FileType cpp noremap <F10> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o %< % && ./%< < inp<CR>
 autocmd FileType cpp inoremap <F10> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o "%<" "%" && "./%<" < inp<CR>
-autocmd FileType cpp nested autocmd BufEnter *cp/* nested silent! execute 'noremap <F8> :0read ~/.vim/snippets/cp/cpp_template.cpp<CR>'
-autocmd FileType cpp nested autocmd BufEnter *cp/* nested silent! execute 'inoremap <F8> :0read ~/.vim/snippets/cp/cpp_template.cpp<CR>'
-
+autocmd FileType cpp nested autocmd BufEnter */cp/* nested silent! execute 'noremap <F8> :0read ~/.vim/snippets/cp/cpp_template.cpp<CR>16jA'
+autocmd FileType cpp nested autocmd BufEnter */cp/* nested silent! execute 'inoremap <F8> :0read ~/.vim/snippets/cp/cpp_template.cpp<CR>16jA'
 
 """""""""""""""""""""""""""""""""
 "	Plugin Keybindings	"
