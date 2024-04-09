@@ -10,6 +10,7 @@
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
+autocmd BufWritePost * if search('\n\s*\%$', 'nw') | %s#\($\n\s*\)\+\%$## | w | endif
 
 """""""""""""""""""""""""""""""""
 "	==> VIM	<==		"
@@ -28,4 +29,4 @@ augroup END
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 
 """ .clang-format """
-autocmd BufNewFile,BufRead *.clang-format set filetype=yml
+autocmd BufNewFile,BufRead *.clang-format set filetype=yaml
