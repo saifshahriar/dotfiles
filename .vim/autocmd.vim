@@ -26,3 +26,6 @@ augroup END
 
 """ HTML """
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
+
+""" .clang-format """
+autocmd BufNewFile,BufRead *.clang-format set filetype=yml
