@@ -21,6 +21,7 @@ set -gx XDG_STATE_HOME $HOME/.local/state
 set -gx XDG_CACHE_HOME $HOME/.cache
 set -gx XDG_RUNTIME_DIR /run/user/$UID
 
+set -gx ANDROID_USER_HOME "$XDG_DATA_HOME"/android
 set -gx CALCHISTFILE "$XDG_CACHE_HOME"/calc_history
 set -gx CARGO_HOME "$XDG_DATA_HOME"/cargo
 set -gx GNUPGHOME "$XDG_DATA_HOME"/gnupg
@@ -30,6 +31,7 @@ set -gx LESSHISTFILE "$XDG_STATE_HOME"/less/history
 set -gx NIMBLE_DIR "$XDG_DATA_HOME"/nimble
 set -gx NODE_REPL_HISTORY "$XDG_DATA_HOME"/node_repl_history
 set -gx PASSWORD_STORE_DIR "$XDG_DATA_HOME"/pass
+set -gx PYTHONSTARTUP "$XDG_CONFIG_HOME"/python/pythonrc
 set -gx SCREENRC "$XDG_CONFIG_HOME"/screen/screenrc
 set -gx SQLITE_HISTORY "$XDG_CACHE_HOME"/sqlite_history
 set -gx XCURSOR_PATH /usr/share/icons:$XDG_DATA_HOME/icons
@@ -140,32 +142,28 @@ set -g fish_pager_color_secondary_description $comment
 ###			CUSTOM FUNCTIONS			###
 ###########################################
 # Functions needed for !! and !$
-function __history_previous_command
-	switch (commandline -t)
-	case "!"
-		commandline -t $history[1]; commandline -f repaint
-	case "*"
-		commandline -i !
-	end
+function bind_bang
+    switch (commandline -t)[-1]
+        case "!"
+            commandline -t -- $history[1]
+            commandline -f repaint
+        case "*"
+            commandline -i !
+    end
 end
 
-function __history_previous_command_arguments
-	switch (commandline -t)
-	case "!"
-		commandline -t ""
-		commandline -f history-token-search-backward
-	case "*"
-		commandline -i '$'
-	end
+function bind_dollar
+    switch (commandline -t)[-1]
+        case "!"
+            commandline -f backward-delete-char history-token-search-backward
+        case "*"
+            commandline -i '$'
+    end
 end
 
-# The bindings for !! and !$
-if [ "$fish_key_bindings" = "fish_vi_key_bindings" ];
-	bind -Minsert ! __history_previous_command
-	bind -Minsert '$' __history_previous_command_arguments
-else
-	bind ! __history_previous_command
-	bind '$' __history_previous_command_arguments
+function fish_user_key_bindings
+    bind ! bind_bang
+    bind '$' bind_dollar
 end
 
 # Function for extracting different files
@@ -208,7 +206,7 @@ end
 # Function for bat as helper
 if type -q bat
 	function help
-	    "$argv" --help 2>&1 | bathelp
+		"$argv" --help 2>&1 | bathelp
 	end
 end
 
@@ -262,6 +260,7 @@ end
 	alias rm="rm -v"
 
 ### Programs
+alias adb='HOME="$XDG_DATA_HOME"/android adb'
 # Bat 	alias
 if type -q bat
 	alias bat='bat --theme="Dracula" --pager="less -FR --RAW-CONTROL-CHARS --quit-if-one-screen --mouse" --map-syntax "*.ino:C++"  --map-syntax h:cpp'
@@ -426,4 +425,4 @@ type -q zoxide && zoxide init fish | source
 # pfetch								# Minimalist neofetch.
 										# Install it from AUR: yay -S pfetch-btw.
 
-# vim:ft=sh:sw=4:ts=4:noet
+# vim:ft=bash:sw=4:ts=4:noet
