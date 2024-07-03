@@ -1,0 +1,23 @@
+modmap:
+  - name: Global
+    remap:
+      CapsLock: Esc
+      Esc: CapsLock
+
+# keymap:
+#   - name: Programmes
+#     remap:
+#       super-p:
+#         remap:
+#           w:
+#             launch: ["setbg"]
+#           b:
+#             launch: ["brave-browser"]
+#           f:
+#             launch: ["pcmanfm"]
+#           t:
+#             launch: ["kitty"]
+#           n:
+#             launch: ["nmd"]
+#       super-shift-enter:
+#         launch: ["scratchpad"]
