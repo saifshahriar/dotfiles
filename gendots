@@ -39,23 +39,6 @@ fish_config() {
 	echo "source ~/.config/fish/local.fish " >> "$HOME"/.config/fish/config.fish
 }
 
-neovim() {
-	dotnvim="$HOME"/.config/nvim
-
-	# Get the astronvim submodules
-	cd "$dotdir"/.config/nvim && git submodule update --init --depth=1
-	# Create a backup of the old configs and move the configs to the local setup
-	mkdir -p "$dotnvim"
-	mv -v "$dotnvim" "$dotnvim".bak.saif && cd "$dotdir" || exit
-	cp -vr "$dotdir"/.config/nvim "$HOME"/.config/
-	# Now copy the user config file
-	mv -v "$dotnvim"/lua/user_example/ "$dotnvim"/lua/user/
-	rm -v "$dotnvim"/lua/user/*
-	cp -v "$dotdir"/.config/nvim.user.d/init.lua "$dotnvim"/lua/user/init.lua
-	cp -v "$dotdir"/.config/nvim.user.d/alpha.lua "$dotnvim"/lua/configs/alpha.lua
-	ln -s "$dotnvim"/lua/user/init.lua "$dotnvim"/user.lua
-}
-
 misc() {
 	dotconf="$dotdir"/.config
 	cp -r "$dotconf"/X11 "$HOME"/.config
@@ -71,7 +54,6 @@ misc() {
 case "$1" in
 	-bash) bashrc;;
 	-fish) fish_config;;
-	-nvim) neovim;;
 	-misc) misc;;
 esac
 
