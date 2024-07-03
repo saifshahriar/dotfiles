@@ -9,5 +9,9 @@ dunst -conf ~/.config/dunstrc &
 sxhkd &
 ibus-daemon -drx &
 dwmcomp &
+setxkbmap
+doas xremap ~/.config/xremap/config.yml --watch &
+/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+numlockx
 
 dwm
