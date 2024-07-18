@@ -13,13 +13,13 @@ set -gx ARCHFLAGS "-arch x86_64"
 ###########################################
 ###		 		EXPORT					###
 ###########################################
-set fish_greeting						# Supresses fish's intromessage.
+set fish_greeting						# Suppresses fish's intro message.
 
 set -gx XDG_DATA_HOME $HOME/.local/share
 set -gx XDG_CONFIG_HOME $HOME/.config
 set -gx XDG_STATE_HOME $HOME/.local/state
 set -gx XDG_CACHE_HOME $HOME/.cache
-set -gx XDG_RUNTIME_DIR /run/user/$UID
+set -gx XDG_RUNTIME_DIR /run/user/"$UID"
 
 set -gx ANDROID_USER_HOME "$XDG_DATA_HOME"/android
 set -gx CALCHISTFILE "$XDG_CACHE_HOME"/calc_history
@@ -28,15 +28,18 @@ set -gx GNUPGHOME "$XDG_DATA_HOME"/gnupg
 set -gx GOPATH "$XDG_DATA_HOME"/go
 set -gx GTK2_RC_FILES "$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 set -gx LESSHISTFILE "$XDG_STATE_HOME"/less/history
+set -gx MAXIMA_USERDIR "$XDG_CONFIG_HOME"/maxima
 set -gx NIMBLE_DIR "$XDG_DATA_HOME"/nimble
 set -gx NODE_REPL_HISTORY "$XDG_DATA_HOME"/node_repl_history
+set -gx NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME"/npm/npmrc
 set -gx PASSWORD_STORE_DIR "$XDG_DATA_HOME"/pass
 set -gx PYTHONSTARTUP "$XDG_CONFIG_HOME"/python/pythonrc
+set -gx R_HISTFILE "$XDG_CACHE_HOME"/Rhistory
 set -gx SCREENRC "$XDG_CONFIG_HOME"/screen/screenrc
 set -gx SQLITE_HISTORY "$XDG_CACHE_HOME"/sqlite_history
-set -gx XCURSOR_PATH /usr/share/icons:$XDG_DATA_HOME/icons
+set -gx XCURSOR_PATH /usr/share/icons:"$XDG_DATA_HOME"/icons
 
-set -gx TERM "xterm-256color"			# Sets the terminal type.
+set -gx TERM "xterm-256color"
 
 if type -q brave
 	set -gx BROWSER "brave"
@@ -260,7 +263,6 @@ end
 	alias rm="rm -v"
 
 ### Programs
-alias adb='HOME="$XDG_DATA_HOME"/android adb'
 # Bat 	alias
 if type -q bat
 	alias bat='bat --theme="Dracula" --pager="less -FR --RAW-CONTROL-CHARS --quit-if-one-screen --mouse" --map-syntax "*.ino:C++"  --map-syntax h:cpp'
@@ -352,9 +354,9 @@ end
 	abbr -ag newtag		git tag -a
 
 # zoxide
-	abbr -ag z-		z -
-	abbr -ag zz		z -
-	abbr -ag zl		zi
+	abbr -ag z-    z -
+	abbr -ag zz    z -
+	abbr -ag zl    zi
 
 # gpg encryption
 # verify signature for isos
@@ -405,7 +407,7 @@ end
 ###		ADD CUSTOM ALIASES BELOW		###
 ###########################################	
 # Additional config file
-#
+
 
 ########################################### Run these programs whenever the
 ###				STARTUP					### shell starts. NOTE: This may slow
@@ -414,15 +416,9 @@ end
 type -q zoxide && zoxide init fish | source
 ### SETTING THE STARSHIP PROMPT ###		# NOTE: This might slow down the prompt.
 # type -q starship && starship init fish | source
-# Run either one of them
-# colorscript random					# Random Color Script
-										# Get this script from my GitLab: gitlab.com/dwt1/shell-color-scripts
-										# Or install it from the Arch User Repository: yay -S shell-color-scripts
-# neofetch								# Neofetch, system information fetching tool.
-# fastfetch								# neofetch but written in C. Faster &&
-										# better performance. Use it instead of
-										# neofetch in Arch Linux.
-# pfetch								# Minimalist neofetch.
-										# Install it from AUR: yay -S pfetch-btw.
+
+# colorscript random
+# fastfetch
+# pfetch
 
 # vim:ft=bash:sw=4:ts=4:noet
