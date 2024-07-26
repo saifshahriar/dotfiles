@@ -15,11 +15,12 @@ set -gx ARCHFLAGS "-arch x86_64"
 ###########################################
 set fish_greeting						# Suppresses fish's intro message.
 
+# XDG stuff rules
 set -gx XDG_DATA_HOME $HOME/.local/share
 set -gx XDG_CONFIG_HOME $HOME/.config
 set -gx XDG_STATE_HOME $HOME/.local/state
 set -gx XDG_CACHE_HOME $HOME/.cache
-set -gx XDG_RUNTIME_DIR /run/user/"$UID"
+#set -gx XDG_RUNTIME_DIR /run/user/"$UID"
 
 set -gx ANDROID_USER_HOME "$XDG_DATA_HOME"/android
 set -gx CALCHISTFILE "$XDG_CACHE_HOME"/calc_history
@@ -238,15 +239,14 @@ end
 	alias ..="cd .."
 	alias mkdir="mkdir -pv"
 
-# Use exa instead of ls.
-if type -q exa
-	alias l="exa -al --color=always --icons --group-directories-first"
-	alias ls="exa -al --color=auto --icons --group-directories-first"
-	alias la="exa -a --color=auto --group-directories-first"
-	alias ll="exa -l --color=auto --group-directories-first"
-	alias lt="exa -aT --color=always --icons --group-directories-first"
-	alias l.='exa -a | egrep "^\."'
-	alias dir="exa -al --color=always --group-directories-first"
+# Use eza instead of ls.
+if type -q eza
+	alias l="eza -al --color=always --icons --group-directories-first"
+	alias ls="eza -al --color=auto --icons --group-directories-first"
+	alias la="eza -a --color=auto --group-directories-first"
+	alias ll="eza -l --color=auto --group-directories-first"
+	alias lt="eza -aT --color=always --icons --group-directories-first"
+	alias l.='eza -a | egrep "^\."'
 else
 	alias l="ls -Alh --color=auto --group-directories-first"
 	alias ls="ls -Alh --color=auto --group-directories-first"
