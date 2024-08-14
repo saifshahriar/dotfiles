@@ -1,0 +1,14 @@
+#!/bin/sh
+
+case "$1" in
+	-mute)
+		volume -a mute && notify-send "Volume" "$(volume -a output %i %v)"
+	;;
+	-inc)
+		[ $(volume -a output "%v") == "MUTE" ] && volume -a up 5 || volume -a up 5
+	;;
+	-dec)
+		[ $(volume -a output "%v") == "MUTE" ] && volume -a down 5 || volume -a down 5
+	;;
+esac
+
