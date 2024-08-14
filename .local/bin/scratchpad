@@ -6,12 +6,14 @@ col=80
 posx=$(((1360-664)/2)) # Get the window size using xprop
 posy=$(((768-384)/2))
 
-alafloat="alacritty --class alacritty-float,float-term -t scratchpad -o window.dimensions.columns=$col -o window.dimensions.lines=$row -o window.position.x=$posx -o window.position.y=$posy"
+alafloat="st -c alacritty-float,float-term -t scratchpad"
+# alafloat="alacritty --class alacritty-float,float-term -t scratchpad -o window.dimensions.columns=$col -o window.dimensions.lines=$row -o window.position.x=$posx -o window.position.y=$posy"
 
 tmux set-option -g status off
 tmux set-window-option mode-keys vi
 tmux set-option -g mouse on
 
-[ "$(tmux ls | grep -o scpad)" = "scpad" ] && eval "$alafloat -e tmux a -t scpad" || eval "$alafloat -e tmux new -s scpad"
+# [ "$(tmux ls | grep -o scpad)" = "scpad" ] && eval "$alafloat -e tmux a -t scpad" || eval "$alafloat -e tmux new -s scpad"
+[ "$(tmux ls | grep -o scpad)" = "scpad" ] && eval "$alafloat -e tmux a" || eval "$alafloat -e tmux new -s scpad"
 
 tmux set-option -g status on
