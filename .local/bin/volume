@@ -1181,10 +1181,10 @@ main() {
 
     # Emoji-based icons.
     declare -a ICONS_EMOJI=(
-        ﱝ
-        墳
-        奄
-        奔
+        󰝟
+        󰕾
+        󰕿
+        󰖀
     )
 
     # Volume changed sound.
