@@ -255,11 +255,6 @@ PS1='\[\e[0;31m\][\[\e[0;33m\]\u\[\e[0;32m\]@\[\e[0;34m\]\h \[\e[0;35m\]\w\[\e[0
 ###########################################
 ###	ADD CUSTOM ALIASES BELOW	###
 ###########################################	
-### Special aliases for this particular system
-#	alias systemWSL="cd /mnt/d/systemWSL/"
-#	alias systemKali="cd /mnt/d/systemWSL/systemKali"
-#	alias systemArch="cd /mnt/d/systemWSL/systemArch"
-#	alias win="cd /mnt/c/Users/Saif"
 
-#exec fish
 [ $(command -v zoxide) ] && eval "$(zoxide init bash)"
+exec fish
