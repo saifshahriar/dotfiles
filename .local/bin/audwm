@@ -1,17 +1,18 @@
 #!/bin/sh
 
-killall -9 ibus-daemon dunst xfce4-power-manager dwmbar sxhkd
+killall -9 ibus-daemon dunst xfce4-power-manager dwmbar sxhkd xremap picom
 
-setbg -R
+dunst &
+clipcatd
 xfce4-power-manager &
 dwmbar &
-dunst -conf ~/.config/dunstrc &
 sxhkd &
-ibus-daemon -drx &
-dwmcomp &
+# picom -b &
 setxkbmap
 doas xremap ~/.config/xremap/config.yml --watch &
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 numlockx
+setbg -R >/dev/null 2>&1
+ibus-daemon -drx
 
 dwm
