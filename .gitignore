@@ -1,8 +1,8 @@
 # Editors Config file
 *.exrc
 /.vscode
-.config/mpv/watch_later
-.vim/plugins/vim-plug/
+/.config/mpv/watch_later
+/.vim/plugins/vim-plug/
 
 # Object files
 *.o
