@@ -25,6 +25,7 @@ set -gx XDG_CACHE_HOME $HOME/.cache
 set -gx ANDROID_USER_HOME "$XDG_DATA_HOME"/android
 set -gx CALCHISTFILE "$XDG_CACHE_HOME"/calc_history
 set -gx CARGO_HOME "$XDG_DATA_HOME"/cargo
+set -gx DOTNET_CLI_HOME "$XDG_DATA_HOME"/dotnet
 set -gx GNUPGHOME "$XDG_DATA_HOME"/gnupg
 set -gx GOPATH "$XDG_DATA_HOME"/go
 set -gx GTK2_RC_FILES "$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
@@ -35,6 +36,7 @@ set -gx NODE_REPL_HISTORY "$XDG_DATA_HOME"/node_repl_history
 set -gx NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME"/npm/npmrc
 set -gx PASSWORD_STORE_DIR "$XDG_DATA_HOME"/pass
 set -gx PYTHONSTARTUP "$XDG_CONFIG_HOME"/python/pythonrc
+set -gx RUSTUP_HOME "$XDG_DATA_HOME"/rustup
 set -gx R_HISTFILE "$XDG_CACHE_HOME"/Rhistory
 set -gx SCREENRC "$XDG_CONFIG_HOME"/screen/screenrc
 set -gx SQLITE_HISTORY "$XDG_CACHE_HOME"/sqlite_history
@@ -208,7 +210,7 @@ function ex
 end
 
 # Function for bat as helper
-if type -q bat
+if type -q batcat && 
 	function help
 		"$argv" --help 2>&1 | bathelp
 	end
@@ -252,6 +254,10 @@ else
 	alias ls="ls -Alh --color=auto --group-directories-first"
 end
 
+# yazi
+alias yz="yazi"
+alias lf="yazi"
+
 # If you are coming from CMD. I mean no one does that, but I like these commands.
 	alias cls="clear"
 	alias del="rm -rfv"
@@ -294,8 +300,8 @@ end
 
 # editor
 	alias edit='echo "$EDITOR is currently set as your default editor. If you want to change it, then edit the fish config file at $HOME/.config/fish/config.fish"; $EDITOR'
-	abbr -ag nv	nvim
-	abbr -ag v	vim
+	abbr -ag v	nvim
+	abbr -ag vi	vim
 
 # file manager
 	type -q $FILEMANAGER &&	abbr -ag f $FILEMANAGER
@@ -407,7 +413,6 @@ end
 ###		ADD CUSTOM ALIASES BELOW		###
 ###########################################	
 # Additional config file
-
 
 ########################################### Run these programs whenever the
 ###				STARTUP					### shell starts. NOTE: This may slow
