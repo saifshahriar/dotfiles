@@ -1,10 +1,14 @@
 #!/bin/sh
 
+# Variables
+authcmd="doas"        # sudo or doas
+dmenucmd="dmenu -l 10 -c -bw 1"   # dmenu with flags. You can also use rofi
+fetchprog="curl -O"   # wget, curl, aria2, ..., etc
+
 # Define color codes
 red=$(tput setaf 1)
 green=$(tput setaf 2)
 blue=$(tput setaf 4)
-white=$(tput setaf 7)
 reset=$(tput sgr0)
 
 help() {
@@ -43,6 +47,7 @@ xrdbl() {
 	xdotool key super+shift+r
 }
 
+usr_input="$(echo "$2" | sed 's/^[[:space:]]\+//; s/[[:space:]]\+$//; s/[[:space:]]\{1,\}/+/g')"
 case "$1" in
 	#-
 	-h)
@@ -52,16 +57,17 @@ case "$1" in
 		wal -R && sub && xrdbl
 		;;
 	-f)
-		fetchdir="/tmp/"$2"_"$(date +"%Y-%m-%d_%H:%M")""
+		fetchdir="$(echo "$usr_input" | sed 's/+/-/')"
+		fetchdir="/tmp/"$fetchdir"_"$(date +"%Y-%m-%d_%H:%M")""
 		mkdir -p "$fetchdir" && \
 			cd "$fetchdir" && \
-			for i in `seq 1 7`; do
-					curl -s "https://wallhaven.cc/api/v1/search?q=$2&page=$i&sorting=views" \
-						| jq '.data[].path' | xargs -I{}  wget {}
-					notify-send "Page $i of $2 done."
+			for i in $(seq 1 7); do
+					curl -s "https://wallhaven.cc/api/v1/search?q=$usr_input&page=$i&sorting=views" \
+						| jq '.data[].path' | xargs -I{} $fetchprog {}
+					notify-send "Page $i of $usr_input done."
 			done
-		doas mv "$fetchdir" /usr/share/backgrounds
-		notify-send "$2 wallpapers moved from /tmp to /usr/shre/backgrounds"
+		$authcmd mv "$fetchdir" /usr/share/backgrounds
+		notify-send "$usr_input wallpapers moved from /tmp to /usr/shre/backgrounds"
 		;;
 	-s)
 			wal -i "$2" && \
@@ -71,7 +77,7 @@ case "$1" in
 	*)
 		if [ -z "$1" ]; then
 			path="/usr/share/backgrounds"
-			choice=$(ls /usr/share/backgrounds | dmenu -p 'Select a directory' -l 10 -c -bw 1)
+			choice=$(ls /usr/share/backgrounds | $dmenucmd -p "Select a directory")
 			path="$path/$choice"
 		else
 			path="$1"
