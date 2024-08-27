@@ -68,7 +68,9 @@ My very basic dotfiles that I use everyday. Nowadays, I use `dwm` in [**Artix Li
 ███████║██║  ██║██║██║         ███████║██║  ██║██║  ██║██║  ██║██║  ██║██║██║  ██║██║  ██║
 ╚══════╝╚═╝  ╚═╝╚═╝╚═╝         ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═╝  ╚═╝
 ```                                                                                       
-
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/a78574b0-7dfa-4da4-8dc3-73783311fa86" alt="c">
+</div>
 
 # I use
 <table>
@@ -76,7 +78,7 @@ My very basic dotfiles that I use everyday. Nowadays, I use `dwm` in [**Artix Li
 		<td> Distro </td> <td> Artix Linux </td>
 	<tr>
 	<tr>
-		<td rowspan=4> Window Manager </td> <td> dwm </td>
+		<td rowspan=4> Window Manager </td> <td> DWM </td>
 	</tr>
 	<tr>
 		<td>AwesomeWM</td>
@@ -88,7 +90,7 @@ My very basic dotfiles that I use everyday. Nowadays, I use `dwm` in [**Artix Li
 		<td>Qtile</td>
 	</tr>
 	<tr>
-		<td> Terminal Emmulator </td> <td> Alacritty </td>
+		<td> Terminal Emmulator </td> <td> Simple Terminal - ST </td>
 	</tr>
 	<tr>
 		<td> Shell </td> <td> Fish </td>
