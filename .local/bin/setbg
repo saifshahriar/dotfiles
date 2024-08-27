@@ -87,5 +87,7 @@ case "$1" in
 			wal -i "$walpic" && \
 			notify-send "Wallpaper changed through pywal"
 			sub && xrdbl && notify-send "Colors updated"
+			starttree.py
+			chrwal.sh
 		;;
 esac
