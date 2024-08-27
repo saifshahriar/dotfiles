@@ -1,6 +1,0 @@
-# super +  Return
-# 	xfce4-terminal
-
-super + d
-	dmenu_run -p 'Run:' -fn 'Iosevka:pixelsize=12' -h 32
-
