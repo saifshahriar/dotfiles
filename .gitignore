@@ -2,7 +2,7 @@
 *.exrc
 /.vscode
 /.config/mpv/watch_later
-/.vim/plugins/vim-plug/
+/.vim/plugins/vim-plug
 
 # Object files
 *.o
