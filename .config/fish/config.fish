@@ -1,9 +1,9 @@
 #  _______      _____ _______
-# /  ____/ /\  /_   _/  ____/ Author:	Saif Shahriar
-# \ (___  /  \   | | | |___   Web:		https://saifshahriar.github.io/
-#  \___ \/ /\ \  | | |  __/   GitHub:	https://github.com/saifshahriar
-#  ____)/ ____ \_| |_| |      GitLab:	https://gitlab.com/saifshahriar
-# \____/_/    \_\____|_|      License:	MIT
+# /  ____/ /\  /_   _/  ____/ Author:   Saif Shahriar
+# \ (___  /  \   | | | |___   Web:      https://saifshahriar.github.io/
+#  \___ \/ /\ \  | | |  __/   GitHub:   https://github.com/saifshahriar
+#  ____)/ ____ \_| |_| |      GitLab:   https://gitlab.com/saifshahriar
+# \____/_/    \_\____|_|      License:  MIT
 #
 # My fish shell configuration file. Nothing much to see. Pretty basic stuff.
 
