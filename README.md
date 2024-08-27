@@ -35,9 +35,9 @@
 	<tr>
 		<td align="center">
 			<samp>
-				No SoystemD! LMAO! 🙂
+				No SoystemD!
 				<br/>
-				But I use Arch BTW!
+				Still Arch BTW!
 			<samp>
 		</td>
 	</tr>
