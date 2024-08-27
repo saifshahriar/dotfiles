@@ -43,8 +43,8 @@ set $ws10 十
 ###		Borders			###
 ###########################
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-new_window pixel 1
-new_float normal
+# default_border pixel 1
+# new_float normal
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
