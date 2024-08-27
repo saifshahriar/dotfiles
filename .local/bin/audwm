@@ -7,7 +7,7 @@ clipcatd
 xfce4-power-manager &
 dwmbar &
 sxhkd &
-# picom -b &
+#picom -b &
 setxkbmap
 doas xremap ~/.config/xremap/config.yml --watch &
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
