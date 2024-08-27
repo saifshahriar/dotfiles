@@ -11,9 +11,14 @@
 set -gx ARCHFLAGS "-arch x86_64"
 
 ###########################################
-###		 		EXPORT					###
+###            EXPORT                   ###
 ###########################################
-set fish_greeting						# Suppresses fish's intro message.
+set fish_greeting                       # Suppresses fish's intro message.
+
+set -gx PLAN9 /opt/plan9
+alias 9="$PLAN9/bin/9"
+set -gx SBASE /opt/sbase
+alias sl="$SBASE/bin/sbase-box"
 
 # XDG stuff rules
 set -gx XDG_DATA_HOME $HOME/.local/share
@@ -23,6 +28,7 @@ set -gx XDG_CACHE_HOME $HOME/.cache
 #set -gx XDG_RUNTIME_DIR /run/user/"$UID"
 
 set -gx ANDROID_USER_HOME "$XDG_DATA_HOME"/android
+set -gx BAT_THEME "tokyonight_night"
 set -gx CALCHISTFILE "$XDG_CACHE_HOME"/calc_history
 set -gx CARGO_HOME "$XDG_DATA_HOME"/cargo
 set -gx DOTNET_CLI_HOME "$XDG_DATA_HOME"/dotnet
@@ -52,10 +58,10 @@ end
 
 type -q nvim && set -gx EDITOR "nvim" || set -gx EDITOR "vim"
 type -q pcmanfm && set -gx FILEMANAGER "pcmanfm"
-type -q doas && set adminsv doas || set adminsv sudo
+type -q doas && set prevesc doas || set prevesc sudo
 
 ###########################################
-###			ADDING TO THE PATH			###
+###       ADDING TO THE PATH            ###
 ###########################################
 # First line removes the path; second line sets it.  Without the first line,
 # your path gets massive && fish becomes very slow.
@@ -63,27 +69,35 @@ set -e fish_user_paths
 set -U fish_user_paths $HOME/.local/bin $XDG_DATA_HOME/{cargo/bin,go/bin,nimble/bin} $HOME/Applications $fish_user_paths
 
 ###########################################
-### 		SET MANPAGER 				###
+###            SET MANPAGER             ###
 ###########################################
 ### Uncomment only one of these!
 ### "bat" as manpager
 # set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 ### "vim" as manpager
-set -x MANPAGER '/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
+# set -x MANPAGER '/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
 ### "nvim" as manpager
-# set -x MANPAGER "nvim -c 'set ft=man' -"
+set -x MANPAGER "nvim +Man!"
 
-###########################################
-### 	 	SET EITHER DEFAULT 			###
-###			EMACS MODE OR VI MODE		###
-###########################################
-function fish_user_key_bindings
-	fish_default_key_bindings -M insert		# Uses VI as the default mode, but
-	fish_vi_key_bindings --no-erase insert	# emacs compatiable in insert mode.
+function 9man
+	9 man $argv | nvim +Man!
+end
+
+function slman
+	man "$SBASE/man/$argv".1 | nvim +Man!
 end
 
 ###########################################
-###	CURSOR SHAPE IN DIFFERENT VI MODE	###
+###           SET EITHER DEFAULT        ###
+###         EMACS MODE OR VI MODE       ###
+###########################################
+function fish_user_key_bindings
+	fish_default_key_bindings -M insert     # Uses VI as the default mode, but
+	fish_vi_key_bindings --no-erase insert  # emacs compatiable in insert mode.
+end
+
+###########################################
+###	 CURSOR SHAPE IN DIFFERENT VI MODE  ###
 ###########################################
 set fish_cursor_default block
 set fish_cursor_insert line
@@ -173,6 +187,7 @@ function fish_user_key_bindings
 end
 
 # Function for extracting different files
+# TODO: This function has some problem, fix needed
 function ex
 	switch $argv
 		case *.tar.bz2
@@ -209,13 +224,13 @@ function ex
 	set_color normal
 end
 
-# Function for bat as helper
-if type -q batcat && 
-	function help
-		"$argv" --help 2>&1 | bathelp
-	end
+# Function for nvim | bat as helper
+function h
+	$argv --help | bathelp
+	# $argv --help | nvim +Man!
 end
 
+# Delete all binaries in the current directory
 function rmbin
     if test (basename "$PWD") = "cp"
         find . -type f -executable -delete
@@ -235,7 +250,7 @@ function rmbin
 end
 
 ###########################################
-###		 		ALIASES					###
+###               ALIASES               ###
 ###########################################
 ### Filesystem
 	alias ..="cd .."
@@ -259,28 +274,26 @@ alias yz="yazi"
 alias lf="yazi"
 
 # If you are coming from CMD. I mean no one does that, but I like these commands.
-	alias cls="clear"
-	alias del="rm -rfv"
+alias cls="clear"
+alias del="rm -rfv"
 
 # Always confirm before overwriting something && verbose mode.
-	alias mv="mv -v"
-	alias cp="cp -v"
-	alias ln="ln -v"
-	alias rm="rm -v"
+alias mv="mv -v"
+alias cp="cp -v"
+alias ln="ln -v"
+alias rm="rm -v"
 
 ### Programs
 # Bat 	alias
 if type -q bat
-	alias bat='bat --theme="Dracula" --pager="less -FR --RAW-CONTROL-CHARS --quit-if-one-screen --mouse" --map-syntax "*.ino:C++"  --map-syntax h:cpp'
+	alias bat='bat --pager="less -FR --RAW-CONTROL-CHARS --quit-if-one-screen --mouse" --map-syntax "*.ino:C++"  --map-syntax h:cpp'
 	abbr -ag bman batman
 	alias bgrep='batgrep -S'
 	alias bathelp='bat --plain --language=help'
-else
-	set_color && echo "\`bat\` doesn't exist. Download 'bat' and 'bat-extras'."
 end
 
 # cal command wont highlight current date
-test -t 1; and alias cal="ncal -b"; or alias cal="/usr/bin/cal"
+alias cal="ncal -b"
 
 # grep	alias. Colorize grep output (good for log files)
 	alias grep='grep --color=auto'
@@ -300,7 +313,7 @@ end
 
 # editor
 	alias edit='echo "$EDITOR is currently set as your default editor. If you want to change it, then edit the fish config file at $HOME/.config/fish/config.fish"; $EDITOR'
-	abbr -ag v	nvim
+	abbr -ag v  nvim
 	abbr -ag vi	vim
 
 # file manager
@@ -308,8 +321,8 @@ end
 
 # media
 	# Watch anime:
-	abbr -ag	ani ani-cli
-	alias anic='ani-cli -c'			# continue watching anime
+	abbr -ag    ani ani-cli
+	alias anic='ani-cli -c'             # continue watching anime
 	# youtube-dl
 	alias yta-aac="youtube-dl --extract-audio --audio-format aac "
 	alias yta-best="youtube-dl --extract-audio --audio-format best "
@@ -322,16 +335,15 @@ end
 	alias ytv-best="youtube-dl -f bestvideo+bestaudio "
 
 # get fastest mirrors
-	alias mirrorbd="$adminsv reflector -c Bangladesh >> /etc/pacman.d/mirrorlist"
-	alias mirrorin="$adminsv reflector -c India >> /etc/pacman.d/mirrorlist"
-	alias mirror="$adminsv reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
-	alias mirrord="$adminsv reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
-	alias mirrors="$adminsv reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
-	alias mirrora="$adminsv reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
+	alias mirrorbd="$prevesc reflector -c Bangladesh >> /etc/pacman.d/mirrorlist"
+	alias mirror="$prevesc reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+	alias mirrord="$prevesc reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
+	alias mirrors="$prevesc reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
+	alias mirrora="$prevesc reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
 
 # adding flags
-	alias df='df -h'				# human-readable sizes
-	alias free='free -m'			# show sizes in MB
+	alias df='df -h'                    # human-readable sizes
+	alias free='free -m'                # show sizes in MB
 	
 # ps
 	alias psa="ps auxf"
@@ -340,24 +352,24 @@ end
 	alias pscpu='ps auxf | sort -nr -k 3'
 
 # Merge Xresources
-	abbr -ag merxrdb	xrdb -merge ~/.Xresources
+	abbr -ag merxrdb    xrdb -merge ~/.Xresources
 
 # git
-	abbr -ag addup		git add -u
-	abbr -ag branch		git branch
-	abbr -ag checkout	git checkout
-	abbr -ag commit		git commit -m \"
-	abbr -ag fetch		git fetch
-	abbr -ag ga			git add .
-	abbr -ag gcl		git clone
-	abbr -ag gcm		git commit -m \"
-	abbr -ag gd			git diff
-	abbr -ag gp			git push
-	abbr -ag gs			git status
-	abbr -ag pull		git pull origin
-	abbr -ag push		git push origin
-	abbr -ag tag		git tag
-	abbr -ag newtag		git tag -a
+	abbr -ag addup      git add -u
+	abbr -ag branch     git branch
+	abbr -ag checkout   git checkout
+	abbr -ag commit     git commit -m \"
+	abbr -ag fetch      git fetch
+	abbr -ag ga         git add .
+	abbr -ag gcl        git clone
+	abbr -ag gcm        git commit -m \"
+	abbr -ag gd         git diff
+	abbr -ag gp         git push
+	abbr -ag gs         git status
+	abbr -ag pull       git pull origin
+	abbr -ag push       git push origin
+	abbr -ag tag        git tag
+	abbr -ag newtag     git tag -a
 
 # zoxide
 	abbr -ag z-    z -
@@ -377,53 +389,51 @@ end
 	
 ### Package aliases
 if type -q apt
-	# abbr -ag update		$adminsv apt update
-	# abbr -ag upgrade	$adminsv apt upgrade
-	# abbr -ag sysup		$adminsv apt update && $adminsv apt upgrade
-	# abbr -ag install	$adminsv apt install
-	# abbr -ag remove		$adminsv apt remove
-	# abbr -ag autoremove	$adminsv apt autoremove
-	# abbr -ag cleanup	$adminsv apt remove && $adminsv apt autoremove
+	# abbr -ag update     $prevesc apt update
+	# abbr -ag upgrade    $prevesc apt upgrade
+	# abbr -ag sysup      $prevesc apt update && $prevesc apt upgrade
+	# abbr -ag install    $prevesc apt install
+	# abbr -ag remove     $prevesc apt remove
+	# abbr -ag autoremove $prevesc apt autoremove
+	# abbr -ag cleanup    $prevesc apt remove && $prevesc apt autoremove
 else if type -q xbps
-	abbr -ag xbi		$adminsv xbps-install
-	abbr -ag xbr		$adminsv xbps-remove
-	abbr -ag xbq		$adminsv xbps-query
+	abbr -ag xbi        $prevesc xbps-install
+	abbr -ag xbr        $prevesc xbps-remove
+	abbr -ag xbq        $prevesc xbps-query
 else if type -q pacman
-	abbr -ag pac 		$adminsv pacman
-	abbr -ag pacs		$adminsv pacman -S
-	abbr -ag install	$adminsv pacman -S
-	abbr -ag pacsyy		$adminsv pacman -Syy
-	abbr -ag pacsyu		$adminsv pacman -Syu			# update only standard pkgs
-	abbr -ag pacsyyu	$adminsv pacman -Syyu			# Refresh pkglist & update standard pkgs
-	abbr -ag pacr 		$adminsv pacman -R
-	abbr -ag pacrns		$adminsv pacman -Rns
-	abbr -ag cleanup	$adminsv pacman -Rns (pacman -Qtdq)		# Removes orphan packages
-	abbr -ag pacunlock	$adminsv rm /var/lib/pacman/db.lck		# remove pacman lock
+	abbr -ag pac        $prevesc pacman
+	abbr -ag pacs       $prevesc pacman -S
+	abbr -ag install    $prevesc pacman -S
+	abbr -ag pacsyy     $prevesc pacman -Syy
+	abbr -ag pacsyu     $prevesc pacman -Syu            # update only standard pkgs
+	abbr -ag pacsyyu    $prevesc pacman -Syyu           # Refresh pkglist & update standard pkgs
+	abbr -ag pacr       $prevesc pacman -R
+	abbr -ag pacrns     $prevesc pacman -Rns
+	abbr -ag cleanup    $prevesc pacman -Rns (pacman -Qtdq)     # Removes orphan packages
+	abbr -ag pacunlock  $prevesc rm /var/lib/pacman/db.lck      # remove pacman lock
 	if type -q yay
-		abbr -ag yays		yay -S
-		abbr -ag yaysua		yay -Sua --noconfirm			# update only AUR pkgs (yay)
-		abbr -ag yaysyu		yay -Syu --noconfirm			# update standard pkgs && AUR pkgs (yay)
+		abbr -ag yays       yay -S
+		abbr -ag yaysua     yay -Sua --noconfirm            # update only AUR pkgs (yay)
+		abbr -ag yaysyu     yay -Syu --noconfirm            # update standard pkgs && AUR pkgs (yay)
 	else if type -q paru
-		abbr -ag parsua		paru -Sua --noconfirm			# update only AUR pkgs (paru)
-		abbr -ag parsyu		paru -Syu --noconfirm			# update standard pkgs && AUR pkgs (paru)
+		abbr -ag parsua     paru -Sua --noconfirm           # update only AUR pkgs (paru)
+		abbr -ag parsyu     paru -Syu --noconfirm           # update standard pkgs && AUR pkgs (paru)
 	end
 end
 
 ###########################################
-###		ADD CUSTOM ALIASES BELOW		###
-###########################################	
-# Additional config file
-
-########################################### Run these programs whenever the
-###				STARTUP					### shell starts. NOTE: This may slow
-########################################### down the shell during startup.
+###               LOAD                  ###
+###########################################
 ### Run zoxide | The rust replacement for cd ###
 type -q zoxide && zoxide init fish | source
+### Set up fzf key bindings
+type -q fzf && fzf --fish | source
 ### SETTING THE STARSHIP PROMPT ###		# NOTE: This might slow down the prompt.
 # type -q starship && starship init fish | source
 
+########################################### Run these programs whenever the
+###             STARTUP                 ### shell starts. NOTE: This may slow
+########################################### down the shell during startup.
 # colorscript random
 # fastfetch
 # pfetch
-
-# vim:ft=bash:sw=4:ts=4:noet
