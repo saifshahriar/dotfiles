@@ -6,7 +6,7 @@
 # \____/_/    \_\____|_|      License:  MIT
 #
 # My fish shell configuration file. Nothing much to see. Pretty basic stuff.
-# test
+
 ### Compilation flags ###
 set -gx ARCHFLAGS "-arch x86_64"
 
