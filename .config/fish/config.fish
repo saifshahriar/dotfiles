@@ -97,7 +97,7 @@ function fish_user_key_bindings
 end
 
 ###########################################
-###	 CURSOR SHAPE IN DIFFERENT VI MODE  ###
+###  CURSOR SHAPE IN DIFFERENT VI MODE  ###
 ###########################################
 set fish_cursor_default block
 set fish_cursor_insert line
@@ -159,7 +159,7 @@ set -g fish_pager_color_secondary_completion $foreground
 set -g fish_pager_color_secondary_description $comment
 
 ###########################################
-###			CUSTOM FUNCTIONS			###
+###          CUSTOM FUNCTIONS           ###
 ###########################################
 # Functions needed for !! and !$
 function bind_bang
@@ -191,33 +191,33 @@ end
 function ex
 	switch $argv
 		case *.tar.bz2
-			tar xjf $argv		;;
+			tar xjf $argv       ;;
 		case *.tar.gz
-			tar xzf $argv 		;;
+			tar xzf $argv       ;;
 		case *.bz2
-			bunzip2 $argv		;;
+			bunzip2 $argv       ;;
 		case *.rar
-			unrar x $argv		;;
+			unrar x $argv       ;;
 		case *.gz
-			gunzip $argv		;;
+			gunzip $argv        ;;
 		case *.tar
-			tar xf $argv		;;
+			tar xf $argv        ;;
 		case *.tbz2
-			tar xjf $argv		;;
+			tar xjf $argv       ;;
 		case *.tgz
-			tar xzf $argv		;;
+			tar xzf $argv       ;;
 		case *.zip
-			unzip $argv			;;
+			unzip $argv         ;;
 		case *.Z
-			uncompress $argv	;;
+			uncompress $argv    ;;
 		case *.7z
-			7z x $argv			;;
+			7z x $argv          ;;
 		case *.deb
-			ar x $argv			;;
+			ar x $argv          ;;
 		case *.tar.xz
-			tar xf $argv		;;
+			tar xf $argv        ;;
 		case *.tar.zst
-			unzstd $argv		;;
+			unzstd $argv        ;;
 		case *
 			echo "'$argv' cannot be extracted via ex" ;;
 	end
@@ -284,7 +284,7 @@ alias ln="ln -v"
 alias rm="rm -v"
 
 ### Programs
-# Bat 	alias
+# Bat alias
 if type -q bat
 	alias bat='bat --pager="less -FR --RAW-CONTROL-CHARS --quit-if-one-screen --mouse" --map-syntax "*.ino:C++"  --map-syntax h:cpp'
 	abbr -ag bman batman
@@ -295,7 +295,7 @@ end
 # cal command wont highlight current date
 alias cal="ncal -b"
 
-# grep	alias. Colorize grep output (good for log files)
+# grep alias. Colorize grep output (good for log files)
 	alias grep='grep --color=auto'
 	alias egrep='egrep --color=auto'
 	alias fgrep='fgrep --color=auto'
@@ -314,10 +314,10 @@ end
 # editor
 	alias edit='echo "$EDITOR is currently set as your default editor. If you want to change it, then edit the fish config file at $HOME/.config/fish/config.fish"; $EDITOR'
 	abbr -ag v  nvim
-	abbr -ag vi	vim
+	abbr -ag vi vim
 
 # file manager
-	type -q $FILEMANAGER &&	abbr -ag f $FILEMANAGER
+	type -q $FILEMANAGER && abbr -ag f $FILEMANAGER
 
 # media
 	# Watch anime:
@@ -344,7 +344,7 @@ end
 # adding flags
 	alias df='df -h'                    # human-readable sizes
 	alias free='free -m'                # show sizes in MB
-	
+
 # ps
 	alias psa="ps auxf"
 	alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
@@ -386,7 +386,7 @@ end
 	type -q tokei && abbr -ag tk "tokei --hidden ."
 # wget
 	alias wget="wget --hsts-file="$XDG_DATA_HOME"/wget-hsts"
-	
+
 ### Package aliases
 if type -q apt
 	# abbr -ag update     $prevesc apt update
@@ -428,7 +428,7 @@ end
 type -q zoxide && zoxide init fish | source
 ### Set up fzf key bindings
 type -q fzf && fzf --fish | source
-### SETTING THE STARSHIP PROMPT ###		# NOTE: This might slow down the prompt.
+### SETTING THE STARSHIP PROMPT ###      # NOTE: This might slow down the prompt.
 # type -q starship && starship init fish | source
 
 ########################################### Run these programs whenever the
