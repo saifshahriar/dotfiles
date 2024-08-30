@@ -91,6 +91,8 @@ end
 ###           SET EITHER DEFAULT        ###
 ###         EMACS MODE OR VI MODE       ###
 ###########################################
+# NOTE: It used to work. Now, it doesn't. I am only using Emacs bindings that is provided by default.
+# TODO: Fix this function.
 function fish_user_key_bindings
 	fish_default_key_bindings -M insert     # Uses VI as the default mode, but
 	fish_vi_key_bindings --no-erase insert  # emacs compatiable in insert mode.
