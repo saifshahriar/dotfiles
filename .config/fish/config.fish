@@ -49,6 +49,7 @@ set -gx SQLITE_HISTORY "$XDG_CACHE_HOME"/sqlite_history
 set -gx XCURSOR_PATH /usr/share/icons:"$XDG_DATA_HOME"/icons
 
 set -gx TERM "xterm-256color"
+set -gx COLORTERM truecolor
 
 if type -q brave
 	set -gx BROWSER "brave"
