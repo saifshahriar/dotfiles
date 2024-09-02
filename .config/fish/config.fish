@@ -46,6 +46,7 @@ set -gx RUSTUP_HOME "$XDG_DATA_HOME"/rustup
 set -gx R_HISTFILE "$XDG_CACHE_HOME"/Rhistory
 set -gx SCREENRC "$XDG_CONFIG_HOME"/screen/screenrc
 set -gx SQLITE_HISTORY "$XDG_CACHE_HOME"/sqlite_history
+set -gx W3M_DIR "$XDG_DATA_HOME"/w3m
 set -gx XCURSOR_PATH /usr/share/icons:"$XDG_DATA_HOME"/icons
 
 set -gx TERM "xterm-256color"
@@ -94,10 +95,10 @@ end
 ###########################################
 # NOTE: It used to work. Now, it doesn't. I am only using Emacs bindings that is provided by default.
 # TODO: Fix this function.
-function fish_user_key_bindings
-	fish_default_key_bindings -M insert     # Uses VI as the default mode, but
-	fish_vi_key_bindings --no-erase insert  # emacs compatiable in insert mode.
-end
+#function fish_user_key_bindings
+	#fish_default_key_bindings -M insert     # Uses VI as the default mode, but
+	#fish_vi_key_bindings --no-erase insert  # emacs compatiable in insert mode.
+#end
 
 ###########################################
 ###  CURSOR SHAPE IN DIFFERENT VI MODE  ###
