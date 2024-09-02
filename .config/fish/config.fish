@@ -400,7 +400,7 @@ if type -q apt
 	# abbr -ag remove     $prevesc apt remove
 	# abbr -ag autoremove $prevesc apt autoremove
 	# abbr -ag cleanup    $prevesc apt remove && $prevesc apt autoremove
-else if type -q xbps
+else if type -q xbps-install
 	abbr -ag xbi        $prevesc xbps-install
 	abbr -ag xbr        $prevesc xbps-remove
 	abbr -ag xbq        $prevesc xbps-query
