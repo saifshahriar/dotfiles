@@ -52,7 +52,7 @@ My very basic dotfiles that I use everyday. Nowadays, I use `dwm` in [**Artix Li
   <img src="https://github.com/user-attachments/assets/a78574b0-7dfa-4da4-8dc3-73783311fa86" alt="setup-screenshot">
 </div>
 
-# I use
+## I use
 <table>
 	<tr>
 		<td> Distro </td> <td> Artix Linux </td>
@@ -82,3 +82,55 @@ My very basic dotfiles that I use everyday. Nowadays, I use `dwm` in [**Artix Li
 		<td> Colorscheme </td> <td> Tokyonight </td>
 	</tr>
 </table>
+
+## Stuff you can take advantage of
+### Shell
+- Fish Config*
+### Terminal
+- Alacritty
+- Foot*
+- Kitty
+### Text Editor/IDE
+- Vim
+- Neovim*
+### Window Manager
+- AwesomeWM
+- DWM Configs
+- Qtile
+- River*
+- Nimdow
+- LeftWM
+#### Compositor
+- Picom
+### File Managers
+- yazi*
+- lf
+- ranger
+### Package Manager
+- Paru*
+- Pacseek
+### Keymap
+- sxhkd*
+- xremap
+### Misc
+- mpv config/scripts*
+- fontconfig*
+- clipcat
+- networkmanager-dmenu*
+- X11/xresources*
+
+As well as any scripts
+
+**N.B:** `*` means I am using them and perhaps constantly pushing the configs.
+
+## Stuff I don't recommend you ripp off (might be outdated or might malfunction)
+### Shell
+- Bashrc
+### Terminal
+- Tmux
+- Wezterm
+### Text Editor/IDE
+- Oni2
+### Window Manager
+- BSPWM
+- i3/sway
