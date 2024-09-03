@@ -140,6 +140,7 @@ set -g fish_color_escape $pink
 set -g fish_color_autosuggestion $comment
 set -g fish_color_cancel $red --reverse
 set -g fish_color_option $orange
+set -g fish_color_status $red
 
 # Default Prompt Colors
 set -g fish_color_cwd $green
