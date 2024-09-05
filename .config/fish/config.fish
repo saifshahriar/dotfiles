@@ -32,6 +32,7 @@ set -gx BAT_THEME "tokyonight_night"
 set -gx CALCHISTFILE "$XDG_CACHE_HOME"/calc_history
 set -gx CARGO_HOME "$XDG_DATA_HOME"/cargo
 set -gx DOTNET_CLI_HOME "$XDG_DATA_HOME"/dotnet
+set -gx ELINKS_CONFDIR "$XDG_CONFIG_HOME"/elinks
 set -gx GNUPGHOME "$XDG_DATA_HOME"/gnupg
 set -gx GOPATH "$XDG_DATA_HOME"/go
 set -gx GTK2_RC_FILES "$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
