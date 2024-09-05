@@ -46,6 +46,7 @@ set -gx RUSTUP_HOME "$XDG_DATA_HOME"/rustup
 set -gx R_HISTFILE "$XDG_CACHE_HOME"/Rhistory
 set -gx SCREENRC "$XDG_CONFIG_HOME"/screen/screenrc
 set -gx SQLITE_HISTORY "$XDG_CACHE_HOME"/sqlite_history
+set -gx STACK_XDG 1
 set -gx W3M_DIR "$XDG_DATA_HOME"/w3m
 set -gx XCURSOR_PATH /usr/share/icons:"$XDG_DATA_HOME"/icons
 
