@@ -49,6 +49,7 @@ set -gx SQLITE_HISTORY "$XDG_CACHE_HOME"/sqlite_history
 set -gx STACK_XDG 1
 set -gx W3M_DIR "$XDG_DATA_HOME"/w3m
 set -gx XCURSOR_PATH /usr/share/icons:"$XDG_DATA_HOME"/icons
+set -gx _JAVA_OPTIONS -Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 
 set -gx TERM "xterm-256color"
 set -gx COLORTERM truecolor
