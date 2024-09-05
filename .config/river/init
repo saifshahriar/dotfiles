@@ -1,4 +1,13 @@
 #!/bin/sh
+#   _________  _____  .______________
+#  /   _____/ /  _  \ |   \_   _____/  Author:   Saif Shahriar
+#  \_____  \ /  /_\  \|   ||    __)    Web:      https://saifshahriar.github.io/
+#  /        /    |    |   ||     \     GitHub:   https://github.com/saifshahriar
+# /_______  \____|__  |___|\___  /     GitLab:   https://gitlab.com/saifshahriar
+#         \/        \/         \/      License:  MIT
+#
+# My first wayland compositor config. Everything should work fine. Needs to add
+# up some things.
 
 #################
 ### Variables ###

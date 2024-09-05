@@ -1,11 +1,14 @@
-#  _______      _____ _______
-# /  ____/ /\  /_   _/  ____/ Author:	Saif Shahriar
-# \ (___  /  \   | | | |___   Web:	https://saifshahriar.github.io/
-#  \___ \/ /\ \  | | |  __/   GitHub:	https://github.com/saifshahriar
-#  ____)/ ____ \_| |_| |      GitLab:	https://gitlab.com/saifshahriar
-# \____/_/    \_\____|_|      License:	MIT
+#   _________  _____  .______________
+#  /   _____/ /  _  \ |   \_   _____/  Author:   Saif Shahriar
+#  \_____  \ /  /_\  \|   ||    __)    Web:      https://saifshahriar.github.io/
+#  /        /    |    |   ||     \     GitHub:   https://github.com/saifshahriar
+# /_______  \____|__  |___|\___  /     GitLab:   https://gitlab.com/saifshahriar
+#         \/        \/         \/      License:  MIT
 #
 # My bash shell configuration file.
+#
+# NOTE: I don't use bash shell anymore. You can copy things, but donot copy and
+# paste the whole config.
 
 ###########################################
 ### 		EXPORT			###
@@ -258,3 +261,5 @@ PS1='\[\e[0;31m\][\[\e[0;33m\]\u\[\e[0;32m\]@\[\e[0;34m\]\h \[\e[0;35m\]\w\[\e[0
 
 [ $(command -v zoxide) ] && eval "$(zoxide init bash)"
 exec fish
+
+# vim: colorcolumn+=43

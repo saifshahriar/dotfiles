@@ -1,8 +1,11 @@
-# 
-# 
-# 
-# 
-# 
+#   _________  _____  .______________
+#  /   _____/ /  _  \ |   \_   _____/  Author:   Saif Shahriar
+#  \_____  \ /  /_\  \|   ||    __)    Web:      https://saifshahriar.github.io/
+#  /        /    |    |   ||     \     GitHub:   https://github.com/saifshahriar
+# /_______  \____|__  |___|\___  /     GitLab:   https://gitlab.com/saifshahriar
+#         \/        \/         \/      License:  MIT
+#
+# NOTE: This i3 config is dirty. Needs to tidy things up.
 
 ###########################
 ###		Variable		###
@@ -419,4 +422,3 @@ exec --no-startup-id xrandr -s $res
 exec --no-startup-id pulseaudio
 #exec --no-startup-id pa-applet
 ################################################################################################
-

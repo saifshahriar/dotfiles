@@ -1,11 +1,12 @@
-#  _______      _____ _______
-# /  ____/ /\  /_   _/  ____/ Author:   Saif Shahriar
-# \ (___  /  \   | | | |___   Web:      https://saifshahriar.github.io/
-#  \___ \/ /\ \  | | |  __/   GitHub:   https://github.com/saifshahriar
-#  ____)/ ____ \_| |_| |      GitLab:   https://gitlab.com/saifshahriar
-# \____/_/    \_\____|_|      License:  MIT
+#   _________  _____  .______________
+#  /   _____/ /  _  \ |   \_   _____/  Author:   Saif Shahriar
+#  \_____  \ /  /_\  \|   ||    __)    Web:      https://saifshahriar.github.io/
+#  /        /    |    |   ||     \     GitHub:   https://github.com/saifshahriar
+# /_______  \____|__  |___|\___  /     GitLab:   https://gitlab.com/saifshahriar
+#         \/        \/         \/      License:  MIT
 #
-# My fish shell configuration file. Nothing much to see. Pretty basic stuff.
+# My advance fish shell configuration file. Up to date and much things should
+# work.
 
 ### Compilation flags ###
 set -gx ARCHFLAGS "-arch x86_64"
