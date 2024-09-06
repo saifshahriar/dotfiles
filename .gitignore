@@ -18,6 +18,11 @@
 *.x86_64
 *.hex
 
+# error files
+*.error
+*.errors
+*.hi
+
 # Python
 # Byte-compiled / optimized / DLL files
 __pycache__/
