@@ -43,7 +43,7 @@ riverctl rule-add -app-id "bar" csd
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
-rivertile -view-padding 1 -outer-padding 5 &
+rivertile -view-padding 2 -outer-padding 5 &
 
 ###################
 ### Keybindings ###
@@ -163,6 +163,9 @@ done
 riverctl set-repeat 50 300
 
 
-# autostart
-foot --server &
-wlr-randr --output Virtual-1 --mode 1360x768 &
+#################
+### Autostart ###
+#################
+riverctl spawn foot --server
+riverctl spawn waybar
+wlr-randr --output Virtual-1 --mode 1360x768
