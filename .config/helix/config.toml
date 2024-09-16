@@ -1,0 +1,40 @@
+theme = "tokyonight"
+
+[editor]
+auto-completion = true
+auto-format = true
+cursorline = true
+line-number = "relative"
+scrolloff = 10
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+
+
+
+
+
+# [editor.normal]
+# background = "#7aa2f7"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
