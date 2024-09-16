@@ -1,0 +1,75 @@
+{
+  "modules-left": [
+    "river/tags",
+    "river/window"
+  ],
+
+
+  "modules-right": [
+    "river/mode",
+    /* "idle_inhibitor", */
+    "network",
+    "cpu",
+    "memory",
+    "temperature",
+    "clock",
+  ],
+
+  "river/tags": {
+    /* "tag-labels": [ "dev", "www",  "sys",  "doc", "vbox", "chat", "mus", "vid", "gfx" ], */
+  },
+
+  "river/window": {
+    "max-length": 200,
+  },
+
+  "clock": {
+    "format": " {:%a, %I:%M %p}",
+    "interval": 1,
+    "tooltip": true,
+	"tooltip-format": "{:%h %d, %Y\n%A, %I:%M:%S %p\nTimeZone: %Z}",
+  },
+
+  "network": {
+    "interval": 1,
+    "format-wifi": " {essid}",
+    "format-ethernet": "󰈀 {ifname}",
+    "format-linked": " {ifname} (No IP)",
+    "format-disconnected": "󰖪 Disconnected",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    "tooltip": true,
+    "tooltip-format-wifi": " {essid} {signalStrenth}%\n {bandwidthUpBits}  {bandwidthDownBits}",
+    "tooltip-format-ethernet": "󰈀 {ifname}\n {bandwidthUpBits}  {bandwidthDownBits}",
+    "tooltip-format": " {bandwidthUpBits}  {bandwidthDownBits}",
+  },
+
+  "idle_inhibitor": {
+    "tooltip": false
+  },
+  "cpu": {
+    "format": " {usage}%",
+    "interval": 1,
+    "states": {
+      "warning": 50,
+      "critical": 90
+    },
+    "tooltip": false
+  },
+  "memory": {
+    "format": " {used}G",
+    "interval": 1,
+    "states": {
+      "warning": 50,
+      "critical": 90
+    },
+    "tooltip": true,
+	"tooltip-format": "{used}G/{total}G Used\n{avail}G available"
+  },
+  "temperature": {
+    "format": "{temperatureC}°C",
+    "interval": 1,
+    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "critical-threshold": 80,
+    "tooltip": false
+  }
+}

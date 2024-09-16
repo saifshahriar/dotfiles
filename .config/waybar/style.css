@@ -1,0 +1,143 @@
+/* schemes: tokyonight */
+/* https://github.com/folke/tokyonight.nvim */
+/* See the dark variant */
+
+@define-color background #1a1b26;
+@define-color foreground #c0caf5;
+
+/* Normal colors */
+@define-color color0 #15161e;
+@define-color color1 #f7768e;
+@define-color color2 #9ece6a;
+@define-color color3 #e0af68;
+@define-color color4 #7aa2f7;
+@define-color color5 #bb9af7;
+@define-color color6 #7dcfff;
+@define-color color7 #a9b1d6;
+
+/* Bright colors */
+@define-color color8 #414868;
+@define-color color9 #f7768e;
+@define-color color10 #9ece6a;
+@define-color color11 #e0af68;
+@define-color color12 #7aa2f7;
+@define-color color13 #bb9af7;
+@define-color color14 #7dcfff;
+@define-color color15 #c0caf5;
+
+/* Indexed Colors */
+@define-color color16 #ff9e64;
+@define-color color17 #db4b4b;
+
+* {
+	border-radius: 0;
+	font-family: JetBrainsMono Nerd Font;
+	min-height: 0;
+}
+
+window#waybar {
+	background-color: rgba(0, 0, 0, 0);
+	/* transparent */
+}
+
+#tags {
+	margin-top: 5px;
+	margin-left: 7px;
+	padding: 1px;
+	background-color: rgba(0, 0, 0, 0);
+	border: 2px solid @foreground;
+}
+
+#tags button {
+	margin: 1px;
+	padding: 1px;
+	color: @foreground;
+	border: 2px solid rgba(0, 0, 0, 0);
+
+	/* Disable animation on click, GTK has the stupidest defaults */
+	transition-property: none;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#tags button:hover {
+	box-shadow: inherit;
+	text-shadow: inherit;
+	color: @color0;
+	background: @color7;
+}
+
+#tags button.focused {
+	color: @background;
+	background-color: @foreground;
+	border: 2px solid rgba(0, 0, 0, 0);
+}
+
+#tags button.occupied {
+	border: 2px solid @foreground;
+}
+
+#tags button.urgent {
+	border: 2px solid @color1 ;
+}
+
+#tags button.occupied.urgent {
+	border: 2px solid @color1;
+}
+
+#tags button.focused.occupied {
+	color: @background;
+	background-color: @foreground;
+	border: 2px solid @foreground;
+}
+
+#window {
+	margin-top: 5px;
+	margin-left: -2px;
+	padding: 1px 10px;
+	color: @foreground;
+	background-color: rgba(0, 0, 0, 0);
+	border: 2px solid @foreground;
+}
+
+#clock,
+#mode,
+#cpu,
+#memory,
+#network,
+#idle_inhibitor,
+#temperature {
+	padding: 1px 5px;
+	margin-top: 5px;
+	margin-left: -2px;
+	background-color: @background;
+	color: @foreground;
+	border: 2px solid @foreground;
+}
+
+#mode {
+	margin-left: 2px;
+}
+
+#temperature {
+	margin-right: 8px;
+}
+
+#clock {
+	margin-left: -2px;
+	margin-right: 7px;
+}
+
+#cpu.warning,
+#memory.warning {
+	color: @background;
+	border: 2px solid @foreground;
+	background-color: @color3;
+}
+
+#cpu.critical,
+#memory.critical,
+#temperature.critical {
+	color: @background;
+	border: 2px solid @foreground;
+	background-color: @color1;
+}
