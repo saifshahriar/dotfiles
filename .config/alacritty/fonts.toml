@@ -1,0 +1,7 @@
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Medium"
+
+[font]
+size = 11
+builtin_box_drawing = true
