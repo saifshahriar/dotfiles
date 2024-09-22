@@ -58,6 +58,8 @@ set -gx COLORTERM truecolor
 
 if type -q brave
 	set -gx BROWSER "brave"
+else if type -q brave-browser
+	set -gx BROWSER "brave-browser"
 else if type -q firefox
 	set -gx BROWSER "firefox"
 end
