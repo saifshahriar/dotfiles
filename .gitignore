@@ -9,6 +9,7 @@
 *.ko
 *.obj
 *.elf
+*.ropeproject
 
 # Executables
 *.exe
