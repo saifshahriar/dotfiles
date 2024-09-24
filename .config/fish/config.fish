@@ -425,11 +425,13 @@ alias yta-wav="youtube-dl --extract-audio --audio-format wav "
 alias ytv-best="youtube-dl -f bestvideo+bestaudio "
 
 # get fastest mirrors
-alias mirrorbd="$prevesc reflector -c Bangladesh >> /etc/pacman.d/mirrorlist"
-alias mirror="$prevesc reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
-alias mirrord="$prevesc reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
-alias mirrors="$prevesc reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
-alias mirrora="$prevesc reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
+if type -q reflector
+	alias mirrorbd="$prevesc reflector -c Bangladesh >> /etc/pacman.d/mirrorlist"
+	alias mirror="$prevesc reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+	alias mirrord="$prevesc reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
+	alias mirrors="$prevesc reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
+	alias mirrora="$prevesc reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
+end
 
 # adding flags
 alias df='df -h'                    # human-readable sizes
@@ -442,6 +444,7 @@ alias psmem='ps auxf | sort -nr -k 4'
 alias pscpu='ps auxf | sort -nr -k 3'
 
 # Merge Xresources
+abbr -ag loadxrdb   xrdb -load ~/.Xresources && xrdb -merge ~/.cache/wal/colors.Xresources
 abbr -ag merxrdb    xrdb -merge ~/.Xresources
 
 # git
