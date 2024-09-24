@@ -386,11 +386,11 @@ end
 alias cal="ncal -b"
 
 # grep alias. Colorize grep output (good for log files)
-	alias grep='grep --color=auto'
-	alias egrep='egrep --color=auto'
-	alias fgrep='fgrep --color=auto'
-	alias rg='rg -p'
-	alias ip='ip --color=auto'
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias rg='rg -p'
+alias ip='ip --color=auto'
 
 # Devour (https://github.com/salman-abedin/devour)
 if type -q devour
@@ -410,72 +410,72 @@ end
 	type -q $FILEMANAGER && abbr -ag f $FILEMANAGER
 
 # media
-	# Watch anime:
-	abbr -ag    ani ani-cli
-	alias anic='ani-cli -c'             # continue watching anime
-	# youtube-dl
-	alias yta-aac="youtube-dl --extract-audio --audio-format aac "
-	alias yta-best="youtube-dl --extract-audio --audio-format best "
-	alias yta-flac="youtube-dl --extract-audio --audio-format flac "
-	alias yta-m4a="youtube-dl --extract-audio --audio-format m4a "
-	alias yta-mp3="youtube-dl --extract-audio --audio-format mp3 "
-	alias yta-opus="youtube-dl --extract-audio --audio-format opus "
-	alias yta-vorbis="youtube-dl --extract-audio --audio-format vorbis "
-	alias yta-wav="youtube-dl --extract-audio --audio-format wav "
-	alias ytv-best="youtube-dl -f bestvideo+bestaudio "
+# Watch anime:
+abbr -ag    ani ani-cli
+alias anic='ani-cli -c'             # continue watching anime
+# youtube-dl
+alias yta-aac="youtube-dl --extract-audio --audio-format aac "
+alias yta-best="youtube-dl --extract-audio --audio-format best "
+alias yta-flac="youtube-dl --extract-audio --audio-format flac "
+alias yta-m4a="youtube-dl --extract-audio --audio-format m4a "
+alias yta-mp3="youtube-dl --extract-audio --audio-format mp3 "
+alias yta-opus="youtube-dl --extract-audio --audio-format opus "
+alias yta-vorbis="youtube-dl --extract-audio --audio-format vorbis "
+alias yta-wav="youtube-dl --extract-audio --audio-format wav "
+alias ytv-best="youtube-dl -f bestvideo+bestaudio "
 
 # get fastest mirrors
-	alias mirrorbd="$prevesc reflector -c Bangladesh >> /etc/pacman.d/mirrorlist"
-	alias mirror="$prevesc reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
-	alias mirrord="$prevesc reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
-	alias mirrors="$prevesc reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
-	alias mirrora="$prevesc reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
+alias mirrorbd="$prevesc reflector -c Bangladesh >> /etc/pacman.d/mirrorlist"
+alias mirror="$prevesc reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+alias mirrord="$prevesc reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
+alias mirrors="$prevesc reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
+alias mirrora="$prevesc reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
 
 # adding flags
-	alias df='df -h'                    # human-readable sizes
-	alias free='free -m'                # show sizes in MB
+alias df='df -h'                    # human-readable sizes
+alias free='free -m'                # show sizes in MB
 
 # ps
-	alias psa="ps auxf"
-	alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
-	alias psmem='ps auxf | sort -nr -k 4'
-	alias pscpu='ps auxf | sort -nr -k 3'
+alias psa="ps auxf"
+alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
+alias psmem='ps auxf | sort -nr -k 4'
+alias pscpu='ps auxf | sort -nr -k 3'
 
 # Merge Xresources
-	abbr -ag merxrdb    xrdb -merge ~/.Xresources
+abbr -ag merxrdb    xrdb -merge ~/.Xresources
 
 # git
-	abbr -ag addup      git add -u
-	abbr -ag branch     git branch
-	abbr -ag checkout   git checkout
-	abbr -ag commit     git commit -m \"
-	abbr -ag fetch      git fetch
-	abbr -ag ga         git add .
-	abbr -ag gcl        git clone
-	abbr -ag gcm        git commit -m \"
-	abbr -ag gd         git diff
-	abbr -ag gp         git push
-	abbr -ag gs         git status
-	abbr -ag pull       git pull origin
-	abbr -ag push       git push origin
-	abbr -ag tag        git tag
-	abbr -ag newtag     git tag -a
+abbr -ag addup      git add -u
+abbr -ag branch     git branch
+abbr -ag checkout   git checkout
+abbr -ag commit     git commit -m \"
+abbr -ag fetch      git fetch
+abbr -ag ga         git add .
+abbr -ag gcl        git clone
+abbr -ag gcm        git commit -m \"
+abbr -ag gd         git diff
+abbr -ag gp         git push
+abbr -ag gs         git status
+abbr -ag pull       git pull origin
+abbr -ag push       git push origin
+abbr -ag tag        git tag
+abbr -ag newtag     git tag -a
 
 # zoxide
-	abbr -ag z-    z -
-	abbr -ag zz    z -
-	abbr -ag zl    zi
+abbr -ag z-    z -
+abbr -ag zz    z -
+abbr -ag zl    zi
 
 # gpg encryption
 # verify signature for isos
-	alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
+alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
 # receive the key of a developer
-	alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
+alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
 
 # tokei
-	type -q tokei && abbr -ag tk "tokei --hidden ."
+type -q tokei && abbr -ag tk "tokei --hidden ."
 # wget
-	alias wget="wget --hsts-file="$XDG_DATA_HOME"/wget-hsts"
+alias wget="wget --hsts-file="$XDG_DATA_HOME"/wget-hsts"
 
 ### Package aliases
 if type -q apt
