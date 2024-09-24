@@ -1,4 +1,4 @@
-set nocompatible		" You don't need VI compatibility
+set nocompatible               " You don't need VI compatibility
 set updatetime=1               " Don't take more than 50ms time to load
 
 if has ('win32')
@@ -11,21 +11,21 @@ set noerrorbells
 				" also.
 filetype off                    " Enable type file detection. Vim will be able
                                 " to try to detect the type of file in use.
-filetype plugin indent on	" Enable plugins and load plugin for the
+filetype plugin indent on       " Enable plugins and load plugin for the
 				" detected file type. Load an indent file for
 				" the detected file type.
-set path+=**			" Useful when using :find command. Searches a
+set path+=**                    " Useful when using :find command. Searches a
 				" dir recursively.
-set wildmenu        		" Enable autocompletion menu after pressing TAB.
-set wildmode=list:full		" Make wildmenu behave like similar to Bash
+set wildmenu                    " Enable autocompletion menu after pressing TAB.
+set wildmode=list:full          " Make wildmenu behave like similar to Bash
 				" completion.
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx 
 				" There are certain files that we would never
 				" want to edit with Vim. Wildmenu will ignore
 				" files with these extensions.
 set encoding=utf-8              " Unicode character support. Default is 'latin1'
-set showcmd         		" Show partial command you type in the last
+set showcmd                     " Show partial command you type in the last
 				" line of the screen.
-set undofile			" Persistent undo to file.
+set undofile                    " Persistent undo to file.
 syntax enable on                " Syntax enabled && on.
 setglobal modeline

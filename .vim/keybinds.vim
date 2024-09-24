@@ -1,37 +1,38 @@
-
 " LEADER KEY: SPACE
 let mapleader=" "
 let maplocalleader=" "
 
 """""""""""""""""""""""""""""""""
-"	Special Mode		"
+"         Special Mode          "
 """""""""""""""""""""""""""""""""
-" Abbreviation Mode:
+" Abbreviation Mode: Goto special abbreviation mode
 nnoremap <leader>a :a_
 
 """""""""""""""""""""""""""""""""
-"	Basics			"
+"            Basics             "
 """""""""""""""""""""""""""""""""
+" nnoremap [ ,
+" nnoremap ] ;
 nnoremap ; :
 nnoremap ! :!
 inoremap jj <Esc>
 noremap <TAB> %
+nnoremap <leader>h :nohl<Enter>
 
-" Ez-comment
+" Easy commenting
 nnoremap <leader>/ :Commentary<CR>gcc
 vnoremap <leader>/ :Commentary<CR>gv
 
-" Save && quit
-nnoremap <C-s> :w<Enter>
-nnoremap <C-q> :q<Enter>
-
-" Press remove highlighting after search.
-nnoremap <leader>h :nohl<Enter>
+" Quick save && quit
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>wq :wq<CR>
+nnoremap <C-s> :w<CR>
+nnoremap <C-q> :q<CR>
 
 " creating pane
 nnoremap <leader>v :vs<Enter>
 nnoremap <leader>z :sp<Enter>
-nnoremap <leader>q :q<Enter>
 
 " Switching panes
 nnoremap <c-h> <c-w>h
@@ -50,43 +51,35 @@ vmap < <gv
 vmap > >gv
 
 """""""""""""""""""""""""""""""""
-"	Auto Pairs		"
-""""""""""""""""""""""""""""""""" NOTE: Keep this section commented if
-				" vim-autopairs plugin is enabled.
-" inoremap ( ()<LEFT>
-" inoremap { {}<LEFT><Enter><Esc><Up>A<Enter>
-" inoremap [ []<LEFT>
-" inoremap ' ''<LEFT>
-" inoremap " ""<LEFT>
-
-"""""""""""""""""""""""""""""""""
 " Always copy using "+y register"
 """"""""""""""""""""""""""""""""" NOTE: gVim is needed.
 vnoremap y "+y
 nnoremap y "+y
 
 """""""""""""""""""""""""""""""""
-"	For CP			"
+"            For CP             "
 """""""""""""""""""""""""""""""""
 autocmd FileType cpp noremap <F9> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o %< % && ./%< <CR>
 autocmd FileType cpp noremap <F10> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o %< % && ./%< < inp<CR>
 autocmd FileType cpp nested autocmd BufEnter */cp/* nested silent! execute 'noremap <F8> :0read ~/.vim/snippets/cp/cpp_template.cpp<CR>/int sol() {<CR>:nohl<CR>o'
-
+autocmd FileType rust noremap <F10> <ESC> :w <CR> :!rustc --cfg feature=\"onpc\" % && ./%:r < inp<CR>
+autocmd FileType rust nested autocmd BufEnter */cp/* nested silent! execute 'noremap <F8> :0read ~/.vim/snippets/cp/rust_template.rs<CR>/fn sol() -> usize {<CR>:nohl<CR>o'
 """""""""""""""""""""""""""""""""
-"	Plugin Keybindings	"
+"      Plugin Keybindings       "
 """""""""""""""""""""""""""""""""
-"	=> NERDTree <=		"
+"""""""""""""""""""""""""""""""""
+"       ==> NERDTree <==        "
 """""""""""""""""""""""""""""""""
 map <C-n> :NERDTreeToggle<CR>
 """""""""""""""""""""""""""""""""
-"	=> Instant Markdown <=	"
+"   ==> Instant Markdown <==    "
 """""""""""""""""""""""""""""""""
 " Preview .md file
 map <Leader>md :InstantMarkdownPreview<CR>
 " Kills the preview
 map <Leader>ms :InstantMarkdownStop<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Drag Visuals
+"                    ==> Drag Visuals <==                     "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "##############################################################
 "##

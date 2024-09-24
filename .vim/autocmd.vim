@@ -1,11 +1,11 @@
 """""""""""""""""""""""""""""""""
-"				"
-"   Auto Group / Auto CMD	"
-"				"
+"                               "
+"     Auto Group / Auto CMD     "
+"                               "
 """""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""
-"	==> Global <==		"
+"         ==> Global <==        "
 """""""""""""""""""""""""""""""""
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -13,7 +13,7 @@ endif
 autocmd BufWritePost * if search('\n\s*\%$', 'nw') | %s#\($\n\s*\)\+\%$## | exe "normal! \<C-o>" | endif
 
 """""""""""""""""""""""""""""""""
-"	==> VIM	<==		"
+"          ==> VIM <==          "
 """""""""""""""""""""""""""""""""
 augroup filetype_vim
 	autocmd!
