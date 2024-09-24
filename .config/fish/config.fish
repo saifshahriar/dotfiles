@@ -343,8 +343,8 @@ end
 ###               ALIASES               ###
 ###########################################
 ### Filesystem
-	alias ..="cd .."
-	alias mkdir="mkdir -pv"
+alias ..="cd .."
+alias mkdir="mkdir -pv"
 
 # Use eza instead of ls.
 if type -q eza
@@ -402,12 +402,12 @@ if type -q devour
 end
 
 # editor
-	alias edit='echo "$EDITOR is currently set as your default editor. If you want to change it, then edit the fish config file at $HOME/.config/fish/config.fish"; $EDITOR'
-	abbr -ag v  nvim
-	abbr -ag vi vim
+alias edit='echo "$EDITOR is currently set as your default editor. If you want to change it, then edit the fish config file at $HOME/.config/fish/config.fish"; $EDITOR'
+abbr -ag v  nvim
+abbr -ag vi vim
 
 # file manager
-	type -q $FILEMANAGER && abbr -ag f $FILEMANAGER
+type -q $FILEMANAGER && abbr -ag f $FILEMANAGER
 
 # media
 # Watch anime:
