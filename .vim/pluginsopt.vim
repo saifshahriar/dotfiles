@@ -15,6 +15,10 @@ let g:gitgutter_sign_removed_first_line = '▌'
 let g:gitgutter_sign_removed_above_and_below = '▒'
 let g:gitgutter_sign_modified_removed = '▌'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" rustfmt
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:rustfmt_autosave = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -51,6 +55,15 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:instant_markdown_autostart = 0		" Turns off auto preview
 let g:instant_markdown_browser = "firefox"	" Uses firefox for preview
+
+""""""""""
+" ultisnip
+""""""""""
+let g:utiSnipsSnippetDirectories=["UltiSnips"]
+let g:UltiSnipsExpandTrigger="<CR>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>k"
+let g:UltiSnipsEditSplit="vertical"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Other Stuff
