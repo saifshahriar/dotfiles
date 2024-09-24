@@ -13,6 +13,7 @@ using namespace std;
 #define endl "\n"
 mt19937 rnd(chrono::steady_clock::now().time_since_epoch().count());
 
+// TODO: Replace `const` with `#define`.
 const bool HAS_TESTCASES = true;
 
 int sol() {
