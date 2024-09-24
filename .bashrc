@@ -11,7 +11,7 @@
 # paste the whole config.
 
 ###########################################
-### 		EXPORT			###
+###                EXPORT               ###
 ###########################################
 export XDG_DATA_HOME="$HOME"/.local/share
 export XDG_CONFIG_HOME="$HOME"/.config
@@ -39,7 +39,7 @@ export MANPAGER='/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft
 [[ $- != *i* ]] && return
 
 ###########################################
-### 		SHOPT			###
+###                SHOPT                ###
 ###########################################
 shopt -s autocd				# change to named directory
 shopt -s cdspell			# autocorrects cd misspellings
@@ -89,14 +89,14 @@ ex ()
 }
 
 ###########################################
-###		BASH PROMPT		###
+###                PROMPT               ###
 ###########################################
 PROMPT_ALTERNATIVE=twoline
 NEWLINE_BEFORE_PROMPT=yes
 PS1='\[\e[0;31m\][\[\e[0;33m\]\u\[\e[0;32m\]@\[\e[0;34m\]\h \[\e[0;35m\]\w\[\e[0;31m\]] \[\e[0;32m\]$(git branch 2>/dev/null | grep '"'"'^*'"'"' | colrm 1 2)\n\[\e[0;33m\]$ \[\e[0m\]'
 
 ###########################################
-### 		ALIASES			###
+###               ALIASES               ###
 ###########################################
 ### Filesystem
 	alias ..="cd .."
@@ -255,10 +255,10 @@ PS1='\[\e[0;31m\][\[\e[0;33m\]\u\[\e[0;32m\]@\[\e[0;34m\]\h \[\e[0;35m\]\w\[\e[0
 	alias parsyu='paru -Syu --noconfirm'             # update standard pkgs && AUR pkgs (paru)
 # ? ends
 
-###########################################
-###	ADD CUSTOM ALIASES BELOW	###
-###########################################	
 
+###########################################
+###       ADD CUSTOM ALIASES BELOW      ###
+###########################################
 [ $(command -v zoxide) ] && eval "$(zoxide init bash)"
 exec fish
 
