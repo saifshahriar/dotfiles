@@ -1,0 +1,40 @@
+#!/usr/bin/env python3.10
+
+import sys
+
+have_blankline: bool = False
+comment_char: str = "#"
+banner_length: int = 43
+
+
+def print_blankline() -> None:
+    if have_blankline:
+        print(comment_char, end="")
+        print(" " * (banner_length - 2) + comment_char)
+    else:
+        print(end="")
+
+
+def print_banner(banner_sentence: str) -> None:
+    print(comment_char * banner_length)
+    print_blankline()
+    print(comment_char + comment_char + comment_char, end="")
+    print(banner_sentence.center(banner_length - 6), end="")
+    print(comment_char + comment_char + comment_char)
+    print_blankline()
+    print(comment_char * banner_length)
+
+
+def main() -> int:
+    if sys.version_info < (3, 10):
+        raise RuntimeError("This script requires Python 3.10.x or above.")
+    if len(sys.argv) > 1:
+        args_string: str = " ".join(sys.argv[1:])
+        print_banner(args_string)
+    # else:
+    # noargs()
+    return 0
+
+
+if __name__ == "__main__":
+    main()
