@@ -393,13 +393,13 @@ alias rg='rg -p'
 alias ip='ip --color=auto'
 
 # Devour (https://github.com/salman-abedin/devour)
-if type -q devour
-	alias pcmanfm="devour pcmanfm"
-	alias thunar="devour thunar"
-	alias firefox="devour firefox"
-	alias brave="devour brave"
-	alias sxiv="devour sxiv"
-end
+#if type -q devour
+#	alias pcmanfm="devour pcmanfm"
+#	alias thunar="devour thunar"
+#	alias firefox="devour firefox"
+#	alias brave="devour brave"
+#	alias sxiv="devour sxiv"
+#end
 
 # editor
 alias edit='echo "$EDITOR is currently set as your default editor. If you want to change it, then edit the fish config file at $HOME/.config/fish/config.fish"; $EDITOR'
