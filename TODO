@@ -1,0 +1,14 @@
+organize
+--------
+* organize dunst, sxhkd config in the correct path
+
+update
+------
+* update various configs to the current setup
+    * bashrc
+    * qtile
+    * awesomewm
+
+add
+---
+* spectrwm config if not already added
