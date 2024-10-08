@@ -9,6 +9,11 @@ update
     * qtile
     * awesomewm
 
+refactor
+--------
+* format: tabs for indentations and spaces for alignment
+* trailing whitespaces
+
 add
 ---
 * spectrwm config if not already added
