@@ -136,7 +136,7 @@ myManageHook = composeAll
     -- `doFloat`: makes a window floating, appears at (x, y) = (0, 0)
     -- `doCenterFloat`: makes a window floating, appears at the center of the screen
     -- `doShift (myWorkspaces !! n)`: opens the programme at (n + 1)th workspace
-    [ className =? "Bar"            --> doIgnore -- XMonad, please dont manager any bars
+    [ className =? "Bar"            --> doIgnore -- XMonad, please dont manage any bars
     , title =? "bar"                --> doIgnore
     , title =? "float"              --> doIgnore
     , className =? "Alafloat"       --> doCenterFloat
