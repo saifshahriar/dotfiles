@@ -42,7 +42,7 @@ bindings = [
 	{ key = "Period", mods = "Alt",           action = "IncreaseFontSize" },
 	{ key = "Comma",  mods = "Alt",           action = "DecreaseFontSize" },
 	{ key = "r",      mods = "Alt|Shift",     action = "ResetFontSize" },
-	# Up-Down Moving
+	# Navigation
 	{ key = "j",      mods = "Alt",           action = "ScrollLineDown" },
 	{ key = "k",      mods = "Alt",           action = "ScrollLineUp" },
 	{ key = "u",      mods = "Alt",           action = "ScrollPageUp" },
