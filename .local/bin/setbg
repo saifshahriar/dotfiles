@@ -12,21 +12,20 @@ blue=$(tput setaf 4)
 reset=$(tput sgr0)
 
 help() {
-    echo "Usage: setbg [OPTION]"
-    echo "OPTIONS:"
-    echo "  -h        Display this help message"
-    echo "  -R        Reload wallpaper and update colors using pywal"
-    echo "  -f <tag>  Fetch wallpapers with the specified tag from Wallhaven.cc"
-    echo "  -s <file> Set wallpaper and update colors using the specified image file"
-    echo "  <dir>     Set wallpaper from the specified directory interactively"
-    echo "																	"
-    echo "${red}Example:"${reset}
-    echo "  ${green}setbg${reset} ${blue}-f${reset} demon+slayer"
+	echo "Usage: setbg [OPTION]"
+	echo "OPTIONS:"
+	echo "  -h        Display this help message"
+	echo "  -R        Reload wallpaper and update colors using pywal"
+	echo "  -f <tag>  Fetch wallpapers with the specified tag from Wallhaven.cc"
+	echo "  -s <file> Set wallpaper and update colors using the specified image file"
+	echo "  <dir>     Set wallpaper from the specified directory interactively"
+	echo "																	"
+	echo "${red}Example:"${reset}
+	echo "  ${green}setbg${reset} ${blue}-f${reset} demon+slayer"
 	echo "               ${green}^^^"${reset}
 	echo "     ${green}use '+' instead of spaces"${reset}
-    echo "																	"
-    echo "																	"
-
+	echo "																	"
+	echo "																	"
 }
 
 sub() {
@@ -44,6 +43,8 @@ sub() {
 xrdbl() {
 	xrdb -load ~/.Xresources
 	xrdb -merge ~/.cache/wal/colors.Xresources
+	# if using my build of st (siduck/st)
+	kill -USR1 $(pidof st)
 	xdotool key super+shift+r
 }
 
@@ -51,8 +52,8 @@ usr_input="$(echo "$2" | sed 's/^[[:space:]]\+//; s/[[:space:]]\+$//; s/[[:space
 case "$1" in
 	#-
 	-h)
-        help
-        ;;
+		help
+		;;
 	-R)
 		wal -R && sub && xrdbl
 		;;
