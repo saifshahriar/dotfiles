@@ -444,15 +444,10 @@ alias psmem='ps auxf | sort -nr -k 4'
 alias pscpu='ps auxf | sort -nr -k 3'
 
 # Merge Xresources
-abbr -ag loadxrdb   xrdb -load ~/.Xresources && xrdb -merge ~/.cache/wal/colors.Xresources
-abbr -ag merxrdb    xrdb -merge ~/.Xresources
+alias loadxrdb="xrdb -load ~/.Xresources && xrdb -merge ~/.cache/wal/colors.Xresources"
+alias merxrdb="xrdb -merge ~/.Xresources"
 
 # git
-abbr -ag addup      git add -u
-abbr -ag branch     git branch
-abbr -ag checkout   git checkout
-abbr -ag commit     git commit -m \"
-abbr -ag fetch      git fetch
 abbr -ag ga         git add .
 abbr -ag gcl        git clone
 abbr -ag gcm        git commit -m \"
@@ -530,3 +525,7 @@ type -q fzf && fzf --fish | source
 # colorscript random
 # fastfetch
 # pfetch
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
