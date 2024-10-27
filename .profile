@@ -25,7 +25,7 @@ fi
 export PATH
 
 # Systemwide consistent theming
-export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_QPA_PLATFORMTHEME=gtk2:qt5ct
 export WXGTK3=1
 
 # ibus
