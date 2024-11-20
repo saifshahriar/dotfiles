@@ -10,11 +10,10 @@
 #define sz(a) ((int)((a).size()))
 #define char unsigned char
 using namespace std;
-#define endl "\n"
+#define el "\n"
 mt19937 rnd(chrono::steady_clock::now().time_since_epoch().count());
 
-// TODO: Replace `const` with `#define`.
-const bool HAS_TESTCASES = true;
+#define HAS_TESTCASES
 
 int sol() {
 	return 0;
@@ -24,20 +23,20 @@ int32_t main() {
 	InTheNameofAllah
 	/* int testcases = 1e9; */
 	int testcases = 1;
-	if (HAS_TESTCASES)
-		cin >> testcases;
+	#ifdef HAS_TESTCASES
+	cin >> testcases;
+	#endif
 	for (int i = 1; i <= testcases; ++i) {
 		#ifdef ONPC
-			cout << i << ": ";
+		cout << i << ": ";
 		#endif
 		if (sol())
 			break;
 		#ifdef ONPC
-			cout << "__________________________" << endl;
+		cout << "__________________________" << el;
 		#endif
 	}
-		#ifdef ONPC
-			cerr << endl
-				 << "took " << clock() * 1.0 / CLOCKS_PER_SEC << " sec" << endl;
-		#endif
+	#ifdef ONPC
+	cerr << el << "took " << clock() * 1.0 / CLOCKS_PER_SEC << " sec" << el;
+	#endif
 }
