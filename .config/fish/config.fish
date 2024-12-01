@@ -474,6 +474,7 @@ alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
 type -q tokei && abbr -ag tk "tokei --hidden ."
 # wget
 alias wget="wget --hsts-file="$XDG_DATA_HOME"/wget-hsts"
+alias a2c="aria2c -x16 -s16"
 
 ### Package aliases
 if type -q apt
