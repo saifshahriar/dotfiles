@@ -361,7 +361,7 @@ end
 
 # yazi
 alias yz="yazi"
-alias lf="yazi"
+alias lf="lfub"
 
 # If you are coming from CMD. I mean no one does that, but I like these commands.
 alias cls="clear"
