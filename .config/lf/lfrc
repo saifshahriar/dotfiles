@@ -1,18 +1,26 @@
+set ratios 1:2:3
 # Basic Settings
-set previewer 'cat'
+set cleaner '~/.config/lf/cleaner' # Clear preview
+set previewer '~/.config/lf/preview'
 set preview true
 set hidden true
 set drawbox true
 set icons true
-set ignorecase true
 set incsearch true
+set scrolloff 10
+set shell 'bash'
+set tabstop 4
+set dupfilefmt '%b.%n%e'
 
 # Custom Functions
 cmd open ${{
-    case $(file --mime-type "$f" -bL) in
-        text/*|application/json) $EDITOR "$f";;
-        *) xdg-open "$f" ;;
-    esac
+	case $(file --mime-type "$f" -bL) in
+		text/*|application/json) $EDITOR "$f";;
+		application/pdf) gobble zathura "$f";;
+		image/svg) gobble pix "$f";;
+		image/*) gobble sxiv "$f";;
+		*) xdg-open "$f" ;;
+	esac
 }}
 
 cmd mkdir %echo 'Directory Name: '; read ans; mkdir $ans
@@ -20,13 +28,13 @@ cmd mkdir %echo 'Directory Name: '; read ans; mkdir $ans
 cmd mkfile %echo 'File Name: '; read ans; touch $ans
 
 cmd chmod ${{
-  printf "Mode Bits: "
-  read ans
-  for file in "$fx"; do
-    chmod $ans $file
-  done
+	printf "Mode Bits: "
+	read ans
+	for file in "$fx"; do
+		chmod $ans $file
+	done
 
-  lf -remote 'send reload'
+	lf -remote 'send reload'
 }}
 
 cmd doasmkfile ${{
@@ -35,7 +43,7 @@ cmd doasmkfile ${{
   sudo $EDITOR $ans
 }}
 
-cmd setwallpaper %cp "$f" ~/.config/wall.png && xwallpaper --zoom "$f"
+cmd setwallpaper %xwallpaper --zoom "$f"
 
 cmd fzf_jump ${{
   res="$(find . -maxdepth 3 | fzf --reverse --header='Jump to location')"
@@ -59,32 +67,23 @@ cmd broot_jump ${{
   lf -remote "send $id $cmd \"$res\""
 }}
 
-cmd open_config  ${{
-  $EDITOR $(bookmenu -b ~/.config/bookmenu/configs -f fzf -o)
-}}
-
-cmd dragon %dragon-drag-and-drop -a -x $fx
-cmd dragon-stay %dragon-drag-and-drop -a $fx
-cmd dragon-individual %dragon-drag-and-drop $fx
-cmd cpdragon %cpdragon
-cmd mvdragon %mvdragon
+cmd dragon %dragon -a -x $fx
+cmd dragon-stay %dragon -a $fx
+cmd dragon-individual %dragon $fx
 cmd dlfile %dlfile
 
 # Archive bindings
 cmd unarchive ${{
   case "$f" in
       *.zip) unzip "$f" ;;
-      *.tar.gz) tar -xzvf "$f" ;;
+      *.tar.gz) tar xzvf "$f" ;;
       *.tar.bz2) tar -xjvf "$f" ;;
+      *.tar.zst) unzstd "$f" ;;
       *.tar) tar -xvf "$f" ;;
+      *.rar) unrar x "$f" ;;
       *) echo "Unsupported format" ;;
   esac
 }}
-
-cmd zip %zip -r "$f" "$f"
-cmd tar %tar cvf "$f.tar" "$f"
-cmd targz %tar cvzf "$f.tar.gz" "$f"
-cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
 
 # Trash cli bindings
 cmd trash ${{
@@ -112,8 +111,8 @@ cmd stripspace %stripspace "$f"
 
 # Bindings
 # Remove some defaults
-map m
-map o
+# map m
+# map o
 map n
 map "'"
 map '"'
@@ -128,20 +127,16 @@ map ee $$EDITOR "$f"
 map u $view "$f"
 
 # Archive Mappings
-map az zip
-map at tar
-map ag targz
-map ab targz
 map au unarchive
 
 # Trash Mappings
-map dd trash
-map tc clear_trash
-map tr restore_trash
+# map dd trash
+# map tc clear_trash
+# map tr restore_trash
 
 # Broot Mapping
-map fj broot_jump
-map fz fzf_jump
+# map fj broot_jump
+# map fz fzf_jump
 
 # Dragon Mapping
 map dr dragon
@@ -151,9 +146,12 @@ map dm mvdragon
 map dc cpdragon
 map dl dlfile
 
+# view in
+map fi %sxiv -t .
+
 # Basic Functions
 map . set hidden!
-map DD delete
+map dd delete
 map p paste
 map x cut
 map y copy
@@ -164,8 +162,8 @@ map md mkdir
 map ms $mkscript
 map ch chmod
 map bg setwallpaper
-map o open_config
-map br $vimv $fx
+# map o open_config
+# map br $vimv $fx
 map r rename
 map H top
 map L bottom
@@ -173,3 +171,23 @@ map R reload
 map C clear
 map U unselect
 
+
+# file operations
+map fee $$EDITOR "$f"
+map fau unarchive
+map fd{i,r,s} dragon~
+map ffi %sxiv -t .
+map f. set hidden!
+map fdd delete
+map fp paste
+map fx cut
+map fy copy
+map fmf mkfile
+map fmr doasmkfile
+map fmd mkdir
+map fms $mkscript
+map fch chmod
+map fbg setwallpaper
+map fr rename
+map fC clear
+map fU unselect
