@@ -1,0 +1,30 @@
+filenames:
+  .Xauthority:  {icon: {glyph: , style: {foreground: Red}}}
+  .Xresources:  {icon: {glyph: , style: {foreground: Red}}}
+  .face:        {icon: {glyph: , style: {foreground: Purple}}}
+  .gtkrc-2.0:   {icon: {glyph:  }}
+  .jwmrc:       {icon: {glyph: , style: {foreground: "#0078CD"}}}
+  .xinputrc:    {icon: {glyph: , style: {foreground: Red}}}
+  .xprofile:    {icon: {glyph:  }}
+  .xresources:  {icon: {glyph: , style: {foreground: Red}}}
+  ICEauthority: {icon: {glyph: , style: {foreground: Red} }}
+  Xresources:   {icon: {glyph: , style: {foreground: Red}}}
+  Xresources:   {icon: {glyph: , style: {foreground: Red}}}
+
+extensions:
+  1: {icon: {glyph: }}
+  md:
+    filename:
+      foreground: Blue
+  Xresources: {icon: {glyph: , style: {foreground: Red}}}
+  Xresources: {icon: {glyph: , style: {foreground: Red}}}
+  o:
+    filename:
+      is_blink: true
+    icon:
+      foreground: Red
+  out:
+    filename:
+      is_blink: true
+    icon:
+      foreground: Red
