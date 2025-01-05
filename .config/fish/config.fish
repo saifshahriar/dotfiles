@@ -29,7 +29,7 @@ set -gx XDG_CACHE_HOME $HOME/.cache
 set -gx XDG_RUNTIME_DIR /run/user/(id -u)
 
 set -gx ANDROID_USER_HOME "$XDG_DATA_HOME"/android
-set -gx BAT_THEME "tokyonight_night"
+set -gx BAT_THEME "gruvbox-dark"
 set -gx CALCHISTFILE "$XDG_CACHE_HOME"/calc_history
 set -gx CARGO_HOME "$XDG_DATA_HOME"/cargo
 set -gx DOTNET_CLI_HOME "$XDG_DATA_HOME"/dotnet
@@ -359,9 +359,7 @@ else
 	alias ls="ls -Alh --color=auto --group-directories-first"
 end
 
-# yazi
-alias yz="yazi"
-alias lf="lfub"
+alias lf="lfcd"
 
 # If you are coming from CMD. I mean no one does that, but I like these commands.
 alias cls="clear"
