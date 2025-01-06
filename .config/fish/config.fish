@@ -28,6 +28,7 @@ set -gx XDG_STATE_HOME $HOME/.local/state
 set -gx XDG_CACHE_HOME $HOME/.cache
 set -gx XDG_RUNTIME_DIR /run/user/(id -u)
 
+set -gx ANDROID_HOME "$HOME"/Android/Sdk
 set -gx ANDROID_USER_HOME "$XDG_DATA_HOME"/android
 set -gx BAT_THEME "gruvbox-dark"
 set -gx CALCHISTFILE "$XDG_CACHE_HOME"/calc_history
@@ -74,7 +75,10 @@ type -q doas && set prevesc doas || set prevesc sudo
 # First line removes the path; second line sets it.  Without the first line,
 # your path gets massive && fish becomes very slow.
 set -e fish_user_paths
-set -U fish_user_paths $HOME/.local/bin $XDG_DATA_HOME/{cargo/bin,go/bin,nimble/bin} $HOME/Applications $fish_user_paths
+set -U fish_user_paths $HOME/.local/bin $HOME/Applications \
+	$XDG_DATA_HOME/{cargo,go,nimble}/bin \
+	$ANDROID_HOME/{cmdline-tools/latest/bin,platform-tools,emulator} \
+	$fish_user_paths
 
 ###########################################
 ###            SET MANPAGER             ###
