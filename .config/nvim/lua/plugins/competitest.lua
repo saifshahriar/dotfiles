@@ -43,6 +43,8 @@ return {
 						"-Wextra",
 						"-Wshadow",
 						"-O2",
+						"-DONPC",
+						"-DCIDE",
 						"$(FNAME)",
 						"-o",
 						"$(FNOEXT)",
