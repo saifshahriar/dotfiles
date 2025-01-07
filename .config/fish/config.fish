@@ -405,6 +405,7 @@ alias ip='ip --color=auto'
 
 # editor
 alias edit='echo "$EDITOR is currently set as your default editor. If you want to change it, then edit the fish config file at $HOME/.config/fish/config.fish"; $EDITOR'
+alias nvim="~/.local/bin/st-noborder.sh nvim"
 abbr -ag v  nvim
 abbr -ag vi vim
 
