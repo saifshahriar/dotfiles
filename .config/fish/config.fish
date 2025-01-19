@@ -462,6 +462,9 @@ abbr -ag push       git push origin
 abbr -ag tag        git tag
 abbr -ag newtag     git tag -a
 
+# zathura
+abbr -ag zat   zathura
+
 # zoxide
 abbr -ag z-    z -
 abbr -ag zz    z -
