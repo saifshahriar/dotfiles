@@ -42,8 +42,9 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g
 
 augroup project
 	autocmd!
-	autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
+	autocmd BufRead,BufNewFile *.h,*.c set filetype=c
 augroup END
 
 autocmd FileType cpp nested autocmd BufEnter */cp/* nested silent! execute 'noremap <F8> :0read ~/.vim/snippets/cp/cpp_template.cpp<CR>/void sol() {<CR>:nohl<CR>o'
+autocmd FileType rmd map <F5> :!echo<space>”require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter>
 ]])

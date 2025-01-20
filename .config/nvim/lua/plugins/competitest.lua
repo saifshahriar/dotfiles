@@ -65,5 +65,5 @@ return {
 			testcases_output_file_format = "$(FNOEXT)_output_$(TCNUM).txt",
 		})
 	end,
-	ft = { "cpp", "python", "rust", "java" },
+	ft = { "c", "cpp", "python", "rust", "java" },
 }
