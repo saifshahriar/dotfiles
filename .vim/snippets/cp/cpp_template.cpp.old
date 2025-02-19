@@ -6,7 +6,6 @@
 /// {{{ Helper
 // clang-format off
 #ifdef ONPC
-#include <bits/_ojdebug.h>
 #define _GLIBCXX_DEBUG
 #define debug(x) cerr << #x <<" "; _print(x); cerr << endl;
 #else
@@ -20,7 +19,7 @@ using namespace std;
 #define INF     INT_MAX
 #define MOD     1e9+7
 #define SUM(v)  (accumulate((v).begin(), (v).end(), 0))
-#define el      '\n'
+#define el      "\n"
 #define sz(a)   ((int)((a).size()))
 #define fixprec fixed << setprecision
 
@@ -33,6 +32,66 @@ using namespace std;
 
 /* helper functions */
 mt19937 rnd(chrono::steady_clock::now().time_since_epoch().count());
+#ifdef ONPC
+void _print(long long t)          { cerr << t; }
+void _print(int t)                { cerr << t; }
+void _print(string t)             { cerr << t; }
+void _print(char t)               { cerr << t; }
+void _print(long double t)        { cerr << t; }
+void _print(double t)             { cerr << t; }
+void _print(unsigned long long t) { cerr << t; }
+
+/* templates */
+template <class T, class V> void _print(pair<T, V> p);
+template <class T> void          _print(vector<T> v);
+template <class T> void          _print(set<T> v);
+template <class T, class V> void _print(map<T, V> v);
+template <class T> void          _print(multiset<T> v);
+
+template <class T, class V> void _print(pair<T, V> p) {
+	cerr << "{";
+	_print(p.first);
+	cerr << ",";
+	_print(p.second);
+	cerr << "}";
+}
+
+template <class T> void _print(vector<T> v) {
+	cerr << "[ ";
+	for (T i : v) {
+		_print(i);
+		cerr << " ";
+	}
+	cerr << "]";
+}
+
+template <class T> void _print(set<T> v) {
+	cerr << "[ ";
+	for (T i : v) {
+		_print(i);
+		cerr << " ";
+	}
+	cerr << "]";
+}
+
+template <class T> void _print(multiset<T> v) {
+	cerr << "[ ";
+	for (T i : v) {
+		_print(i);
+		cerr << " ";
+	}
+	cerr << "]";
+}
+
+template <class T, class V> void _print(map<T, V> v) {
+	cerr << "[ ";
+	for (auto i : v) {
+		_print(i);
+		cerr << " ";
+	}
+	cerr << "]";
+}
+#endif
 // clang-format on
 /// }}}
 
