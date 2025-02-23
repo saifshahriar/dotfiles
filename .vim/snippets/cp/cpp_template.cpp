@@ -11,9 +11,9 @@
 #define debug(x) cerr << #x <<" "; _print(x); cerr << endl;
 #else
 #define debug(x)
-#endif
 #include <bits/stdc++.h>
 using namespace std;
+#endif
 
 /* macros */
 #define ALL(v)  (v).begin(), (v).end()
