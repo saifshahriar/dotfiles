@@ -44,6 +44,7 @@ set -gx NIMBLE_DIR "$XDG_DATA_HOME"/nimble
 set -gx NODE_REPL_HISTORY "$XDG_DATA_HOME"/node_repl_history
 set -gx NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME"/npm/npmrc
 set -gx PASSWORD_STORE_DIR "$XDG_DATA_HOME"/pass
+set -gx PSQL_HISTORY "$XDG_STATE_HOME"/psql_history
 set -gx PYTHONSTARTUP "$XDG_CONFIG_HOME"/python/pythonrc
 set -gx RUSTUP_HOME "$XDG_DATA_HOME"/rustup
 set -gx R_HISTFILE "$XDG_CACHE_HOME"/Rhistory
