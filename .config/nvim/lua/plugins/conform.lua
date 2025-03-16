@@ -10,10 +10,20 @@ return {
 			haskell = { "fourmolu" },
 			html = { "prettier" },
 			lua = { "stylua" },
-			python = { "ruff_format", "isort" }, --"autoflake", "isort", "black" },
-			-- python = { "autoflake", "isort", "black" },
+
+			python = function(bufnr)
+				if require("conform").get_formatter_info("ruff_format", bufnr).available then
+					return { "ruff_format", "isort" }
+				else
+					return { "autoflake", "isort", "black" }
+				end
+			end,
+
 			rust = { "rustfmt", lsp_format = "fallback" },
 			json = { "clang-format" },
+			javascript = { "prettier" },
+			javascriptreact = { "prettier" },
+			sql = { "sql-formatter" },
 		},
 
 		format_on_save = {

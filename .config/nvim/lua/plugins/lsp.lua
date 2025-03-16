@@ -22,6 +22,7 @@ return {
 				"--clang-tidy",
 			},
 		})
+		lspconfig.eslint.setup({})
 		lspconfig.gopls.setup({})
 		lspconfig.ruff.setup({})
 		-- lspconfig.pylsp.setup { -- pip install pylsp-rope
