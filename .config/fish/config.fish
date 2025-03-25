@@ -259,27 +259,27 @@ end
 ###########################################
 # Functions needed for !! and !$
 function bind_bang
-    switch (commandline -t)[-1]
-        case "!"
-            commandline -t -- $history[1]
-            commandline -f repaint
-        case "*"
-            commandline -i !
-    end
+	switch (commandline -t)[-1]
+		case "!"
+			commandline -t -- $history[1]
+			commandline -f repaint
+		case "*"
+			commandline -i !
+	end
 end
 
 function bind_dollar
-    switch (commandline -t)[-1]
-        case "!"
-            commandline -f backward-delete-char history-token-search-backward
-        case "*"
-            commandline -i '$'
-    end
+	switch (commandline -t)[-1]
+		case "!"
+			commandline -f backward-delete-char history-token-search-backward
+		case "*"
+			commandline -i '$'
+	end
 end
 
 function fish_user_key_bindings
-    bind ! bind_bang
-    bind '$' bind_dollar
+	bind ! bind_bang
+	bind '$' bind_dollar
 end
 
 # Function for extracting different files
@@ -328,21 +328,21 @@ end
 
 # Delete all binaries in the current directory
 function rmbin
-    if test (basename "$PWD") = "cp"
-        find . -type f -executable -delete
-        echo "Binaries deleted in the 'cp' directory."
-    else
-        echo "Do you want to delete all the binaries from the current directory? [y/n]"
-        read -n 1 response
-        echo
+	if test (basename "$PWD") = "cp"
+		find . -type f -executable -delete
+		echo "Binaries deleted in the 'cp' directory."
+	else
+		echo "Do you want to delete all the binaries from the current directory? [y/n]"
+		read -n 1 response
+		echo
 
-        if test "$response" = "y" -o "$response" = "Y"
-            find . -type f -executable -delete
-            echo "Binaries deleted."
-        else
-            echo "Operation canceled."
-        end
-    end
+		if test "$response" = "y" -o "$response" = "Y"
+			find . -type f -executable -delete
+			echo "Binaries deleted."
+		else
+			echo "Operation canceled."
+		end
+	end
 end
 
 ###########################################
