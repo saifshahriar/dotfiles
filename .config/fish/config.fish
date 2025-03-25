@@ -31,6 +31,7 @@ set -gx XDG_RUNTIME_DIR /run/user/(id -u)
 set -gx ANDROID_HOME "$HOME"/Android/Sdk
 set -gx ANDROID_USER_HOME "$XDG_DATA_HOME"/android
 set -gx BAT_THEME "gruvbox-dark"
+set -gx BUN_INSTALL "$XDG_DATA_HOME/bun"
 set -gx CALCHISTFILE "$XDG_CACHE_HOME"/calc_history
 set -gx CARGO_HOME "$XDG_DATA_HOME"/cargo
 set -gx DOTNET_CLI_HOME "$XDG_DATA_HOME"/dotnet
@@ -77,7 +78,7 @@ type -q doas && set prevesc doas || set prevesc sudo
 # your path gets massive && fish becomes very slow.
 set -e fish_user_paths
 set -U fish_user_paths $HOME/.local/bin $HOME/Applications/{,flutter/bin} \
-	$XDG_DATA_HOME/{cargo,go,nimble}/bin \
+	$XDG_DATA_HOME/{bun,cargo,go,nimble}/bin \
 	$ANDROID_HOME/{cmdline-tools/latest/bin,platform-tools,emulator} \
 	$fish_user_paths
 
@@ -533,7 +534,3 @@ type -q fzf && fzf --fish | source
 # colorscript random
 # fastfetch
 # pfetch
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
