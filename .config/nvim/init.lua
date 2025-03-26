@@ -38,7 +38,7 @@ end)
 
 -- AutoCMDs
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = "markdown",
+	pattern = { "markdown", "rmd" },
 	callback = function()
 		vim.opt_local.textwidth = 80
 		vim.opt_local.formatoptions:append("t")
