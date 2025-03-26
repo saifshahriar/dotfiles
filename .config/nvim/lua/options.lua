@@ -18,7 +18,7 @@ o.spell = true
 o.spellfile = "~/.config/nvim/spell/en.utf-8.add"
 o.colorcolumn = "80"
 o.scrolloff = 16 -- Do not let cursor scroll below or above N lines when scrolling.
-o.sidescroll = 8 -- Same for side scrolling.
+o.sidescrolloff = 8 -- Same for side scrolling.
 o.listchars:append({ tab = "│ ", trail = "" })
 o.foldmethod = "marker"
 
