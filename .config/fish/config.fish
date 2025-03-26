@@ -28,7 +28,7 @@ set -gx XDG_STATE_HOME $HOME/.local/state
 set -gx XDG_CACHE_HOME $HOME/.cache
 set -gx XDG_RUNTIME_DIR /run/user/(id -u)
 
-set -gx ANDROID_HOME "$HOME"/Android/Sdk
+set -gx ANDROID_HOME "$XDG_DATA_HOME"/android/sdk
 set -gx ANDROID_USER_HOME "$XDG_DATA_HOME"/android
 set -gx BAT_THEME "gruvbox-dark"
 set -gx BUN_INSTALL "$XDG_DATA_HOME/bun"
@@ -38,6 +38,7 @@ set -gx DOTNET_CLI_HOME "$XDG_DATA_HOME"/dotnet
 set -gx ELINKS_CONFDIR "$XDG_CONFIG_HOME"/elinks
 set -gx GNUPGHOME "$XDG_DATA_HOME"/gnupg
 set -gx GOPATH "$XDG_DATA_HOME"/go
+set -gx GRADLE_USER_HOME "$XDG_DATA_HOME"/gradle
 set -gx GTK2_RC_FILES "$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 set -gx LESSHISTFILE "$XDG_STATE_HOME"/less/history
 set -gx MAXIMA_USERDIR "$XDG_CONFIG_HOME"/maxima
@@ -52,6 +53,7 @@ set -gx R_HISTFILE "$XDG_CACHE_HOME"/Rhistory
 set -gx SCREENRC "$XDG_CONFIG_HOME"/screen/screenrc
 set -gx SQLITE_HISTORY "$XDG_CACHE_HOME"/sqlite_history
 set -gx STACK_XDG 1
+set -gx TYPST_INSTALL "$XDG_DATA_HOME"/typst
 set -gx W3M_DIR "$XDG_DATA_HOME"/w3m
 set -gx XCURSOR_PATH /usr/share/icons:"$XDG_DATA_HOME"/icons
 set -gx _JAVA_OPTIONS -Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
@@ -78,7 +80,8 @@ type -q doas && set prevesc doas || set prevesc sudo
 # your path gets massive && fish becomes very slow.
 set -e fish_user_paths
 set -U fish_user_paths $HOME/.local/bin $HOME/Applications/{,flutter/bin} \
-	$XDG_DATA_HOME/{bun,cargo,go,nimble}/bin \
+	/opt/shutil/bin/ \
+	$XDG_DATA_HOME/{bun,cargo,go,nimble,typst}/bin \
 	$ANDROID_HOME/{cmdline-tools/latest/bin,platform-tools,emulator} \
 	$fish_user_paths
 
@@ -351,6 +354,8 @@ end
 ### Filesystem
 alias ..="cd .."
 alias mkdir="mkdir -pv"
+
+alias adb='HOME="$XDG_DATA_HOME"/android adb'
 
 # Use eza instead of ls.
 if type -q eza
