@@ -6,10 +6,11 @@ return {
 		require("markdown-table-mode").setup({
 			filetype = {
 				"*.md",
+				"*.rmd",
 			},
 			options = {
 				insert = true, -- when typeing "|"
-				insert_leave = true, -- when leaveing insert
+				insert_leave = true, -- when leaving insert
 			},
 		})
 	end,
