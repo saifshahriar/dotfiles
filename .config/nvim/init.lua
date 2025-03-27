@@ -1,3 +1,4 @@
+-- {{{ Default NvChad Stuff, ! Do not touch
 vim.g.base46_cache = vim.fn.stdpath("data") .. "/base46/"
 vim.g.mapleader = " "
 
@@ -29,30 +30,19 @@ require("lazy").setup({
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
-require("options")
+-- nvchad autocommands
 require("nvchad.autocmds")
 
+-- }}}
+
+-- load user configs
+local cfgs = { "options", "aucmds", "func" }
+
+for i = 1, #cfgs do
+	require(cfgs[i])
+end
+
+-- mappings should be at the very end
 vim.schedule(function()
 	require("mappings")
 end)
-
--- AutoCMDs
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "markdown", "rmd" },
-	callback = function()
-		vim.opt_local.textwidth = 80
-		vim.opt_local.formatoptions:append("t")
-	end,
-})
-
-vim.cmd([[
-au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
-augroup project
-	autocmd!
-	autocmd BufRead,BufNewFile *.h,*.c set filetype=c
-augroup END
-
-autocmd FileType cpp nested autocmd BufEnter */cp/* nested silent! execute 'noremap <F8> :0read ~/.vim/snippets/cp/cpp_template.cpp<CR>/void sol() {<CR>:nohl<CR>o'
-autocmd FileType rmd map <F5> :!echo<space>”require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter>
-]])

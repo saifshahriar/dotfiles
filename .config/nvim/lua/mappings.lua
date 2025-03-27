@@ -1,4 +1,4 @@
-require "nvchad.mappings"
+require("nvchad.mappings")
 
 local map = vim.keymap.set
 
@@ -17,5 +17,8 @@ vim.cmd([[
 	vmap < <gv
 	vmap > >gv
 ]])
+
+-- Custom Functions
+map("n", "<F5>", ":lua Compile()<CR>", { desc = "Compile current file", noremap = true, silent = true })
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
