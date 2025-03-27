@@ -10,5 +10,12 @@ map("n", "<leader>H", ":nohl<CR>", { desc = "Unhighlight" })
 map("n", "<leader>w", ":w<CR>", { desc = "Save file" })
 map("n", "<leader>q", ":q<CR>", { desc = "Exit" })
 map("n", "<leader>wq", ":wq<CR>", { desc = "Save & Exit" })
+-- Indentation without breaking
+vim.cmd([[
+	nnoremap < <<
+	nnoremap > >>
+	vmap < <gv
+	vmap > >gv
+]])
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
