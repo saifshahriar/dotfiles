@@ -348,6 +348,12 @@ function rmbin
 	end
 end
 
+# pkgx
+function use
+	set f (echo $argv | cut -d'@' -f1)
+	alias $f="pkgx $argv"
+end
+
 ###########################################
 ###               ALIASES               ###
 ###########################################
