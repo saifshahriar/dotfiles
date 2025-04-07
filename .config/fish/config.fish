@@ -45,6 +45,7 @@ set -gx MAXIMA_USERDIR "$XDG_CONFIG_HOME"/maxima
 set -gx NIMBLE_DIR "$XDG_DATA_HOME"/nimble
 set -gx NODE_REPL_HISTORY "$XDG_DATA_HOME"/node_repl_history
 set -gx NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME"/npm/npmrc
+set -gx MASON_DIR "$XDG_DATA_HOME"/nvim/mason
 set -gx PASSWORD_STORE_DIR "$XDG_DATA_HOME"/pass
 set -gx PSQL_HISTORY "$XDG_STATE_HOME"/psql_history
 set -gx PYTHONSTARTUP "$XDG_CONFIG_HOME"/python/pythonrc
@@ -80,7 +81,9 @@ type -q doas && set prevesc doas || set prevesc sudo
 # your path gets massive && fish becomes very slow.
 set -e fish_user_paths
 set -U fish_user_paths $HOME/.local/bin $HOME/Applications/{,flutter/bin} \
+	$MASON_DIR/bin/ \
 	/opt/shutil/bin/ \
+	/usr/local/texlive/2025/bin/x86_64-linux/ \
 	$XDG_DATA_HOME/{bun,cargo,go,nimble,typst}/bin \
 	$ANDROID_HOME/{cmdline-tools/latest/bin,platform-tools,emulator} \
 	$fish_user_paths
@@ -474,6 +477,7 @@ abbr -ag pull       git pull origin
 abbr -ag push       git push origin
 abbr -ag tag        git tag
 abbr -ag newtag     git tag -a
+abbr -ag lg         lazygit
 
 # zathura
 abbr -ag zat   zathura
@@ -528,6 +532,8 @@ else if type -q pacman
 		abbr -ag parsyu     paru -Syu --noconfirm           # update standard pkgs && AUR pkgs (paru)
 	end
 end
+
+alias pkg="doas pacstall"
 
 ###########################################
 ###               LOAD                  ###
