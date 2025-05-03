@@ -16,9 +16,9 @@ set dupfilefmt '%b.%n%e'
 cmd open ${{
 	case $(file --mime-type "$f" -bL) in
 		text/*|application/json) $EDITOR "$f";;
-		application/pdf) gobble zathura "$f";;
-		image/svg) gobble pix "$f";;
-		image/*) gobble sxiv "$f";;
+		application/pdf) eat zathura "$f";;
+		image/svg) eat pix "$f";;
+		image/*) eat sxiv "$f";;
 		*) xdg-open "$f" ;;
 	esac
 }}
