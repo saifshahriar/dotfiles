@@ -15,9 +15,10 @@ set dupfilefmt '%b.%n%e'
 # Custom Functions
 cmd open ${{
 	case $(file --mime-type "$f" -bL) in
-		text/*|application/json) $EDITOR "$f";;
+		text/*|application/json|inode/x-empty) $EDITOR "$f";;
 		application/pdf) eat zathura "$f";;
 		image/svg) eat pix "$f";;
+		image/x-xcf) eat gimp "$f";;
 		image/*) eat sxiv "$f";;
 		*) xdg-open "$f" ;;
 	esac
