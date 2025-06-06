@@ -1,0 +1,12 @@
+name: base16-gruvbox-hard
+primary: '#83a598'  # buttons, fixed table columns
+secondary: '#f39c12'  # method selector, some minor labels
+accent: '#83A598'  # header text, scrollbars, cursors, focus highlights
+background: '#1d2021' # background colors
+surface: '#1d2021'  # panels, etc
+error: '#FB4934'  # error messages
+success: '#B8BB26'  # success messages
+warning: '#FABD2F'  # warning messages
+
+author: Saif Shahriar
+description: A dark theme based on `dylanaraps/pywal`'s base16-gruvbox-hard.
