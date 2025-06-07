@@ -1,10 +1,36 @@
-/* Put this header file in your compiler library path.
+/* 
+ * Author: Saif Shahriar
+ *
+ * Put this header file in your compiler library path.
  * Make it precompiled .ghc before using for faster execution:
- *     doas g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -O2 -DONPC -DCIDE -H -x c++-header ./_ojdebug.h
  *     doas g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -O2 -DONPC -DCIDE -H -x c++-header ./stdc++.h
+ *     doas g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -O2 -DONPC -DCIDE -H -x c++-header ./_ojdebug.h
  */
 
-#include <bits/stdc++.h>
+/* #include <bits/stdc++.h> */
+#include <algorithm>
+#include <bitset>
+#include <cctype>
+#include <chrono>
+#include <climits>
+#include <cmath>
+#include <complex>
+#include <cstring>
+#include <functional>
+#include <iomanip>
+#include <iostream>
+#include <iterator>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <random>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <utility>
+#include <vector>
 using namespace std;
 
 /* helper functions */
