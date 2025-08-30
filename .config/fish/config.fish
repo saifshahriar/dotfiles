@@ -59,8 +59,10 @@ set -gx W3M_DIR "$XDG_DATA_HOME"/w3m
 set -gx XCURSOR_PATH /usr/share/icons:"$XDG_DATA_HOME"/icons
 set -gx _JAVA_OPTIONS -Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 
-set -gx TERM "xterm-256color"
-set -gx COLORTERM truecolor
+if test (basename (tty 2>/dev/null)) = "0"
+	set -gx TERM "xterm-256color"
+	set -gx COLORTERM truecolor
+end
 
 if type -q brave
 	set -gx BROWSER "brave"
