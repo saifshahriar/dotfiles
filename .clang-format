@@ -740,7 +740,7 @@ IncludeCategories:
   - Regex: '.*'
     Priority: 1
 IncludeIsMainRegex: '(Test)?$'
-IndentAccessModifiers: true
+IndentAccessModifiers: false
 IndentCaseBlocks: true
 IndentCaseLabels: true
 IndentGotoLabels: false
