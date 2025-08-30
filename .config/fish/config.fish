@@ -355,6 +355,11 @@ function use
 	alias $f="pkgx $argv"
 end
 
+# zoxide
+function zl
+	z (zoxide query -l $argv | fzf --preview 'eza -a --color=always {}' --preview-window=right:60%:wrap)
+end
+
 ###########################################
 ###               ALIASES               ###
 ###########################################
@@ -483,7 +488,6 @@ abbr -ag zat   zathura
 # zoxide
 abbr -ag z-    z -
 abbr -ag zz    z -
-abbr -ag zl    zi
 
 # gpg encryption
 # verify signature for isos
