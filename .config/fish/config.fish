@@ -389,8 +389,18 @@ alias cls="clear"
 alias del="rm -rfv"
 
 # Always confirm before overwriting something && verbose mode.
-alias mv="mv -v"
-alias cp="cp -v"
+if type -q advcp
+	alias cp="advcp -gRv"
+else
+	alias cp="cp -v"
+end
+
+if type -q advmv
+	alias mv="advmv -gv"
+else
+	alias mv="mv -v"
+end
+
 alias ln="ln -v"
 alias rm="rm -v"
 
