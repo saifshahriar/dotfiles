@@ -473,8 +473,11 @@ alias merxrdb="xrdb -merge ~/.Xresources"
 abbr -ag ga         git add .
 abbr -ag gcl        git clone
 abbr -ag gcm        git commit -m \"
+abbr -ag gam        git commit -am \"
 abbr -ag gd         git diff
 abbr -ag gp         git push
+abbr -ag gpr        git pull --rebase
+abbr -ag gff        git merge --ff-only
 abbr -ag gs         git status
 abbr -ag pull       git pull origin
 abbr -ag push       git push origin
