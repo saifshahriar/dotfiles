@@ -17,7 +17,7 @@ using namespace std;
 
 /* macros */
 #define el              '\n'
-#define sz(x)           ((int)((x).size()))
+#define len(x)          ((int)((x).size()))
 #define all(x)          (x).begin(), (x).end()
 #define rall(x)         (x).rbegin(), (x).rend()
 #define getbit(n, i)    (((n) & (1LL << (i))) != 0)
@@ -34,7 +34,6 @@ using namespace std;
 #define NO              puts("NO")
 
 /* typedefs */
-#define int long long
 #define ll  long long
 #define ull unsigned long long
 #define ld  long double
@@ -49,15 +48,36 @@ constexpr int       dx[4] = { 1, 0, -1, 0 };
 constexpr int       dy[4] = { 0, 1, 0, -1 };
 
 /* templates */
-template<typename Container> auto sum(const Container &c) {
+template <typename Container> auto sum(const Container& c) {
 	using T = typename decay<decltype(*c.begin())>::type;
-	return accumulate(c.begin(), c.end(), T{0});
+	return accumulate(c.begin(), c.end(), T { 0 });
 }
 
-template<typename Container> auto prod(const Container &c) {
+template <typename Container> auto prod(const Container& c) {
 	using T = typename decay<decltype(*c.begin())>::type;
-	return accumulate(c.begin(), c.end(), T{0}, multiplies<>());
+	return accumulate(c.begin(), c.end(), T { 0 }, multiplies<>());
 }
+
+template <typename T> vector<vector<T> > gps(const vector<T>& v) {
+	return accumulate(v.begin(), v.end(), vector<vector<T> > { {} },
+	                  [](vector<vector<T> > acc, const T& x) {
+		                  vector<vector<T> > sets = acc;
+		                  for (auto& e : acc) {
+			                  auto ns = e;
+			                  ns.push_back(x);
+			                  sets.push_back(ns);
+		                  }
+		                  return sets;
+	                  });
+}
+
+struct uniq_t {
+    template<class T> friend T operator|(T v, const uniq_t&) {
+        sort(v.begin(), v.end());
+        v.erase(unique(v.begin(), v.end()), v.end());
+        return v;
+    }
+} uniq;
 
 /* helper functions */
 mt19937 rnd(chrono::steady_clock::now().time_since_epoch().count());
